@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  horsepower: 1
+  fuel_type: MyString
+  transmission: MyString
+  mileage: 1
+  manufacturer: MyString
+  year: 1
+  price: 9.99
+  condition: MyString
+  description: MyText
+
+two:
+  horsepower: 1
+  fuel_type: MyString
+  transmission: MyString
+  mileage: 1
+  manufacturer: MyString
+  year: 1
+  price: 9.99
+  condition: MyString
+  description: MyText

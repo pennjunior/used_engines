@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  towing_capacity: 1
+  engine_type: MyString
+  fuel_type: MyString
+  mileage: 1
+  manufacturer: MyString
+  year: 1
+  price: 9.99
+  condition: MyString
+  description: MyText
+
+two:
+  towing_capacity: 1
+  engine_type: MyString
+  fuel_type: MyString
+  mileage: 1
+  manufacturer: MyString
+  year: 1
+  price: 9.99
+  condition: MyString
+  description: MyText

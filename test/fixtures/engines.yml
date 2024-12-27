@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  engineable: one
+  engineable_type: Engineable
+  price: 9.99
+  description: MyText
+  title: MyString
+
+two:
+  engineable: two
+  engineable_type: Engineable
+  price: 9.99
+  description: MyText
+  title: MyString
