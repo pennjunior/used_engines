@@ -1,0 +1,12 @@
+<!-- app/views/reviews/show.html.erb -->
+<h1><%= @review.title %></h1>
+<p><strong>Reviewed by:</strong> <%= @review.name %> on <%= @review.review_date.strftime("%B %d, %Y") %></p>
+<p><%= @review.content %></p>
+<p><strong>Rating:</strong> <%= @review.rating %> / 5</p>
+
+<% if @review.photo.attached? %>
+  <div>
+    <h3>Attached Photo:</h3>
+    <%= image_tag @review.photo, style: "max-width: 400px;" %>
+  </div>
+<% end %>

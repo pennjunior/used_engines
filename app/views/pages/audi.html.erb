@@ -1,0 +1,69 @@
+<div class="makes-hero">
+    <div class="hero-about-overlay"></div>
+    <div class="hero-about-text">
+      <h1>Audis In AutozBid </h1>
+      <p>Your #1 Destination for Useds/New Cars and Engines </p>
+    </div>
+  </div>
+<div class="content-wrapper">
+  <div class="home-makes-section">
+    <div class="make-item">
+    <%= image_tag('make/audi.avif', alt: 'Audi') %>
+    <p style="margin-left: 10px;">Audi</p>
+  </div>
+  <div><p>
+      Looking for a luxury car without the luxury price tag?
+    </p></div>
+  </div>
+  <div class="makes-main-content">
+  <h1> Recommended Used Cars </h1>
+    <div id="car-list">
+    <% if @paginated_items.present? %>
+      <% @paginated_items.each do |car| %>
+        <a href="<%= car_path(car) %>" class="card">
+          <% if car.photos.present? %>
+            <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+          <% else %>
+            <div class="no-photo"> No photo available </div>
+          <% end %>
+          <div class="card-info">
+            <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+            <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= car.chassis_no %> Mi
+            </p>
+            <p class="price">Price: $<%= car.price %></p>
+          </div>
+        </a>
+      <% end %>
+      <% else %>
+        no cars in this category
+      <% end %>
+
+  </div>
+    <div class="pagination-container">
+    <%= paginate @paginated_items %>
+  </div>
+</div>
+</div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h3>Buy and Sell Premium Audi Vehicles – Your Trusted Marketplace </h3>
+      <p>
+          As a top platform for Audi auctions and sales, we connect buyers with high-performance vehicles, from sporty
+          sedans like the <strong>Audi A4</strong> to family-friendly SUVs like the <strong>Audi Q7</strong>. Sellers enjoy a streamlined process
+          to get the best value for their car. Start your Audi journey today and experience German precision at its finest.
+      </p>
+      <ul>
+      <li><strong>Exceptional Resale Value:</strong> Audi vehicles maintain their value, ensuring a strong return on investment for sellers.</li>
+      <li><strong>Certified Pre-Owned Options:</strong> Explore thoroughly inspected Audi models with extended warranties for peace of mind.</li>
+      <li><strong>Broad Selection:</strong> From the iconic Audi TT to the powerful Audi Q5, find the perfect fit for your lifestyle.</li>
+      <li><strong>Convenient Auctions:</strong> Access competitive bidding for exclusive Audi models and connect with buyers nationwide.</li>
+      <li><strong>Sustainability:</strong> Extend the lifecycle of a premium vehicle while minimizing your environmental footprint.</li>
+    </ul>
+
+    </div>
+    <div class="promo-image">
+      <%= image_tag "audis.jpg", alt: "Premium Audi cars ready for sale and auction" %>
+    </div>
+  </div>

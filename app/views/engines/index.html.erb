@@ -1,0 +1,33 @@
+<div class="content-wrapper">
+  <div class="makes-section">
+    <%= render "shared/filter_form" %>
+  </div>
+  <div class="main-content">
+<div class="engines">
+    <% @paginated_items.each do |engine| %>
+      <a href="<%= engine_path(engine) %>" class="card">
+        <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
+        <div class="card-info">
+          <h4><%= engine.title %></h4>
+          <p class="price">Price: $<%= engine.price %></p>
+          <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
+          <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= engine.engineable.mileage %> Mi
+            </p>
+          <% else %>
+            <p>
+              <i class="fas fa-bolt"></i>
+              Power: <%= engine.engineable.power %> HP
+            </p>
+          <% end %>
+        </div>
+      </a>
+    <% end %>
+  </div>
+  <div class="pagination-container">
+    <%= paginate @paginated_items %>
+  </div>
+
+</div>
+</div>

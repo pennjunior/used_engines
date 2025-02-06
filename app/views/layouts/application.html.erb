@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>UsedEngines</title>
+    <title>AutoBidHub | Buy, Sell & Bid on Cars and Engines at the Best Prices</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Drive your dream car today! 🚗💨 AutoBidHub offers top-quality new & used cars at unbeatable prices. Buy, sell, or trade with confidence. Visit us for the best deals & exceptional service!">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +13,12 @@
   </head>
 
   <body>
+    <a href="https://wa.me/+237671981743" target="_blank" id="whatsapp-button">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 60px; height: 60px;" />
+    </a>
+    <%= render "shared/nav" %>
     <%= yield %>
+    <%= render "shared/flashes" %>
+    <%= render "shared/footer" %>
   </body>
 </html>

@@ -1,0 +1,71 @@
+<div class="makes-hero">
+    <div class="hero-about-overlay"></div>
+    <div class="hero-about-text">
+      <h1>Toyota In AutozBid </h1>
+      <p>Your #1 Destination for Useds/New Cars and Engines </p>
+    </div>
+  </div>
+<div class="content-wrapper">
+  <div class="home-makes-section">
+    <div class="make-item">
+    <%= image_tag('make/toyota.avif', alt: 'Toyota') %>
+    <p style="margin-left: 10px;">Toyota</p>
+  </div>
+  <div><p>
+      With decades of innovation, Toyota cars are designed to stand the test of time.
+    </p></div>
+  </div>
+  <div class="makes-main-content">
+  <h1> Recommended Used Cars </h1>
+    <div id="car-list">
+    <% if @paginated_items.present? %>
+      <% @paginated_items.each do |car| %>
+        <a href="<%= car_path(car) %>" class="card">
+          <% if car.photos.present? %>
+            <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+          <% else %>
+            <div class="no-photo"> No photo available </div>
+          <% end %>
+          <div class="card-info">
+            <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+            <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= car.chassis_no %> Mi
+            </p>
+            <p class="price">Price: $<%= car.price %></p>
+          </div>
+        </a>
+      <% end %>
+      <% else %>
+        no cars in this category
+      <% end %>
+
+  </div>
+    <div class="pagination-container">
+    <%= paginate @paginated_items %>
+  </div>
+</div>
+</div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h3>Buy or Sell Toyota Vehicles – Dependability That Drives Generations </h3>
+      <p>
+        Toyota has earned a global reputation for unmatched reliability, advanced technology, and exceptional value. Whether you’re looking to buy
+        or sell a trusted sedan like the <strong>Toyota Camry</strong>, a rugged SUV like the <strong>Toyota Highlander</strong>, or an efficient hybrid like
+        the <strong>Toyota Prius</strong>, our platform is your go-to destination for high-quality Toyota vehicles.
+      </p>
+      <ul>
+        <li><strong>Legendary Reliability:</strong> Toyota vehicles are engineered for longevity and consistent performance.</li>
+        <li><strong>Certified Pre-Owned Toyota:</strong> Purchase with confidence with Toyota-backed warranties and rigorous inspections.</li>
+        <li><strong>Diverse Options:</strong> Explore best-sellers like the <strong>Toyota Corolla</strong>, adventure-ready <strong>Toyota RAV4</strong>, and
+        versatile trucks like the <strong>Toyota Tacoma</strong>.</li>
+        <li><strong>Effortless Auctions:</strong> Sell your Toyota to a competitive marketplace or bid on exclusive Toyota listings.</li>
+        <li><strong>Eco-Friendly Technology:</strong> Discover Toyota's renowned hybrid and electric options, including the
+        <strong>Toyota Prius</strong> and the innovative <strong>Toyota Mirai</strong>.</li>
+    </ul>
+
+    </div>
+    <div class="promo-image">
+      <%= image_tag "toyota.jpg", alt: "Premium toyota cars ready for sale and auction" %>
+    </div>
+  </div>

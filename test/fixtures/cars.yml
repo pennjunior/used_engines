@@ -1,0 +1,55 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  make: MyString
+  model: MyString
+  year: 1
+  price: 9.99
+  engine_type: MyString
+  fuel_type: MyString
+  engine_size: 1
+  seats: 1
+  doors: 1
+  transmission: MyString
+  drivetrain: MyString
+  registration_year: MyString
+  dimension: MyString
+  chassis_no: MyString
+  engine_code: MyString
+  steering: MyString
+  ext_color: MyString
+  location: MyString
+  weight: 1
+  version_class: MyString
+  max_capacity: MyString
+  description: MyText
+  condition: MyString
+  availability: false
+
+two:
+  category: MyString
+  make: MyString
+  model: MyString
+  year: 1
+  price: 9.99
+  engine_type: MyString
+  fuel_type: MyString
+  engine_size: 1
+  seats: 1
+  doors: 1
+  transmission: MyString
+  drivetrain: MyString
+  registration_year: MyString
+  dimension: MyString
+  chassis_no: MyString
+  engine_code: MyString
+  steering: MyString
+  ext_color: MyString
+  location: MyString
+  weight: 1
+  version_class: MyString
+  max_capacity: MyString
+  description: MyText
+  condition: MyString
+  availability: false

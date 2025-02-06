@@ -1,0 +1,38 @@
+.i-wrap {
+  display: flex;
+  // flex-direction: row;
+  flex-wrap: wrap;
+  // gap: 10px; /* Slightly increase spacing for better appearance */
+  width: 100%; /* Ensure it spans the container */
+}
+
+.i-filter {
+  margin-top: 40px;
+  flex: 0 0 300px; /* Fixed width */
+  padding: 10px;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.i-cars {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  flex: 1; /* Take remaining space */
+  box-sizing: border-box;
+}
+
+
+
+@media (max-width: 768px) {
+  .i-wrap {
+    flex-direction: column;
+  }
+
+  .i-filter {
+    flex: 0 0 auto; /* Shrink to fit content */
+    margin-bottom: 10px;
+  }
+
+  .i-cars {
+    flex: 1; /* Full width */
+  }
+}

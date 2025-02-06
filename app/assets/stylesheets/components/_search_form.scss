@@ -1,0 +1,60 @@
+/* Styling the form */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+  min-width: 500px;
+}
+
+/* Search box container */
+.search-box {
+  display: flex;
+  width: 100%;
+  border: 2px solid #40005b; /* Primary color for the border */
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for a professional look */
+}
+
+/* Search input */
+.search-input {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Search button */
+.search-button {
+  background-color: #40005b; /* Primary color */
+  border: 2px solid white; /* White border */
+  color: white; /* White text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* SVG Icon inside the button */
+.search-button .icon {
+  height: 20px;
+  width: 20px;
+}
+
+/* Hover effect for the button */
+.search-button:hover {
+  background-color: white;
+  color: #40005b;
+  border-color: #40005b; /* Transition to a bordered primary look */
+}
+
+/* Active/focus styles */
+.search-input:focus {
+  box-shadow: 0 0 5px rgba(64, 0, 91, 0.5);
+}

@@ -1,0 +1,89 @@
+<div class="mobile-navbar" data-controller="menu">
+  <!-- Top Section with Logo and Hamburger -->
+  <div class="mobile-navbar-header">
+    <!-- Logo -->
+    <%= link_to root_path, style: "text-decoration: none;"  do%>
+      <div class="logo">
+        <%= image_tag "logoo.jpg", alt: "Car Logo", class: "brand-link" %>
+        <p>AutoBidHub</p>
+      </div>
+    <% end %>
+
+    <!-- Center Search Form -->
+    <div class="search-bar">
+      <%= render "shared/search_for_engine" %>
+    </div>
+
+  <div class="another">
+
+  <ul class="user-links">
+    <% if user_signed_in? %>
+      <div class="nav-item dropdown profile-li">
+        <%= link_to "#", class: "nav-link dropdown-toggle", "data-action": "click->menu#toggleDropdown" do %>
+          <i class="fa-solid fa-user"></i>
+
+        <% end %>
+        <ul class="dropdown-menu hidden">
+          <li class="user-item">
+            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "logout-link center" %>
+          </li>
+          <% if current_user&.admin? %>
+            <li>
+              <%= link_to "Orders", orders_path, class: "dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to "New", new_bike_path, class: "dropdown-item" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <div class="nav-item dropdown profile-li">
+        <%= link_to "#", class: "nav-link dropdown-toggle", "data-action": "click->menu#toggleDropdown" do %>
+          <i class="fa-solid fa-user"></i>
+          <%# <div>Profile</div> %>
+        <% end %>
+        <ul class="dropdown-menu hidden">
+          <li>
+            <%= link_to "Login", new_user_session_path, class: "dropdown-item" %>
+          </li>
+          <li>
+            <%= link_to "Sign Up", new_user_registration_path, class: "dropdown-item" %>
+          </li>
+        </ul>
+
+
+    <% end %>
+    </ul>
+    <!-- Hamburger Icon -->
+    <div id="mobile-hamburger-icon" data-action="click->menu#toggleMenu">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+  </div>
+    <!-- Menu -->
+  <ul class="mobile-menu hidden" data-menu-target="menu">
+    <li class="mobile-nav-item"><%= link_to "Home", root_path %></li>
+    <li class="mobile-nav-item"><%= link_to "Engines", engines_path %></li>
+    <li class="mobile-nav-item"><%= link_to "Cars", cars_path %></li>
+    <li class="mobile-nav-item">
+      <a href="#" class="dropdown-toggle" data-action="click->menu#toggleDropdown">Body Type</a>
+      <ul class="mobile-dropdown-menu hidden">
+        <% Car.distinct.pluck(:category).each do |category| %>
+          <li class="mobile-nav-item"><%= link_to category, cars_path(category: category) %></li>
+        <% end %>
+      </ul>
+    </li>
+    <li class="mobile-nav-item">
+      <a href="#" class="dropdown-toggle" data-action="click->menu#toggleDropdown">Dealer</a>
+      <ul class="mobile-dropdown-menu hidden">
+        <li><%= link_to "Reviews", reviews_path %></li>
+      </ul>
+    </li>
+  </ul>
+
+
+
+
+  </div>
+</div>

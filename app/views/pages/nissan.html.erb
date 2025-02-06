@@ -1,0 +1,70 @@
+<div class="makes-hero">
+    <div class="hero-about-overlay"></div>
+    <div class="hero-about-text">
+      <h1>Nissans In AutozBid </h1>
+      <p>Your #1 Destination for Useds/New Cars and Engines </p>
+    </div>
+  </div>
+<div class="content-wrapper">
+  <div class="home-makes-section">
+    <div class="make-item">
+    <%= image_tag('make/nissan.avif', alt: 'Nissan') %>
+    <p style="margin-left: 10px;">Nissan</p>
+  </div>
+  <div><p>
+    We offer a wide range of Nissan options to meet every need.
+    </p></div>
+  </div>
+  <div class="makes-main-content">
+  <h1> Recommended Used Cars </h1>
+    <div id="car-list">
+    <% if @paginated_items.present? %>
+      <% @paginated_items.each do |car| %>
+        <a href="<%= car_path(car) %>" class="card">
+          <% if car.photos.present? %>
+            <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+          <% else %>
+            <div class="no-photo"> No photo available </div>
+          <% end %>
+          <div class="card-info">
+            <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+            <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= car.chassis_no %> Mi
+            </p>
+            <p class="price">Price: $<%= car.price %></p>
+          </div>
+        </a>
+      <% end %>
+      <% else %>
+        no cars in this category
+      <% end %>
+
+  </div>
+    <div class="pagination-container">
+    <%= paginate @paginated_items %>
+  </div>
+</div>
+</div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h3>Buy or Sell Nissan Vehicles – Innovation That Excites </h3>
+      <p>
+        Nissan has built a global reputation for innovation, reliability, and affordability. Whether you're in the market for a
+        stylish sedan like the <strong>Nissan Altima</strong>, a family-friendly SUV like the <strong>Nissan Rogue</strong>, or an
+        electric vehicle like the <strong>Nissan Leaf</strong>, our platform connects buyers and sellers to high-quality pre-owned models.
+        Start your journey today to experience the perfect blend of performance and value.
+      </p>
+      <ul>
+        <li><strong>Proven Reliability:</strong> Nissan vehicles are renowned for their durability and low cost of ownership.</li>
+        <li><strong>Certified Pre-Owned Nissan:</strong> Enjoy peace of mind with thorough inspections, extended warranties, and roadside assistance.</li>
+        <li><strong>Diverse Selection:</strong> From rugged trucks like the <strong>Nissan Frontier</strong> to the sporty <strong>Nissan Z</strong>, we’ve got you covered.</li>
+        <li><strong>Competitive Auctions:</strong> Find great deals through auctions or maximize the value of your Nissan sale.</li>
+        <li><strong>Eco-Friendly Options:</strong> Discover innovative electric and hybrid models like the award-winning <strong>Nissan Leaf</strong>.</li>
+      </ul>
+
+    </div>
+    <div class="promo-image">
+      <%= image_tag "nissan.jpg", alt: "Premium Audi cars ready for sale and auction" %>
+    </div>
+  </div>

@@ -1,0 +1,129 @@
+<%= render "shared/hero" %>
+<div class="content-wrapper">
+    <div class="home-makes-section">
+      <%= render "shared/make" %>
+    </div>
+  <div class="main-content">
+    <h1>Recommended Used Cars</h1>
+    <div id="car-list">
+    <% @cars.each do |car| %>
+      <a href="<%= car_path(car) %>" class="card">
+        <% if car.photos.present? %>
+          <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+        <% else %>
+          <div class="no-photo">No photo available</div>
+        <% end %>
+        <div class="card-info">
+          <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+        <p>
+          <i class="fas fa-tachometer-alt"></i>
+          Millage: <%= car.chassis_no %> Mi
+        </p>
+        <p class="price">Price: $<%= car.price %></p>
+      </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h2> Why Choose a Used Car? </h2>
+      <p>
+        Buying a used car is not just about saving money; it's about making a smart choice.
+        With lower depreciation rates, a wide selection of models, and certified pre-owned options,
+        you can drive home a reliable vehicle without breaking the bank.
+      </p>
+      <ul>
+        <li><strong>Save Money:</strong> Enjoy lower prices and reduced insurance costs.</li>
+        <li><strong>Certified Pre-Owned:</strong> Get quality assurance with warranties included.</li>
+        <li><strong>Wide Selection:</strong> Choose from thousands of makes and models.</li>
+        <li><strong>Eco-Friendly:</strong> Extend the lifecycle of a vehicle and reduce waste.</li>
+      </ul>
+    <%= link_to "Explore Used Cars", cars_path, class: "btn-cta" %>
+    </div>
+    <div class="promo-image">
+      <%= image_tag "bnw.jpg", alt: "Illustration of a happy family with a used car" %>
+    </div>
+  </div>
+
+  <div class="engines">
+    <% @engines.each do |engine| %>
+      <a href="<%= engine_path(engine) %>" class="card">
+        <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
+        <div class="card-info">
+          <h4><%= engine.title %></h4>
+          <p class="price">Price: $<%= engine.price %></p>
+          <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
+          <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= engine.engineable.mileage %> Mi
+            </p>
+          <% else %>
+            <p>
+              <i class="fas fa-bolt"></i>
+              Power: <%= engine.engineable.power %> HP
+            </p>
+          <% end %>
+        </div>
+      </a>
+    <% end %>
+  </div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h2> Discover More Than Cars </h2>
+      <p>
+        At BikezSale,
+        we’re not just about selling cars—we’re about creating a seamless car-buying journey.
+        Explore our resources:
+      </p>
+      <ul>
+        <li><strong>Car Financing Options:</strong> Get pre-approved in minutes with our easy financing calculator.</li>
+        <li><strong>Vehicle History Reports:</strong> Know your car’s history before you buy.</li>
+        <li><strong>Certified Pre-Owned Cars:</strong> Drive with confidence in vehicles backed by manufacturer warranties..</li>
+      </ul>
+      <a href="#Get Finance" class="btn-cta">Get Financing</a>
+    </div>
+    <div class="promo-image">
+      <%= image_tag "finance.jpg", alt: "Finance" %>
+    </div>
+  </div>
+
+<div id="reviews-container" data-controller="scroll">
+  <h2 style="text-align: center; margin: 10px;">Testimonials From Clients</h2>
+      <p style="text-align: center;">
+        Don’t just take our word for it—hear from our happy customers!
+        With thousands of verified reviews, we ensure transparency and trustworthiness
+      </p>
+
+  <div class="reviews-row" data-scroll-target="row">
+    <% @reviews.each do |review| %>
+      <div class="review-card">
+        <% if review.photo.attached? %>
+          <%= image_tag review.photo, alt: review.title, class: "review-photo" %>
+        <% end %>
+        <div class="review-content">
+          <h3><%= review.title %></h3>
+          <p class="review-author">By <%= review.name %></p>
+          <div class="review-rating">
+            <% review.rating.times do %>
+              <i class="fas fa-star yellow-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="fas fa-star grey-star"></i>
+            <% end %>
+          </div>
+          <p class="review-text"><%= review.content %></p>
+          <p><%= review.review_date.strftime("%B %d, %Y") %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <button class="carousel-button left" data-action="click->scroll#slideLeft">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="carousel-button right" data-action="click->scroll#slideRight">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>

@@ -1,0 +1,72 @@
+<div class="makes-hero">
+    <div class="hero-about-overlay"></div>
+    <div class="hero-about-text">
+      <h1>Volkswagen In AutozBid </h1>
+      <p>Your #1 Destination for Useds/New Cars and Engines </p>
+    </div>
+  </div>
+<div class="content-wrapper">
+  <div class="home-makes-section">
+    <div class="make-item">
+    <%= image_tag('make/volkswagen.avif', alt: 'Volkswagen') %>
+    <p style="margin-left: 10px;">Volkswagen</p>
+  </div>
+  <div><p>
+      Renowned for its innovative technology and affordable luxury.
+    </p></div>
+  </div>
+  <div class="makes-main-content">
+  <h1> Recommended Used Cars </h1>
+    <div id="car-list">
+    <% if @paginated_items.present? %>
+      <% @paginated_items.each do |car| %>
+        <a href="<%= car_path(car) %>" class="card">
+          <% if car.photos.present? %>
+            <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+          <% else %>
+            <div class="no-photo"> No photo available </div>
+          <% end %>
+          <div class="card-info">
+            <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+            <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= car.chassis_no %> Mi
+            </p>
+            <p class="price">Price: $<%= car.price %></p>
+          </div>
+        </a>
+      <% end %>
+      <% else %>
+        no cars in this category
+      <% end %>
+
+  </div>
+    <div class="pagination-container">
+    <%= paginate @paginated_items %>
+  </div>
+</div>
+</div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h3>Buy or Sell Volkswagen Vehicles – German Engineering at Its Best</h3>
+      <p>
+        Volkswagen stands for precision engineering, reliable performance, and timeless design. Whether you're in the market to buy
+        or sell a versatile hatchback like the <strong>Volkswagen Golf</strong>, a family-friendly SUV like the <strong>Volkswagen Tiguan</strong>,
+        or an eco-friendly model like the <strong>Volkswagen ID.4</strong>, our platform is your trusted destination for all things Volkswagen.
+    </p>
+    <p>
+      </p>
+      <ul>
+        <li><strong>German Precision:</strong> Volkswagen vehicles are celebrated for their impeccable build quality and enduring performance.</li>
+        <li><strong>Certified Pre-Owned Assurance:</strong> Access rigorously inspected vehicles backed by warranties for added confidence.</li>
+        <li><strong>Diverse Models:</strong> From the classic <strong>Volkswagen Jetta</strong> to spacious SUVs like the <strong>Atlas</strong>, find a Volkswagen for every need.</li>
+        <li><strong>Streamlined Auctions:</strong> Buy or sell effortlessly with competitive prices and a seamless transaction process.</li>
+        <li><strong>Eco-Friendly Innovation:</strong> Explore Volkswagen’s advanced electric and hybrid lineup, including the game-changing
+        <strong>Volkswagen ID. Buzz</strong> and <strong>ID.4</strong>.</li>ability:</strong> Extend the lifecycle of a premium vehicle while minimizing your environmental footprint.</li>
+      </ul>
+
+    </div>
+    <div class="promo-image">
+      <%= image_tag "volkswagen.jpg", alt: "Premium Audi cars ready for sale and auction" %>
+    </div>
+  </div>

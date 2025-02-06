@@ -1,0 +1,31 @@
+<div class="content-wrapper">
+  <div class="makes-section">
+    <%= render "shared/filter_form" %>
+
+  </div>
+  <div class="main-content">
+  <h3>Cars For Sale (New and Used)</h3>
+  <div id="car-list">
+    <% @paginated_items.each do |car| %>
+      <a href="<%= car_path(car) %>" class="card">
+        <% if car.photos.present? %>
+          <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+        <% else %>
+          <div class="no-photo">No photo available</div>
+        <% end %>
+        <div class="card-info">
+          <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+        <p>
+          <i class="fas fa-tachometer-alt"></i>
+          Millage: <%= car.chassis_no %> Mi
+        </p>
+        <p class="price">Price: $<%= car.price %></p>
+      </div>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="pagination-container">
+  <%= paginate @paginated_items %>
+</div>

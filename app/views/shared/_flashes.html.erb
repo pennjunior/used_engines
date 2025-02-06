@@ -1,0 +1,25 @@
+<% if flash.any? %>
+  <div id="flash-container">
+    <% flash.each do |type, message| %>
+      <div class="flash flash-<%= type %>" role="alert">
+        <div class="flash-content">
+          <strong>
+            <%= message %>
+          </strong>
+        </div>
+        <button type="button" class="flash-close" aria-label="Close" onclick="this.parentElement.style.display='none';">&times;</button>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const flashes = document.querySelectorAll(".flash");
+
+  flashes.forEach((flash) => {
+    setTimeout(() => {
+      flash.style.display = "none";
+    }, 4000); // Hide after 5 seconds
+  });
+});
+</script>

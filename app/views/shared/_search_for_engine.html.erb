@@ -1,0 +1,15 @@
+<!-- app/views/engines/index.html.erb -->
+<form class="search-form" action="<%= cars_path %>" method="get">
+  <div class="search-box">
+    <input
+      type="text"
+      name="query"
+      placeholder="Easy Check (e.g., toyota)"
+      class="search-input"
+      value="<%= params[:query] %>"
+    />
+    <button type="submit" class="search-button">
+      <i class="fa-brands fa-searchengin icon"></i>
+    </button>
+  </div>
+</form>

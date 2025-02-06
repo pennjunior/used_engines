@@ -1,0 +1,45 @@
+<div class="filters">
+  <%= form_with(url: root_path, method: :get, local: true, class: "filter-form") do |f| %>
+    <div class="form-row">
+      <div class="col">
+        <label>Make:</label>
+        <%= f.select :make, options_for_select(@makes.prepend("Any")), { prompt: "Any" }, class: "form-control" %>
+      </div>
+
+      <div class="col">
+        <label>Model:</label>
+        <%= f.select :model, options_for_select(@models.prepend("Any")), { prompt: "Any" }, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col">
+        <label>Steering:</label>
+        <%= f.select :steering, options_for_select(@steering_options.prepend("Any")), { prompt: "Any" }, class: "form-control" %>
+      </div>
+
+      <div class="col">
+        <label>Min Price:</label>
+        <%= f.number_field :min_price, placeholder: "Min Price", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col">
+        <label>Max Price:</label>
+        <%= f.number_field :max_price, placeholder: "Max Price", class: "form-control" %>
+      </div>
+
+      <div class="col">
+        <label>Year:</label>
+        <%= f.select :year, options_for_select(@years.prepend("Any")), { prompt: "Any" }, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-12">
+        <%= f.submit "Search Cars", class: "filter-button" %>
+      </div>
+    </div>
+  <% end %>
+</div>

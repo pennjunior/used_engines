@@ -1,0 +1,85 @@
+<div class="filters-container" data-controller="toggle">
+  <!-- Mobile Filter Button -->
+  <div class="mobile-filter-toggle">
+    <button
+      class="filter-icon-button"
+      id="toggle-filter-button"
+      data-toggle-target="toggleButton"
+      data-action="click->toggle#showFilterForm">
+      <i class="fas fa-sliders-h"></i> <!-- FontAwesome icon -->
+    </button>
+  </div>
+
+  <!-- Filter Form -->
+  <div
+    class="filter-form-container"
+    id="filter-form-container"
+    data-toggle-target="filterForm"
+    style="display: none;">
+    <%= form_with(url: cars_path, method: :get, local: true, class: "filter-form") do |f| %>
+      <div
+        id="close-filter-form"
+        class="close-button"
+        data-toggle-target="closeButton"
+        data-action="click->toggle#hideFilterForm"
+      >
+        <i class="fa-solid fa-minimize"></i>
+      </div>
+
+
+      <div class="filter-group">
+        <input
+          type="text"
+          id="query"
+          name="query"
+          placeholder="Search by make, model, or year"
+          class="filter-input"
+          value="<%= params[:query] %>"
+        />
+      </div>
+      <form class="filter-form">
+        <div class="form-row">
+          <div class="col">
+            <label for="make">Make:</label>
+              <%= f.select :make, options_for_select(@makes.prepend("Any")), class: "form-control" %>
+          </div>
+
+          <div class="col">
+            <label for="model">Model:</label>
+              <%= f.select :model, options_for_select(@makes.prepend("Any")), class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col">
+            <label for="steering">Steering:</label>
+              <%= f.select :steering, options_for_select(@steering_options.prepend("Any")), class: "form-control" %>
+          </div>
+
+          <div class="col">
+            <label for="minPrice">Min Price:</label>
+              <%= f.number_field :min_price, placeholder: "Min Price", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col">
+            <label for="maxPrice">Max Price:</label>
+              <%= f.number_field :max_price, placeholder: "Max Price", class: "form-control" %>
+          </div>
+
+          <div class="col">
+            <label for="year">Year:</label>
+              <%= f.select :year, options_for_select(@years.prepend("Any")), class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12">
+              <%= f.submit "Search Cars", class: "filter-button" %>
+            </div>
+        </div>
+      </form>
+    </div>
+  <% end %>
+</div>

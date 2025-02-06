@@ -1,0 +1,61 @@
+.filters {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 50px;
+  width: 100%;
+  max-width: 390px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-button {
+  background-color: #40005b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+  text-align: center;
+}
+
+.filters .form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters .col {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.filters .col:last-child {
+  margin-right: 0;
+}
+
+// .results .car {
+//   border: 1px solid #ccc;
+//   padding: 10px;
+//   margin-bottom: 10px;
+//   border-radius: 4px;
+// }

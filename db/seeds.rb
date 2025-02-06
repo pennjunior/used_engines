@@ -7,3 +7,24 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'ruby-progressbar'
+require "open-uri"
+
+# Clear existing data
+# CarEngine.destroy_all
+# TruckEngine.destroy_all
+# BoatEngine.destroy_all
+# Engine.destroy_all
+
+# puts "Engines destroyed"
+puts "Creating cars2"
+# Review.destroy_all
+# puts "Reviews destroyed"
+# require_relative "seeds/reviews.rb"
+# require_relative "seeds/boatengine.rb"
+# require_relative "seeds/carengines.rb"
+# require_relative "seeds/truckengine.rb"
+# require_relative "seeds/cars.rb"
+require_relative "seeds/cars_2.rb"
+puts "created #{Engine.count} engines"

@@ -1,0 +1,39 @@
+
+.car-gallery {
+  grid-template-columns: 1fr; /* 1 column on mobile */
+}
+
+.car-item {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+.car-item p {
+  margin-top: 14px;
+  margin-bottom: 1rem;
+}
+.car-item img {
+  width: 50px;
+  height: auto;
+  margin-right: 2px;
+}
+
+
+@media (max-width: 768px) {
+  .car-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns by default */
+    gap: 1px;
+  }
+  .car-item img {
+    width: 50px;
+    height: auto;
+  }
+  .car-item {
+    display: flex;
+    flex-direction: column;  /* Stack the image and text vertically by default */
+    align-items: center;     /* Center-align the content */
+    gap: 1px;               /* Space between the image and text */
+  }
+}

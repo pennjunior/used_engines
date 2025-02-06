@@ -1,0 +1,68 @@
+<div class="makes-hero">
+    <div class="hero-about-overlay"></div>
+    <div class="hero-about-text">
+      <h1>Peugeot In AutozBid </h1>
+      <p>Your #1 Destination for Useds/New Cars and Engines </p>
+    </div>
+  </div>
+<div class="content-wrapper">
+  <div class="home-makes-section">
+    <div class="make-item">
+    <%= image_tag('make/peugeot.avif', alt: 'Peugeot') %>
+    <p style="margin-left: 10px;">Peugeot</p>
+  </div>
+  <div><p>
+      A trusted hub for Peugeot auctions and sales
+    </p></div>
+  </div>
+  <div class="makes-main-content">
+  <h1> Recommended Used Cars </h1>
+    <div id="car-list">
+    <% if @paginated_items.present? %>
+      <% @paginated_items.each do |car| %>
+        <a href="<%= car_path(car) %>" class="card">
+          <% if car.photos.present? %>
+            <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+          <% else %>
+            <div class="no-photo"> No photo available </div>
+          <% end %>
+          <div class="card-info">
+            <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+            <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= car.chassis_no %> Mi
+            </p>
+            <p class="price">Price: $<%= car.price %></p>
+          </div>
+        </a>
+      <% end %>
+      <% else %>
+        no cars in this category
+      <% end %>
+
+  </div>
+    <div class="pagination-container">
+    <%= paginate @paginated_items %>
+  </div>
+</div>
+</div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h3>Buy or Sell Peugeot Vehicles – The Essence of French Excellence </h3>
+      <p>
+        Peugeot vehicles combine innovative engineering, stylish design, and outstanding performance, making them a favorite among
+        car enthusiasts and families alike. Whether you’re selling a compact <strong>Peugeot 208</strong>, an efficient
+        <strong>Peugeot 3008 SUV</strong>, or the luxurious <strong>Peugeot 508 Sedan</strong>, our platform provides a seamless experience for buyers and sellers. finest.
+      </p>
+      <ul>
+        <li><strong>European Elegance:</strong> Peugeot cars are celebrated for their refined design and innovative technology.</li>
+        <li><strong>Certified Pre-Owned:</strong> Find rigorously inspected Peugeot vehicles with extended warranties and added perks.</li>
+        <li><strong>Versatile Models:</strong> Choose from compact hatchbacks like the <strong>Peugeot 208</strong> to family-friendly SUVs like the <strong>Peugeot 5008</strong>.</li>
+        <li><strong>Streamlined Auctions:</strong> Enjoy competitive pricing and fast, secure transactions for buyers and sellers.</li>
+        <li><strong>Eco-Friendly Options:</strong> Explore Peugeot’s cutting-edge hybrid and electric models, including the <strong>Peugeot e-208</strong> and <strong>Peugeot 3008 Hybrid</strong>.</li>
+      </ul>
+    </div>
+    <div class="promo-image">
+      <%= image_tag "peugeot.jpeg", alt: "Premium Audi cars ready for sale and auction" %>
+    </div>
+  </div>

@@ -1,0 +1,132 @@
+.slide  {
+  text-decoration: none;
+  color: inherit;
+}
+.slide-btn {
+  display: none;
+}
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.slide-content {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.hero-text {
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.hero-text .credit {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+
+.slide {
+  float: left;
+  height: 100%;
+  width: 0;
+  transition: width .3s linear;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.slide > * {
+  transition: transform .15s linear;
+  transform: scale(0);
+}
+.labels {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.labels label {
+  display: inline-block;
+  background-color: transparent;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  margin: .5vmin 2vmin;
+  border: 3px solid white;
+}
+.carousel .one,
+.carousel .two {
+  background-position: center center;
+  background-size: cover;
+}
+.carousel .one {
+  background-image: url(lambo.jpg);
+
+}
+.carousel .two {
+  background-image: url(hero2.jpg);
+}
+
+#slide-btn-1:checked ~ .one,
+#slide-btn-2:checked ~ .two {
+  width: 100%;
+}
+#slide-btn-1:checked ~ .one > *,
+#slide-btn-2:checked ~ .two > * {
+  transform: scale(1);
+  // z-index: 2;
+}
+#slide-btn-1:checked ~ .labels label[for="slide-btn-1"],
+#slide-btn-2:checked ~ .labels label[for="slide-btn-2"] {
+  background-color: white;
+  // z-index: 2;
+}
+
+// .slide.two::before {
+// content: '';
+// position: absolute;
+// top: 0;
+// left: 0;
+// width: 100%;
+// height: 100%;
+// background: rgba(0, 0, 0, 0.5); /* Adjust opacity and color as needed */
+// z-index: 1; /* Overlay should be behind content but above the background */
+// }
+
+// .slide.two .slide-content {
+// position: relative;
+// // z-index: 2; /* Content should appear above the overlay */
+// }
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .filter-overlay {
+    position: absolute;
+    top: 10px; /* Space from the bottom of the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Make the form container responsive */
+    z-index: 10;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .hero-text h1 {
+    display: none;
+    white-space: normal;
+  }
+
+  .hero-text .credit {
+    white-space: normal;
+  }
+
+}

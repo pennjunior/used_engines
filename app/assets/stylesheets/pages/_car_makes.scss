@@ -1,0 +1,67 @@
+.makes-hero {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  background: url('make/makes-h.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-about-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.hero-about-text {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+
+.hero-about-text h1 {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-about-text p {
+  font-size: 1.2rem;
+}
+.makes-main-content {
+  flex: 1;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .makes-main-content {
+    flex: 1;
+    margin-top: -109px;  /* Full width on small screens */
+  }
+  .make-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1px;
+    height: 60px;
+  }
+  .make-item img {
+    width: 50px;
+  }
+  .home-makes-section {
+    padding: 10px;
+    margin-top: 0px;
+  }
+  .bikez-about-section {
+    flex-direction: column;
+  }
+
+  .bikez-photo-container {
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+}

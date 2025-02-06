@@ -1,0 +1,71 @@
+<div class="makes-hero">
+    <div class="hero-about-overlay"></div>
+    <div class="hero-about-text">
+      <h1>Fords In AutozBid </h1>
+      <p>Your #1 Destination for Useds/New Cars and Engines </p>
+    </div>
+  </div>
+<div class="content-wrapper">
+  <div class="home-makes-section">
+    <div class="make-item">
+      <%= image_tag('make/ford.avif', alt: 'Ford') %>
+    <p style="margin-left: 10px;">Ford</p>
+  </div>
+  <div><p>
+      Ford’s unmatched reputation for quality
+    </p></div>
+  </div>
+  <div class="makes-main-content">
+  <h1> Recommended Used Cars </h1>
+    <div id="car-list">
+    <% if @paginated_items.present? %>
+      <% @paginated_items.each do |car| %>
+        <a href="<%= car_path(car) %>" class="card">
+          <% if car.photos.present? %>
+            <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+          <% else %>
+            <div class="no-photo"> No photo available </div>
+          <% end %>
+          <div class="card-info">
+            <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+            <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= car.chassis_no %> Mi
+            </p>
+            <p class="price">Price: $<%= car.price %></p>
+          </div>
+        </a>
+      <% end %>
+      <% else %>
+        no cars in this category
+      <% end %>
+
+  </div>
+    <div class="pagination-container">
+    <%= paginate @paginated_items %>
+  </div>
+</div>
+</div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h3>Find, Sell, or Auction Top Ford Vehicles – Built Tough for Every Driver </h3>
+      <p>
+        Ford has been a trusted name in the automotive industry for over a century, known for its durability, innovation, and performance.
+        Whether you’re selling a reliable used Ford or searching for your next car, truck, or SUV, our platform is your ultimate destination.
+        We specialize in connecting buyers and sellers for models like the iconic <strong>Ford F-150</strong>, the adventurous <strong>Ford Explorer</strong>,
+        and the fuel-efficient <strong>Ford Fusion</strong>.
+      </p>
+      <ul>
+        <li><strong>Durability and Value:</strong> Ford vehicles are built tough, retaining value and reliability for years.</li>
+        <li><strong>Certified Pre-Owned Fords:</strong> Buy with confidence, knowing your Ford vehicle has been rigorously inspected and comes with extended warranties.</li>
+        <li><strong>Extensive Selection:</strong> Explore popular models like the rugged <strong>Ford Bronco</strong>, the family-friendly <strong>Ford Escape</strong>, and the
+        powerful <strong>Ford Mustang</strong>.</li>
+        <li><strong>Seamless Auctions:</strong> Sell your Ford to competitive buyers or bid on exclusive listings with ease.</li>
+        <li><strong>Eco-Friendly Options:</strong> Discover hybrid and electric models like the <strong>Ford Maverick Hybrid</strong> or <strong>Ford Mustang Mach-E</strong>.</li>
+    </ul>
+
+    </div>
+    <div class="promo-image">
+      <%= image_tag "ford.jpg", alt: "Premium Audi cars ready for sale and auction" %>
+    </div>
+  </div>

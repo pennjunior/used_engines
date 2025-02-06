@@ -1,0 +1,71 @@
+<div class="makes-hero">
+    <div class="hero-about-overlay"></div>
+    <div class="hero-about-text">
+      <h1>BMWs In AutozBid </h1>
+      <p>Your #1 Destination for Useds/New Cars and Engines </p>
+    </div>
+  </div>
+<div class="content-wrapper">
+  <div class="home-makes-section">
+    <div class="make-item">
+    <%= image_tag('make/bmw.avif', alt: 'BMW') %>
+    <p style="margin-left: 10px;">BMW</p>
+  </div>
+  <div><p>
+      Elevate your driving experience with BMW
+    </p></div>
+  </div>
+  <div class="makes-main-content">
+  <h1> Recommended Used Cars </h1>
+    <div id="car-list">
+    <% if @paginated_items.present? %>
+      <% @paginated_items.each do |car| %>
+        <a href="<%= car_path(car) %>" class="card">
+          <% if car.photos.present? %>
+            <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+          <% else %>
+            <div class="no-photo"> No photo available </div>
+          <% end %>
+          <div class="card-info">
+            <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+            <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= car.chassis_no %> Mi
+            </p>
+            <p class="price">Price: $<%= car.price %></p>
+          </div>
+        </a>
+      <% end %>
+      <% else %>
+        no cars in this category
+      <% end %>
+
+  </div>
+    <div class="pagination-container">
+    <%= paginate @paginated_items %>
+  </div>
+</div>
+</div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h3>Buy Luxury BMW Vehicles – Performance Meets Elegance </h3>
+      <p>
+        Our marketplace connects buyers and sellers of high-performance BMW vehicles, including sought-after models like
+        the <strong>BMW 3 Series</strong>, <strong>BMW X5</strong>, and the iconic <strong>BMW M Series</strong>. Whether you're auctioning your BMW
+        or searching for the perfect pre-owned model, you’ll find everything you need here.
+      </p>
+      <ul>
+      <li><strong>Unbeatable Resale Value:</strong> BMW vehicles are known for their longevity and strong resale performance,
+      ensuring sellers get the best value.</li>
+      <li><strong>Certified Pre-Owned BMWs:</strong> Explore thoroughly inspected BMW models with factory-backed warranties and roadside assistance.</li>
+      <li><strong>Wide Range of Models:</strong> From the sporty <strong>BMW Z4 Roadster</strong> to family-friendly SUVs like the <strong>BMW X3</strong>, find
+      your dream vehicle.</li>
+      <li><strong>Convenient Auctions:</strong> Buyers and sellers benefit from competitive pricing and fast, reliable transactions.</li>
+      <li><strong>Sustainability:</strong> Extend the lifecycle of luxury vehicles while making an eco-conscious choice.</li>
+    </ul>
+
+    </div>
+    <div class="promo-image">
+      <%= image_tag "beamer.jpg", alt: "Premium Audi cars ready for sale and auction" %>
+    </div>
+  </div>

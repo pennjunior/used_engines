@@ -1,0 +1,42 @@
+<div class="carousel" data-controller="carousel">
+  <!-- Slide Radio Buttons -->
+  <input type="radio" name="carousel" id="slide-btn-1" class="slide-btn" data-carousel-target="button" checked />
+  <input type="radio" name="carousel" id="slide-btn-2" class="slide-btn" data-carousel-target="button" />
+
+  <!-- Slide 1 -->
+  <div class="slide one parallax-effect">
+    <div class="slide-content">
+      <div class="filter-overlay">
+        <!-- Hero Text -->
+      <div class="hero-text">
+        <h1>Find the Best Used Cars at Lowest Prices</h1>
+        <div class="credit">Discover Thousands of Cars for Sale</div>
+      </div>
+      <%= render "shared/filter" %>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide two parallax-effect">
+    <div class="slide-content">
+      <div class="filter-overlay">
+        <!-- Hero Text -->
+      <div class="hero-text">
+        <h1>Find Your Perfect Engine fit</h1>
+        <div class="credit"> Search with easy filters engine for Sale.</div>
+      </div>
+      <%= render "shared/filter" %>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Labels for Slide Navigation -->
+  <div class="labels">
+    <label for="slide-btn-1"></label>
+    <label for="slide-btn-2"></label>
+  </div>
+</div>
+</div>

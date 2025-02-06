@@ -1,0 +1,70 @@
+<div class="makes-hero">
+    <div class="hero-about-overlay"></div>
+    <div class="hero-about-text">
+      <h1>Mercedes In AutozBid </h1>
+      <p>Your #1 Destination for Useds/New Cars and Engines </p>
+    </div>
+  </div>
+<div class="content-wrapper">
+  <div class="home-makes-section">
+    <div class="make-item">
+    <%= image_tag('make/mercedes-benz.avif', alt: 'Mercedes') %>
+    <p style="margin-left: 10px;">Mercedes</p>
+  </div>
+  <div><p>
+      Mercedes-Benz vehicles are among the most sought-after in the pre-owned market.
+    </p></div>
+  </div>
+  <div class="makes-main-content">
+  <h1> Recommended Used Cars </h1>
+    <div id="car-list">
+    <% if @paginated_items.present? %>
+      <% @paginated_items.each do |car| %>
+        <a href="<%= car_path(car) %>" class="card">
+          <% if car.photos.present? %>
+            <%= image_tag car.photos.first, alt: car.make, class: "car-image" %>
+          <% else %>
+            <div class="no-photo"> No photo available </div>
+          <% end %>
+          <div class="card-info">
+            <h4><%= car.make %> <%= car.model %> <%= car.year %></h4>
+            <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= car.chassis_no %> Mi
+            </p>
+            <p class="price">Price: $<%= car.price %></p>
+          </div>
+        </a>
+      <% end %>
+      <% else %>
+        no cars in this category
+      <% end %>
+
+  </div>
+    <div class="pagination-container">
+    <%= paginate @paginated_items %>
+  </div>
+</div>
+</div>
+<div class="used-car-promo">
+    <div class="promo-content">
+      <h3>Buy or Sell Mercedes-Benz Vehicles – The Pinnacle of Luxury and Performance </h3>
+      <p>
+        Mercedes-Benz represents timeless luxury, cutting-edge innovation, and superior performance. Whether you're buying or selling
+        a refined sedan like the <strong>Mercedes-Benz E-Class</strong>, a commanding SUV like the <strong>Mercedes-Benz GLE</strong>,
+        or a high-performance model like the <strong>Mercedes-AMG</strong>, our platform ensures a seamless experience for all Mercedes-Benz enthusiasts.
+      </p>
+      <ul>
+        <li><strong>Unmatched Elegance:</strong> Mercedes-Benz is synonymous with luxury, delivering unparalleled comfort and craftsmanship.</li>
+        <li><strong>Certified Pre-Owned Assurance:</strong> Find inspected, warrantied vehicles for peace of mind and exceptional quality.</li>
+        <li><strong>Diverse Range:</strong> Choose from sporty coupes like the <strong>Mercedes-Benz C-Class</strong> to the flagship
+        <strong>Mercedes-Benz S-Class</strong>.</li>
+        <li><strong>Effortless Transactions:</strong> Sell your Mercedes-Benz quickly or discover deals through exclusive auctions.</li>
+        <li><strong>Innovative Technology:</strong> Explore models featuring Mercedes-Benz’s industry-leading infotainment and safety systems.</li>
+      </ul>
+
+    </div>
+    <div class="promo-image">
+      <%= image_tag "mercedes.png", alt: "Premium Audi cars ready for sale and auction" %>
+    </div>
+  </div>
