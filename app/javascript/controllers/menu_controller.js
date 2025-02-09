@@ -13,13 +13,13 @@ export default class extends Controller {
 
   toggleMenu() {
     // Toggle the mobile menu visibility
-    console.log("menu 1 clicked");
+    // console.log("menu 1 clicked");
     this.menuTarget.classList.toggle("show");
   }
 
   toggleDropdown(event) {
     // Prevent the default anchor behavior
-    console.log("profile 1 clicked");
+    // console.log("profile 1 clicked");
     event.preventDefault();
 
     // Toggle the visibility of the dropdown menu

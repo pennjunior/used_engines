@@ -1,65 +1,61 @@
-<div class="bike-contain">
-  <!-- Bike Slider Section -->
-  <%# <div class="bike-slider">
-  <div class="slider-container"> %>
+<div class="bike-contain" data-controller="showcars">
   <div class="bike-main-content">
-    <!-- Main Image Slider -->
     <div class="bike-main-image">
       <% content_for :title, "#{@car.make} #{@car.model} #{@car.year} for Sale | Latest Auto Events & Exhibitions" %>
-      <% content_for :meta_description, "#{@car.make} #{@car.model} #{@car.year}  Stay updated with the hottest car shows and auto exhibitions! 🚘 AutoBidHub brings you exclusive coverage of classic car meets, luxury auto expos, and the latest vehicle showcases. Explore upcoming events, highlights, and behind-the-scenes insights." %>
-    <% if @car.photos.attached? %>
-      <% @car.photos.each_with_index do |photo, index| %>
-        <% if index == 0 %> <!-- Only show the first image -->
-          <div class="mySlides">
+      <% content_for :meta_description, "#{@car.make} #{@car.model} #{@car.year} Stay updated with the hottest car shows and auto exhibitions! 🚘 AutoBidHub brings you exclusive coverage of classic car meets, luxury auto expos, and the latest vehicle showcases. Explore upcoming events, highlights, and behind-the-scenes insights." %>
+
+      <% if @car.photos.attached? %>
+        <% @car.photos.each_with_index do |photo, index| %>
+          <div class="mySlides" data-showcars-target="slide" style="<%= index == 0 ? '' : 'display:none;' %>">
             <div class="numbertext">
-              <i class="fa-solid fa-camera"></i> 1/<%= @car.photos.count %>
+              <i class="fa-solid fa-camera"></i> <%= index + 1 %>/<%= @car.photos.count %>
             </div>
             <%= cl_image_tag photo.key, alt: "#{@car.make} #{@car.model} #{@car.year}", class: "main-image" %>
           </div>
         <% end %>
       <% end %>
-    <% end %>
-
 
       <!-- Navigation Buttons -->
       <div class="slider-nav">
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
+        <a class="prev" data-action="click->showcars#prev">❮</a>
+        <a class="next" data-action="click->showcars#next">❯</a>
       </div>
-      <!-- Saved Bikes Section (  Yet Undone     )-->
-    <div class="saved-bike">
-      <% if user_signed_in? %>
-        <%= button_to car_saved_car_path(@car),
-        method: :post,
-        remote: true,
-        class: "btn favorite-btn",
-        data: { id: @car.id } do %>
-        <i class="fa-regular fa-heart"></i>
-      <% end %>
-      <% else %>
-        <%= link_to new_user_session_path, class: "btn" do %>
+
+      <!-- Saved Bikes Section -->
+      <div class="saved-bike">
+        <% if user_signed_in? %>
+          <%= button_to car_saved_car_path(@car),
+          method: :post,
+          remote: true,
+          class: "btn favorite-btn",
+          data: { id: @car.id } do %>
           <i class="fa-regular fa-heart"></i>
         <% end %>
-      <% end %>
-    </div>
-    <div class="bike-gallery">
-      <% if @car.photos.attached? %>
-        <div class="thumbnails">
-          <% @car.photos.each_with_index do |photo, index| %>
-            <% next if index == 0 %> <!-- Skip the first image -->
-            <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill, class: "thumbnail", onclick: "currentSlide(#{index + 1})" %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "btn" do %>
+            <i class="fa-regular fa-heart"></i>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
+      <!-- Bike Gallery -->
+      <div class="bike-gallery">
+        <% if @car.photos.attached? %>
+          <div class="thumbnails">
+            <% @car.photos.each_with_index do |photo, index| %>
+              <% next if index == 0 %><!-- Skip the first image -->
+              <%= cl_image_tag photo.key,
+                height: 100, width: 100, crop: :fill,
+                class: "thumbnail",
+                data: { showcarsTarget: "thumbnail", action: "click->showcars#selectSlide", index: index + 1 } %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
-    </div>
 
-
-
-
-    <!-- Bike Gallery -->
 
 
   <!-- Order Form Section -->
@@ -68,13 +64,9 @@
       local: true,
       data: { controller: "loading", action: "submit->loading#showSpinner" },
       html: { class: "custom-bike-form" } do |form| %>
-      <div class="row">
-        <h1 style="font-size: 1.5rem;"><i class="fa-solid fa-phone" style="color: green;"></i>  Contact the Dealer (341)223-3974</h1>
-
-          <h1 class="bike-show-title"><%= "#{@car.make} #{@car.model} #{@car.year} For Sale" %></h1>
-          <h1 class="bike-show-title" ><%= number_to_currency(@car.price) %></h1>
-
-
+      <div class="row m-2">
+        <h2 style="font-family: 'Montserrat', sans-serif"><%= "#{@car.make} #{@car.model} #{@car.year} For Sale" %></h2>
+        <h2 style="color: red; font-size: 1.0rem;"><%= number_to_currency(@car.price) %></h2>
       </div>
       <% if @order.errors.any? %>
         <div class="error-messages alert alert-danger">
@@ -87,30 +79,30 @@
         </div>
       <% end %>
 
-      <div class="form-group">
+      <div class="form-group m-2">
         <%= form.label :name %>
         <%= form.text_field :name, class: "form-control" %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group m-2">
         <%= form.label :email %>
         <%= form.email_field :email, class: "form-control" %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group m-2">
         <%= form.label :phone %>
         <%= form.number_field :phone, class: "form-control" %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group m-2">
         <%= form.label :location %>
         <%= form.text_field :location, class: "form-control" %>
       </div>
-      <%= form.text_field :honeypot, style: "display: none;" %>
 
-      <div class="form-group submit-button">
-        <%= form.button :submit, "Request Purchase Info", class: "btn btn-dark text-white" %>
+      <div class="form-group submit-button m-2">
+        <%= form.button :submit, "Contact the Dealer", class: "btn btn-dark text-white" %>
       </div>
+      <%#= recaptcha_tags %>
       <span class="loader text-center" data-loading-target="spinner" style="display: none;"></span>
     <% end %>
   </div>
@@ -119,7 +111,7 @@
 <!-- Bike Information Section -->
 <div class="bike-details">
   <div class="popularity-stats">
-    <h2 class="stats-title"><i class="fa-solid fa-chart-line"></i> Popularity Stats</h2>
+    <h2 class="stats-title"><i class="fa-solid fa-phone" style="color: green;"></i> Contact the Dealer (341)223-3974</h2>
     <div class="stats-row">
       <div class="stats-item">
         <i class="fa-solid fa-eye"></i>
@@ -200,75 +192,4 @@
 
 </div>
 </div>
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-// Detect swipe gestures
-let xDown = null;
-let yDown = null;
-
-document.getElementById("slider").addEventListener('touchstart', handleTouchStart, false);
-document.getElementById("slider").addEventListener('touchmove', handleTouchMove, false);
-
-
-let clickElements = document.querySelectorAll(".i");
-clickElements.forEach(element => {
-  element.addEventListener("click", () => {
-    element.style.color = "red";
-  });
-});
-
-
-function handleTouchStart(evt) {
-  const firstTouch = evt.touches[0];
-  xDown = firstTouch.clientX;
-  yDown = firstTouch.clientY;
-}
-
-function handleTouchMove(evt) {
-  if (!xDown || !yDown) {
-    return;
-  }
-
-  let xUp = evt.touches[0].clientX;
-  let yUp = evt.touches[0].clientY;
-
-  let xDiff = xDown - xUp;
-  let yDiff = yDown - yUp;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) { // Most significant movement
-    if (xDiff > 0) {
-      // Left swipe
-      plusSlides(1);
-    } else {
-      // Right swipe
-      plusSlides(-1);
-    }
-  }
-  // Reset values
-  xDown = null;
-  yDown = null;
-}
-
-// Function to change slide
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex-1].style.display = "block";
-}
-
-</script>
+</div>

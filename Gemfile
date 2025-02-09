@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+
 ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -38,7 +39,7 @@ gem 'ruby-progressbar'
 gem "pg_search"
 gem "kaminari"
 gem 'friendly_id', '~> 5.4'
-
+gem 'recaptcha'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -65,6 +66,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'hotwire-livereload', '~> 2.0'
   gem "web-console"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -74,10 +76,6 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
-end
-
-group :development do
-  gem 'guard-livereload', require: false
 end
 
 group :test do
