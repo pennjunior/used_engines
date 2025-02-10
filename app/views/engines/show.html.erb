@@ -1,2 +1,212 @@
-<h1>Engines#show</h1>
-<p>Find me in app/views/engines/show.html.erb</p>
+<div class="bike-contain" data-controller="showcars">
+  <div class="bike-main-content">
+    <div class="bike-main-image">
+      <% content_for :title, "#{@engine.title} for Sale | Latest Auto Events & Exhibitions" %>
+      <% content_for :meta_description, "#{@engine.title} Stay updated with the hottest car shows and auto exhibitions! 🚘 AutoBidHub brings you exclusive coverage of classic car meets, luxury auto expos, and the latest vehicle showcases. Explore upcoming events, highlights, and behind-the-scenes insights." %>
+
+      <% if @engine.engineable.photos.attached? %>
+        <% @engine.engineable.photos.each_with_index do |photo, index| %>
+          <div class="mySlides" data-showcars-target="slide" style="<%= index == 0 ? '' : 'display:none;' %>">
+            <div class="numbertext">
+              <i class="fa-solid fa-camera"></i> <%= index + 1 %>/<%= @engine.engineable.photos.count %>
+            </div>
+            <%= cl_image_tag photo.key, alt: "#{@engine.title}", class: "main-image" %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <!-- Navigation Buttons -->
+      <div class="slider-nav">
+        <a class="prev" data-action="click->showcars#prev">❮</a>
+        <a class="next" data-action="click->showcars#next">❯</a>
+      </div>
+
+      <!-- Saved Bikes Section -->
+      <div class="saved-bike">
+        <% if user_signed_in? %>
+          <%= button_to car_saved_car_path(@engine.engineable),
+          method: :post,
+          remote: true,
+          class: "btn favorite-btn",
+          data: { id: @engine.engineable.id } do %>
+          <i class="fa-regular fa-heart"></i>
+        <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "btn" do %>
+            <i class="fa-regular fa-heart"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <!-- Bike Gallery -->
+      <div class="bike-gallery">
+        <% if @engine.engineable.photos.attached? %>
+          <div class="thumbnails">
+            <% @engine.engineable.photos.each_with_index do |photo, index| %>
+              <% next if index == 0 %><!-- Skip the first image -->
+              <%= cl_image_tag photo.key,
+                height: 100, width: 100, crop: :fill,
+                class: "thumbnail",
+                data: { showcarsTarget: "thumbnail", action: "click->showcars#selectSlide", index: index + 1 } %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Order Form Section -->
+  <div class="bike-form">
+    <%= simple_form_for [@engine, @order],
+      local: true,
+      data: { controller: "loading", action: "submit->loading#showSpinner" },
+      html: { class: "custom-bike-form" } do |form| %>
+      <div class="row m-2">
+        <h2 style="font-family: 'Montserrat', sans-serif"><%= "#{@engine.title} For Sale" %></h2>
+        <h2 style="color: red; font-size: 1.0rem;"><%= number_to_currency(@engine.price) %></h2>
+      </div>
+      <% if @order.errors.any? %>
+        <div class="error-messages alert alert-danger">
+          <h3>There were some errors with your order:</h3>
+          <ul>
+            <% @order.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group m-2">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group m-2">
+        <%= form.label :email %>
+        <%= form.email_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group m-2">
+        <%= form.label :phone %>
+        <%= form.number_field :phone, class: "form-control" %>
+      </div>
+
+      <div class="form-group m-2">
+        <%= form.label :location %>
+        <%= form.text_field :location, class: "form-control" %>
+      </div>
+
+      <div class="form-group submit-button m-2">
+        <%= form.button :submit, "GET A PRICE QUOTE", class: "btn btn-dark text-white" %>
+      </div>
+
+      <div class=m-2>
+        <%= recaptcha_tags %>
+      </div>
+      <span class="loader text-center" data-loading-target="spinner" style="display: none;"></span>
+    <% end %>
+  </div>
+</div>
+
+<!-- Bike Information Section -->
+<div class="bike-details">
+  <div class="popularity-stats">
+    <h2 class="stats-title"><i class="fa-solid fa-phone" style="color: green;"></i> Contact the Dealer (341)223-3974</h2>
+    <div class="stats-row">
+      <div class="stats-item">
+        <i class="fa-solid fa-eye"></i>
+        <span><strong>Seen:</strong> <%= rand(30..100) %> times (last 30 days)</span>
+      </div>
+      <div class="stats-item">
+        <i class="fa-solid fa-bookmark"></i>
+        <span><strong>Saved:</strong> by <%= rand(2..10) %> people</span>
+      </div>
+      <div class="stats-item">
+        <i class="fa-solid fa-tags"></i>
+        <span><strong>Price Update:</strong> The price recently decreased by $<%= rand(1000..5000) %></span>
+      </div>
+    </div>
+  </div>
+
+  <table class="mt-5">
+    <tr>
+      <td><strong>Condition:</strong></td>
+      <td><%= @engine.engineable.condition %><strong></strong></td>
+    <tr>
+    <tr>
+      <td><strong>Category:</strong></td>
+      <td></i> <%= @engine.engineable_type %></td>
+    </tr>
+    <tr>
+      <td><strong>Model:</strong></td>
+      <td><i class="fa-solid fa-calendar"></i> <%= "#{@engine.engineable.year}" %> </td>
+    </tr>
+    <% if @engine.engineable_type == "BoatEngine" %>
+      <tr>
+        <td><strong>Engine Type:</strong></td>
+        <td><i class="fa-solid fa-gauge-high"></i> <%= @engine.engineable.engine_type %></td>
+      </tr>
+      <% else%>
+      <tr>
+        <td><strong>Mileage:</strong></td>
+        <td><i class="fa-solid fa-gauge-high"></i> <%= @engine.engineable.mileage %> km</td>
+      </tr>
+    <% end %>
+    <% if @engine.engineable_type == "TruckEngine" %>
+      <tr>
+        <td><strong>Fuel:</strong></td>
+        <td><i class="fa-solid fa-gas-pump"></i> <%= @engine.engineable.fuel_type %></td>
+      </tr>
+      <tr>
+        <td><strong>Engine Capacity:</strong></td>
+        <td><i class="fa-solid fa-flag-checkered"></i> <%= @engine.engineable.towing_capacity %> cc</td>
+      </tr>
+    <% end %>
+    <% if @engine.engineable == "CarEngine" %>
+      <tr>
+        <td><strong>Transmission:</strong></td>
+        <td><%= @engine.engineable.transmission %></td>
+      </tr>
+      <tr>
+        <td><strong>Engine Capacity:</strong></td>
+        <td><i class="fa-solid fa-flag-checkered"></i> <%= @engine.engineable.horsepower %> cc</td>
+      </tr>
+      <tr>
+        <td><strong>Fuel:</strong></td>
+        <td><i class="fa-solid fa-gas-pump"></i> <%= @engine.engineable.fuel_type %></td>
+      </tr>
+    <%end %>
+    <tr>
+      <td><strong>Manufacturer:</strong></td>
+      <td><%= @engine.engineable.manufacturer %></td>
+    </tr>
+    <tr>
+      <td><strong>Description:</strong></td>
+      <td><%= @engine.description %></td>
+    </tr>
+  </table>
+  <div class="actions">
+    <%= link_to "Explore More Engines", engines_path, class: "primary-btn" %>
+  </div>
+
+<div>
+  <%= link_to cars_path, class: "back-link" do %>
+    <i class="fas fa-arrow-left"></i> Back to Bikes
+  <% end %>
+
+  <% if current_user&.admin? %>
+  <%= link_to edit_cars_path(@engine.engineable), class: "back-link" do %>
+    <i class="fas fa-edit"></i> Edit Car
+  <% end %>
+
+  <%= button_to car_path(@engine.engineable), method: :delete, data: { confirm: 'Are you sure?' }, class: "back-link" do %>
+    <i class="fas fa-trash-alt"></i> Delete
+  <% end %>
+<% end %>
+
+</div>
+</div>
+</div>

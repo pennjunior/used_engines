@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'engine_orders/new'
+  get 'engine_orders/create'
 
   root to: "pages#home"
 
@@ -9,7 +11,9 @@ Rails.application.routes.draw do
     resource :saved_cars, only: [:create, :destroy]
   end
   resources :saved_cars, only: [:index]
-  resources :engines
+  resources :engines do
+    resources :engine_orders, only: [:new, :create]
+  end
   resources :reviews, only: [ :index, :show ]
   devise_for :users
 
@@ -21,6 +25,8 @@ Rails.application.routes.draw do
   get '/toyota', to: 'pages#toyota'
   get '/volkswagen', to: 'pages#volkswagen'
   get '/mercedes', to: 'pages#mercedes'
+  get '/carorders/:id/confirmation', to: 'car_orders#confirmation', as: 'order_confirmation'
+  get 'engineorders/:id/confirmation', to: 'engine_orders#confirmation', as: 'engine_order_confirmation'
 
   # get 'engines/index'
   # get 'engines/show'

@@ -178,9 +178,11 @@
 //   height: 20px;
 //   fill: #fff;
 // }
-.filter-form-container {
-  display: none;
-}
+
+
+// .filter-form-container {
+//   display: block;
+// }
 
 .close-button {
   display: none;
@@ -228,9 +230,9 @@
     font-size: 1.5rem;
   }
 
-  .filter-form-container {
-    display: none;
-  }
+  // .filter-form-container {
+  //   display: none;
+  // }
 
   .cars-filters {
     display: none;

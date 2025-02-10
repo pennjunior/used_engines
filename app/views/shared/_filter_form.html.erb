@@ -14,15 +14,13 @@
   <div
     class="filter-form-container"
     id="filter-form-container"
-    data-toggle-target="filterForm"
-    style="display: none;">
+    data-toggle-target="filterForm">
     <%= form_with(url: cars_path, method: :get, local: true, class: "filter-form") do |f| %>
       <div
         id="close-filter-form"
         class="close-button"
         data-toggle-target="closeButton"
-        data-action="click->toggle#hideFilterForm"
-      >
+        data-action="click->toggle#hideFilterForm">
         <i class="fa-solid fa-minimize"></i>
       </div>
 
@@ -41,19 +39,19 @@
         <div class="form-row">
           <div class="col">
             <label for="make">Make:</label>
-              <%= f.select :make, options_for_select(@makes.prepend("Any")), class: "form-control" %>
+              <%= f.select :make, options_for_select(@makes), { prompt: "Any" }, class: "form-control" %>
           </div>
 
           <div class="col">
             <label for="model">Model:</label>
-              <%= f.select :model, options_for_select(@makes.prepend("Any")), class: "form-control" %>
+              <%= f.select :model, options_for_select(@makes), { prompt: "Any" }, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-row">
           <div class="col">
             <label for="steering">Steering:</label>
-              <%= f.select :steering, options_for_select(@steering_options.prepend("Any")), class: "form-control" %>
+              <%= f.select :steering, options_for_select(@steering_options), { prompt: "Any" }, class: "form-control" %>
           </div>
 
           <div class="col">
@@ -70,7 +68,7 @@
 
           <div class="col">
             <label for="year">Year:</label>
-              <%= f.select :year, options_for_select(@years.prepend("Any")), class: "form-control" %>
+              <%= f.select :year, options_for_select(@years), { prompt: "Any" }, class: "form-control" %>
           </div>
         </div>
 

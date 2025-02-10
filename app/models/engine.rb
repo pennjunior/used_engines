@@ -4,6 +4,7 @@ class Engine < ApplicationRecord
   friendly_id :title, use: :slugged
 
   belongs_to :engineable, polymorphic: true
+  has_many :engine_orders, dependent: :destroy
   pg_search_scope :search_by_details,
     against: [:title, :year, :manufacturer],
     using: {

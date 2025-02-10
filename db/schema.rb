@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_04_204412) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_09_151549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,19 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_04_204412) do
     t.index ["slug"], name: "index_cars_on_slug", unique: true
   end
 
+  create_table "engine_orders", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "location"
+    t.integer "quantity"
+    t.decimal "total_price"
+    t.bigint "engine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["engine_id"], name: "index_engine_orders_on_engine_id"
+  end
+
   create_table "engines", force: :cascade do |t|
     t.string "engineable_type", null: false
     t.bigint "engineable_id", null: false
@@ -184,6 +197,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_04_204412) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "car_orders", "cars"
+  add_foreign_key "engine_orders", "engines"
   add_foreign_key "saved_cars", "cars"
   add_foreign_key "saved_cars", "users"
 end

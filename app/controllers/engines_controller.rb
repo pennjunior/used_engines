@@ -17,6 +17,7 @@ class EnginesController < ApplicationController
 
   def show
     @engine = Engine.friendly.find(params[:id])
+    @order = EngineOrder.new(engine: @engine)
   end
 
   def new
@@ -33,4 +34,5 @@ class EnginesController < ApplicationController
 
   def destroy
   end
+
 end

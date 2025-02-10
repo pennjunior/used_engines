@@ -3,19 +3,19 @@
     <div class="form-row">
       <div class="col">
         <label>Make:</label>
-        <%= f.select :make, options_for_select(@makes.prepend("Any")), { prompt: "Any" }, class: "form-control" %>
+        <%= f.select :make, options_for_select(@makes), { prompt: "Any" }, class: "form-control" %>
       </div>
 
       <div class="col">
         <label>Model:</label>
-        <%= f.select :model, options_for_select(@models.prepend("Any")), { prompt: "Any" }, class: "form-control" %>
+        <%= f.select :model, options_for_select(@models), { prompt: "Any" }, class: "form-control" %>
       </div>
     </div>
 
     <div class="form-row">
       <div class="col">
         <label>Steering:</label>
-        <%= f.select :steering, options_for_select(@steering_options.prepend("Any")), { prompt: "Any" }, class: "form-control" %>
+        <%= f.select :steering, options_for_select(@steering_options), { prompt: "Any" }, class: "form-control" %>
       </div>
 
       <div class="col">
@@ -32,7 +32,7 @@
 
       <div class="col">
         <label>Year:</label>
-        <%= f.select :year, options_for_select(@years.prepend("Any")), { prompt: "Any" }, class: "form-control" %>
+        <%= f.select :year, options_for_select(@years), { prompt: "Any" }, class: "form-control" %>
       </div>
     </div>
 
