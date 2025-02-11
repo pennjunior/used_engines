@@ -12,10 +12,12 @@ require 'ruby-progressbar'
 require "open-uri"
 
 # Clear existing data
-# CarEngine.destroy_all
-# TruckEngine.destroy_all
-# BoatEngine.destroy_all
-# Engine.destroy_all
+CarEngine.destroy_all
+TruckEngine.destroy_all
+BoatEngine.destroy_all
+Engine.destroy_all
+Review.destroy_all
+User.destroy_all
 
 #Creating admin user
 admin_user = User.create!(
@@ -27,7 +29,7 @@ admin_user = User.create!(
 puts "Admin user created with email: #{admin_user.email} and password: #{admin_user.password}"
 puts "Engines destroyed"
 puts "Creating cars2"
-Review.destroy_all
+
 puts "Reviews destroyed"
 require_relative "seeds/reviews.rb"
 require_relative "seeds/boatengine.rb"

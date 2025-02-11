@@ -1,6 +1,8 @@
 require_relative "boot"
 # require 'dotenv/rails'
 require "rails/all"
+require 'sitemap_generator'
+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

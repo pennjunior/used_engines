@@ -5,11 +5,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Drive your dream car today! 🚗💨 AutoBidHub offers top-quality new & used cars at unbeatable prices. Buy, sell, or trade with confidence. Visit us for the best deals & exceptional service!">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords" content="<%= yield(:meta_keywords) || 'cars, engines, auto, sale' %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Car",
+        "name": "<%= @car.make %> <%= @car.model %>",
+        "brand": "<%= @car.make %>",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "<%= @car.price %>"
+        }
+      }
+    </script>
   </head>
 
   <body>

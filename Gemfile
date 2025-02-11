@@ -40,6 +40,8 @@ gem "pg_search"
 gem "kaminari"
 gem 'friendly_id', '~> 5.4'
 gem 'recaptcha'
+gem "meta-tags", "~> 2.22"
+gem 'sitemap_generator', '~> 6.3'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

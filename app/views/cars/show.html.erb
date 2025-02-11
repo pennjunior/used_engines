@@ -1,9 +1,6 @@
 <div class="bike-contain" data-controller="showcars">
   <div class="bike-main-content">
     <div class="bike-main-image">
-      <% content_for :title, "#{@car.make} #{@car.model} #{@car.year} for Sale | Latest Auto Events & Exhibitions" %>
-      <% content_for :meta_description, "#{@car.make} #{@car.model} #{@car.year} Stay updated with the hottest car shows and auto exhibitions! 🚘 AutoBidHub brings you exclusive coverage of classic car meets, luxury auto expos, and the latest vehicle showcases. Explore upcoming events, highlights, and behind-the-scenes insights." %>
-
       <% if @car.photos.attached? %>
         <% @car.photos.each_with_index do |photo, index| %>
           <div class="mySlides" data-showcars-target="slide" style="<%= index == 0 ? '' : 'display:none;' %>">

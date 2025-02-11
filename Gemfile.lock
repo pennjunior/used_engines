@@ -193,6 +193,8 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    meta-tags (2.22.1)
+      actionpack (>= 6.0.0, < 8.1)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.4)
@@ -302,6 +304,8 @@ GEM
     simple_form (5.3.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    sitemap_generator (6.3.0)
+      builder (~> 3.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -358,6 +362,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
+  meta-tags (~> 2.22)
   pg (~> 1.1)
   pg_search
   puma (>= 5.0)
@@ -367,6 +372,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   simple_form
+  sitemap_generator (~> 6.3)
   sprockets-rails
   stimulus-rails
   turbo-rails

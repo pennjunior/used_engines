@@ -6,6 +6,9 @@ class CarsController < ApplicationController
     @models = Car.distinct.pluck(:model).uniq
     @steering_options = Car.distinct.pluck(:steering).uniq
     @years = Car.distinct.pluck(:year).uniq.sort.reverse
+      set_meta_tags title: "Find New & Used Cars for Sale - AutoBidHub",
+                    description: "Browse a massive selection of new and used cars from top brands like Toyota, BMW, Mercedes, Ford, and more. Find the best car deals today!",
+                    keywords: "cars for sale, used cars, new cars, buy a car, affordable cars, best car deals, car marketplace"
 
     if filter_params_present?
       # Start with all cars and apply filters
@@ -31,6 +34,11 @@ class CarsController < ApplicationController
   def show
     @car = Car.friendly.find(params[:id])
     @order = CarOrder.new(car: @car)
+
+    set_meta_tags title: "#{@car.make} #{@car.model} #{@car.year} for Sale",
+                description: "Find the best deals for #{@car.make} #{@car.model}!
+                Stay updated with the hottest car shows and auto exhibitions! 🚘 AutoBidHub brings you exclusive coverage of classic car meets, luxury auto expos, and the latest vehicle showcases.",
+                keywords: "cars, #{@car.make}, #{@car.model}, auto"
   end
 
   def new
