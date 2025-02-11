@@ -1,6 +1,20 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'mail.privateemail.com',
+    port: 587,
+    domain: 'bikezsale.us',
+    user_name: ENV['EMAIL_USERNAME'], # Set this in Heroku config vars
+    password: ENV['EMAIL_PASSWORD'], # Set this in Heroku config vars
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
+  # Essential settings for production
+  config.action_mailer.default_url_options = { host: 'bikezsale.us', protocol: 'https' }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

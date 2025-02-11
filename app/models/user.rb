@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :cars, through: :saved_cars
   has_many :saved_cars, dependent: :destroy
+  has_many :saved_engines, dependent: :destroy
 end

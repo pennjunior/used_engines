@@ -1,5 +1,9 @@
 class CarOrdersController < ApplicationController
 
+  def index
+    @orders = CarOrder.all
+  end
+
   def new
     @car = Car.friendly.find(params[:id])
     @order = CarOrder.new(car: @car)
@@ -10,6 +14,7 @@ class CarOrdersController < ApplicationController
     @order = @car.car_orders.build(car_order_params)
     puts params.inspect
     if @order.save
+      CarOrderMailer.new_order(@order).deliver_later
       redirect_to order_confirmation_path(@order), notice: "Your order has been placed successfully!"
     else
       redirect_to car_path(@car)
@@ -23,6 +28,15 @@ class CarOrdersController < ApplicationController
     #   flash[:alert] ||= "reCAPTCHA verification failed. Please try again."
     #   redirect_to car_path(@car)
     # end
+  end
+
+  def edit
+    @car = Car.friendly.find(params[:id])
+  end
+
+  def delete
+    @car = Car.friendly.find(params[:id])
+
   end
 
   def confirmation

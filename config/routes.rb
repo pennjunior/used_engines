@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
-  get 'engine_orders/new'
-  get 'engine_orders/create'
-
   root to: "pages#home"
-
 
   # get 'search', to: 'search#index'
   resources :cars do
     resources :car_orders, only: [:create]
-    resource :saved_cars, only: [:create, :destroy]
+    resource :saved_cars, only: [:create, :destroy], controller: "saved_cars"
   end
+  resources :car_orders, only: [:index]
   resources :saved_cars, only: [:index]
   resources :engines do
     resources :engine_orders, only: [:new, :create]
+    resource :saved_engines, only: [:create, :destroy], controller: "saved_engines"
   end
+  resources :engine_orders, only: [:index]
   resources :reviews, only: [ :index, :show ]
   devise_for :users
 

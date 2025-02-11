@@ -17,7 +17,15 @@ require "open-uri"
 # BoatEngine.destroy_all
 # Engine.destroy_all
 
-# puts "Engines destroyed"
+#Creating admin user
+admin_user = User.create!(
+  email: "admin@quan.com",
+  password: "gR`£%53n$567",
+  password_confirmation: "gR`£%53n$567",
+  admin: true
+)
+puts "Admin user created with email: #{admin_user.email} and password: #{admin_user.password}"
+puts "Engines destroyed"
 puts "Creating cars2"
 # Review.destroy_all
 # puts "Reviews destroyed"
@@ -26,5 +34,5 @@ puts "Creating cars2"
 # require_relative "seeds/carengines.rb"
 # require_relative "seeds/truckengine.rb"
 # require_relative "seeds/cars.rb"
-require_relative "seeds/cars_2.rb"
-puts "created #{Engine.count} engines"
+# require_relative "seeds/cars_2.rb"
+# puts "created #{Engine.count} engines"

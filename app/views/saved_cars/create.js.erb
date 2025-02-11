@@ -1,0 +1,6 @@
+const heartButton = document.querySelector(".favorite-btn");
+if (heartButton) {
+  heartButton.innerHTML = '<i class="fa-solid fa-heart" style="color: red;"></i>';
+  heartButton.setAttribute("data-method", "delete"); // Change method to delete
+  heartButton.setAttribute("href", "<%= car_saved_cars_path(@car) %>");
+}

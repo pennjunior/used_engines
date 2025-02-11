@@ -1,0 +1,38 @@
+<div class="hero-about">
+    <div class="hero-about-overlay"></div>
+    <div class="hero-about-text">
+      <h1>Your Saved Bikes</h1>
+    </div>
+  </div>
+
+<% if current_user.saved_cars.any? %>
+  <div class="saved-bikes-list">
+    <% current_user.saved_cars.includes(:car).each do |saved_car| %>
+      <div class="saved-card">
+        <div class="image-container">
+          <% if saved_car.car.photos.attached? %>
+            <%= image_tag saved_car.car.photos.first, alt: saved_car.car.model, class: "saved-image" %>
+          <% else %>
+            <p>No Image Available</p>
+          <% end %>
+        </div>
+
+        <div class="saved-bike-details">
+          <h2 class="bike-title">
+            <%= link_to saved_car.car.model, car_path(saved_car.car), class: "car-link" %>
+          </h2>
+          <p class="saved-date">Saved on: <%= saved_car.created_at.strftime("%B %d, %Y") %></p>
+          <%= button_to car_saved_car_path(car_id: saved_car.car.id), method: :delete, class: "remove-btn", data: { confirm: 'Are you sure you want to remove this car?' } do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="alert alert-info text-center">
+    <i class="fa fa-heart-broken" style="font-size: 2rem; color: #dc3545;"></i>
+    <p style="font-size: 1.5rem; margin-bottom: 20px;">You don't have any saved cars yet.</p>
+    <p><%= link_to "Browse Bikes", cars_path, class: "search-button" %><p>
+  </div>
+<% end %>

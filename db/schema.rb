@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_02_09_151549) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_11_091937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -168,6 +168,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_09_151549) do
     t.index ["user_id"], name: "index_saved_cars_on_user_id"
   end
 
+  create_table "saved_engines", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "engine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["engine_id"], name: "index_saved_engines_on_engine_id"
+    t.index ["user_id"], name: "index_saved_engines_on_user_id"
+  end
+
   create_table "truck_engines", force: :cascade do |t|
     t.integer "towing_capacity"
     t.string "engine_type"
@@ -190,6 +199,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_09_151549) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -200,4 +210,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_09_151549) do
   add_foreign_key "engine_orders", "engines"
   add_foreign_key "saved_cars", "cars"
   add_foreign_key "saved_cars", "users"
+  add_foreign_key "saved_engines", "engines"
+  add_foreign_key "saved_engines", "users"
 end

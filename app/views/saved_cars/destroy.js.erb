@@ -1,0 +1,6 @@
+const heartButton = document.querySelector(".favorite-btn");
+if (heartButton) {
+  heartButton.innerHTML = '<i class="fa-regular fa-heart"></i>';
+  heartButton.setAttribute("data-method", "post"); // Change method back to post
+  heartButton.setAttribute("href", "<%= car_saved_cars_path(@car) %>");
+}

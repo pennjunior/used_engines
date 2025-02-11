@@ -16,13 +16,13 @@ class CarsController < ApplicationController
       @paginated_items = @paginated_items.where("price >= ?", params[:min_price].to_f) if params[:min_price].present?
       @paginated_items = @paginated_items.where("price <= ?", params[:max_price].to_f) if params[:max_price].present?
       @paginated_items = @paginated_items.where(year: params[:year]) if params[:year].present?
-      @paginated_items = @paginated_items.order(:make, :model).page(params[:page]).per(1)
+      @paginated_items = @paginated_items.order(:make, :model).page(params[:page]).per(15)
     elsif params[:query].present?
-      @paginated_items = Car.search_by_details(params[:query]).page(params[:page]).per(10)
+      @paginated_items = Car.search_by_details(params[:query]).page(params[:page]).per(15)
     elsif params[:category].present?
-      @paginated_items = Car.where(category: params[:category]).page(params[:page]).per(10)
+      @paginated_items = Car.where(category: params[:category]).page(params[:page]).per(15)
     else
-      @paginated_items = Car.page(params[:page]).order('RANDOM()').per(10)
+      @paginated_items = Car.page(params[:page]).order('RANDOM()').per(15)
     end
 
     @reviews = Review.order('RANDOM()').all

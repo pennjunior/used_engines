@@ -1,0 +1,32 @@
+<h1 class="text-center mt-3 mb-3">All Engine Orders</h1>
+<div class="bike-container">
+  <% if @orders.any? %>
+    <% @orders.each do |order| %>
+      <!-- Display the first photo for each bike -->
+      <div class="order-container">
+        <div class="order-items">
+        <div class="order-item">
+          <%= image_tag order.engine.engineable.photos.first, alt: order.engine.title, class: "bike-thumbnail" %>
+        <div>
+            <p><strong>Car:</strong> <%= order.engine.title %></p>
+            <p><strong>Price:</strong> <%= number_to_currency(order.engine.price) %></p>
+              </div>
+            </div>
+        </div>
+
+        <!-- Display the bike details -->
+        <div class="bike-info">
+          <p><strong>Order ID: </strong><%= order.id %></p>
+          <p><strong>Name: </strong><%= order.name %></p>
+          <p><strong>Email: </strong><%= order.email %></p>
+          <p><strong>Telephone: </strong><%= order.phone %></p>
+          <p><strong>Quantity: </strong><%= order.quantity %></p>
+          <p><strong>Ordered At: </strong><%= order.created_at.strftime("%Y-%m-%d") %></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No orders yet.</p>
+  <% end %>
+
+</div>

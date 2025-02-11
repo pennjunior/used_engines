@@ -21,16 +21,19 @@
         <a class="next" data-action="click->showcars#next">❯</a>
       </div>
 
-      <!-- Saved Bikes Section -->
+      <!-- Save Engine Button -->
       <div class="saved-bike">
         <% if user_signed_in? %>
-          <%= button_to car_saved_car_path(@engine.engineable),
-          method: :post,
-          remote: true,
-          class: "btn favorite-btn",
-          data: { id: @engine.engineable.id } do %>
-          <i class="fa-regular fa-heart"></i>
-        <% end %>
+          <% saved = current_user.saved_engines.exists?(engine: @engine) %>
+
+          <%= button_to engine_saved_engines_path(@engine),
+                        method: saved ? :delete : :post,
+                        remote: true,
+                        class: "btn favorite-btn",
+                        data: { id: @engine.id } do %>
+          <i class="<%= saved ? 'fa-solid fa-heart' : 'fa-regular fa-heart' %>"
+            style="<%= saved ? 'color: red;' : '' %>"></i>
+          <% end %>
         <% else %>
           <%= link_to new_user_session_path, class: "btn" do %>
             <i class="fa-regular fa-heart"></i>
@@ -79,31 +82,31 @@
         </div>
       <% end %>
 
-      <div class="form-group m-2">
+      <div class="form-group m-4">
         <%= form.label :name %>
         <%= form.text_field :name, class: "form-control" %>
       </div>
 
-      <div class="form-group m-2">
+      <div class="form-group m-4">
         <%= form.label :email %>
         <%= form.email_field :email, class: "form-control" %>
       </div>
 
-      <div class="form-group m-2">
+      <div class="form-group m-4">
         <%= form.label :phone %>
         <%= form.number_field :phone, class: "form-control" %>
       </div>
 
-      <div class="form-group m-2">
+      <div class="form-group m-4">
         <%= form.label :location %>
         <%= form.text_field :location, class: "form-control" %>
       </div>
 
-      <div class="form-group submit-button m-2">
+      <div class="form-group submit-button m-4">
         <%= form.button :submit, "GET A PRICE QUOTE", class: "btn btn-dark text-white" %>
       </div>
 
-      <div class=m-2>
+      <div class=m-4>
         <%= recaptcha_tags %>
       </div>
       <span class="loader text-center" data-loading-target="spinner" style="display: none;"></span>
@@ -193,16 +196,16 @@
   </div>
 
 <div>
-  <%= link_to cars_path, class: "back-link" do %>
-    <i class="fas fa-arrow-left"></i> Back to Bikes
+  <%= link_to engines_path, class: "back-link" do %>
+    <i class="fas fa-arrow-left"></i> Back to Engines
   <% end %>
 
   <% if current_user&.admin? %>
-  <%= link_to edit_cars_path(@engine.engineable), class: "back-link" do %>
+  <%= link_to edit_engine_path(@engine.engineable), class: "back-link" do %>
     <i class="fas fa-edit"></i> Edit Car
   <% end %>
 
-  <%= button_to car_path(@engine.engineable), method: :delete, data: { confirm: 'Are you sure?' }, class: "back-link" do %>
+  <%= button_to engine_path(@engine.engineable), method: :delete, data: { confirm: 'Are you sure?' }, class: "back-link" do %>
     <i class="fas fa-trash-alt"></i> Delete
   <% end %>
 <% end %>

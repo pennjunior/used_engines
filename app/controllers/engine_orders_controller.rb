@@ -1,4 +1,9 @@
 class EngineOrdersController < ApplicationController
+
+  def index
+    @orders = EngineOrder.all
+  end
+
   def new
     @engine = Engine.friendly.find(params[:id])
     @order = EngineOrder.new(engine: @engine)

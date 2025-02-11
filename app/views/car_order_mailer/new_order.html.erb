@@ -1,0 +1,13 @@
+<h1>New Car Order Received</h1>
+
+<p>A new order has been placed with the following details:</p>
+
+<ul>
+  <li><strong>Car:</strong> <%= @order.car.make %> <%= @order.car.model %> (<%= @order.car.year %>)</li>
+  <li><strong>Name:</strong> <%= @order.name %></li>
+  <li><strong>Email:</strong> <%= @order.email %></li>
+  <li><strong>Phone:</strong> <%= @order.phone %></li>
+  <li><strong>Message:</strong> <%= @order.message %></li>
+</ul>
+
+<p>Please contact the customer as soon as possible.</p>

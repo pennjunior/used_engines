@@ -1,0 +1,9 @@
+document.querySelector(".saved-engine").innerHTML = `
+  <%= button_to engine_saved_engines_path(@engine),
+                method: :post,
+                remote: true,
+                class: "btn favorite-btn",
+                data: { id: @engine.id } do %>
+    <i class="fa-regular fa-heart"></i>
+  <% end %>
+`;
