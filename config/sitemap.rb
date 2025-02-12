@@ -1,4 +1,4 @@
-SitemapGenerator::Sitemap.default_host = "https://yourwebsite.com"
+SitemapGenerator::Sitemap.default_host = "https://autobidseller.com"
 
 SitemapGenerator::Sitemap.create do
   add cars_path, priority: 0.9, changefreq: 'daily'
