@@ -1,7 +1,15 @@
 class Engine < ApplicationRecord
   include PgSearch::Model
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :generate_slug, use: [:slugged, :finders]
+
+  def generate_slug
+    title.present? ? title.parameterize : "engine-#{SecureRandom.hex(4)}"
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 
   belongs_to :engineable, polymorphic: true
   has_many :engine_orders, dependent: :destroy

@@ -1,7 +1,7 @@
 class Car < ApplicationRecord
   extend FriendlyId
   include PgSearch::Model
-  friendly_id :slug_candidates, use: :slugged
+  friendly_id :slug_candidates, use: [:slugged, :finders]
 
   has_many :car_orders, dependent: :destroy
   has_many_attached :photos
@@ -9,13 +9,12 @@ class Car < ApplicationRecord
   has_many :users, through: :saved_cars
 
   def slug_candidates
-    [
-      [:make, :model, :year]
-      # [:make, :model, :year, :id] # Fallback in case of duplicates
-    ]
+    "#{make}-#{model}-#{year}".parameterize
   end
 
-
+  def should_generate_new_friendly_id?
+    slug.blank? || make_changed? || model_changed? || year_changed?
+  end
   pg_search_scope :search_by_details,
     against: [:make, :model, :year],
     using: {

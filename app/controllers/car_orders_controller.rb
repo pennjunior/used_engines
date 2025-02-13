@@ -12,23 +12,22 @@ class CarOrdersController < ApplicationController
   def create
     @car = Car.friendly.find(params[:car_id])
     @order = @car.car_orders.build(car_order_params)
-    puts params.inspect
-    if @order.save
-      CarOrderMailer.new_order(@order).deliver_later
-      redirect_to order_confirmation_path(@order), notice: "Your order has been placed successfully!"
+
+    # Verify reCAPTCHA first
+    if verify_recaptcha(model: @order)
+      if @order.save
+        CarOrderMailer.new_order(@order).deliver_later
+        redirect_to order_confirmation_path(@order), notice: "Your order has been placed successfully!"
+      else
+        flash[:alert] = @order.errors.full_messages.join("<br>")
+        redirect_to car_path(@car)
+      end
     else
+      flash[:alert] = "reCAPTCHA verification failed. Please try again."
       redirect_to car_path(@car)
-      @order.errors.full_messages
-      flash[:alert] = "Couldn't save"
     end
-    # if verify_recaptcha(model: @order) && @order.save
-      # redirect_to order_confirmation_path(@order), notice: "Your order has been placed successfully!"
-    # else
-    #   flash[:alert] = @order.errors.full_messages.join("<br>") unless @order.errors.empty?
-    #   flash[:alert] ||= "reCAPTCHA verification failed. Please try again."
-    #   redirect_to car_path(@car)
-    # end
   end
+
 
   def edit
     @car = Car.friendly.find(params[:id])

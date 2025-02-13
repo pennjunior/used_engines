@@ -102,7 +102,9 @@
       <div class="form-group submit-button m-4">
         <%= form.button :submit, "GET A PRICE QUOTE", class: "btn btn-dark text-white" %>
       </div>
-      <%#= recaptcha_tags %>
+      <div class="m-4">
+        <%= recaptcha_tags %>
+      </div>
       <span class="loader text-center" data-loading-target="spinner" style="display: none;"></span>
     <% end %>
   </div>
