@@ -14,7 +14,9 @@ class CarOrdersController < ApplicationController
     @order = @car.car_orders.build(car_order_params)
 
     # Verify reCAPTCHA first
-    if verify_recaptcha(model: @order)
+    if verify_recaptcha(action: "show", minimum_score: 0.5, model: @order) && @order.save
+      CarOrderMailer.new_order(@order).deliver_later
+      redirect_to order_confirmation_path(@order), notice: "Your order has been placed successfully!"
       if @order.save
         CarOrderMailer.new_order(@order).deliver_later
         redirect_to order_confirmation_path(@order), notice: "Your order has been placed successfully!"

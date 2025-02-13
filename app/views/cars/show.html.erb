@@ -103,7 +103,7 @@
         <%= form.button :submit, "GET A PRICE QUOTE", class: "btn btn-dark text-white" %>
       </div>
       <div class="m-4">
-        <%= recaptcha_tags %>
+        <%= recaptcha_tags action: "show" %>
       </div>
       <span class="loader text-center" data-loading-target="spinner" style="display: none;"></span>
     <% end %>
