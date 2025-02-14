@@ -39,9 +39,10 @@ gem 'ruby-progressbar'
 gem "pg_search"
 gem "kaminari"
 gem 'friendly_id', '~> 5.4'
-gem 'recaptcha'
+# gem 'recaptcha'
 gem "meta-tags", "~> 2.22"
 gem 'sitemap_generator', '~> 6.3'
+gem 'honeycomb'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

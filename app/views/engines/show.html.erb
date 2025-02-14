@@ -106,9 +106,8 @@
         <%= form.button :submit, "GET A PRICE QUOTE", class: "btn btn-dark text-white" %>
       </div>
 
-      <div class=m-4>
-        <%= recaptcha_tags %>
-      </div>
+      <!-- Hidden honeypot field (bots will try to fill this, humans won't) -->
+      <%= form.hidden_field :extra_info, value: "", autocomplete: "off" %>
       <span class="loader text-center" data-loading-target="spinner" style="display: none;"></span>
     <% end %>
   </div>

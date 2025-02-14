@@ -1,3 +1,6 @@
+require 'net/http'
+require 'json'
+
 class CarOrdersController < ApplicationController
 
   def index
@@ -12,20 +15,11 @@ class CarOrdersController < ApplicationController
   def create
     @car = Car.friendly.find(params[:car_id])
     @order = @car.car_orders.build(car_order_params)
-
-    # Verify reCAPTCHA first
-    if verify_recaptcha(action: "show", minimum_score: 0.5, model: @order) && @order.save
+    if @order.save
       CarOrderMailer.new_order(@order).deliver_later
       redirect_to order_confirmation_path(@order), notice: "Your order has been placed successfully!"
-      if @order.save
-        CarOrderMailer.new_order(@order).deliver_later
-        redirect_to order_confirmation_path(@order), notice: "Your order has been placed successfully!"
-      else
-        flash[:alert] = @order.errors.full_messages.join("<br>")
-        redirect_to car_path(@car)
-      end
     else
-      flash[:alert] = "reCAPTCHA verification failed. Please try again."
+      flash[:alert] = "Couldn't save order."
       redirect_to car_path(@car)
     end
   end
@@ -47,6 +41,6 @@ class CarOrdersController < ApplicationController
   private
 
   def car_order_params
-    params.require(:car_order).permit(:name, :email, :phone, :location, :quantity, :total_price)
+    params.require(:car_order).permit(:name, :email, :phone, :location, :quantity, :total_price, :extra_info)
   end
 end

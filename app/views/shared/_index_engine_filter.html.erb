@@ -1,0 +1,92 @@
+<div class="filters-container" data-controller="toggle">
+  <!-- Mobile Filter Button -->
+  <div class="mobile-filter-toggle">
+    <button
+      class="filter-icon-button"
+      id="toggle-filter-button"
+      data-toggle-target="toggleButton"
+      data-action="click->toggle#showFilterForm">
+      <i class="fas fa-sliders-h"></i> <!-- FontAwesome icon -->
+    </button>
+  </div>
+
+  <!-- Filter Form -->
+  <div
+    class="filter-form-container"
+    id="filter-form-container"
+    data-toggle-target="filterForm">
+    <%= form_with(url: engines_path, method: :get, local: true, class: "filter-form") do |f| %>
+      <div
+        id="close-filter-form"
+        class="close-button"
+        data-toggle-target="closeButton"
+        data-action="click->toggle#hideFilterForm">
+        <i class="fa-solid fa-minimize"></i>
+      </div>
+
+
+      <div class="filter-group">
+        <input
+          type="text"
+          id="query"
+          name="query"
+          placeholder="Search by make, model, or year"
+          class="filter-input"
+          value="<%= params[:query] %>"
+        />
+      </div>
+
+      <!-- Engine Type Filter -->
+      <%= f.label :engine_type, "Car/Truck/Boat Type" %>
+      <%= f.select :engine_type, [["All", ""], ["Car Engine", "CarEngine"], ["Truck Engine", "TruckEngine"], ["Boat Engine", "BoatEngine"]], class: "form-control" %>
+
+      <!-- Price Range Filter -->
+      <%= f.label :min_price, "Min Price" %>
+      <%= f.number_field :min_price, class: "form-control" %>
+
+      <%= f.label :max_price, "Max Price" %>
+      <%= f.number_field :max_price, class: "form-control" %>
+
+      <!-- Dynamic Filters Based on Engine Type -->
+      <div id="car-filters" class="engine-filters">
+        <%= f.label :min_hp, "Min Horsepower" %>
+        <%= f.number_field :min_hp, class: "form-control" %>
+
+        <%= f.label :fuel_type, "Fuel Type" %>
+        <%= f.select :fuel_type, [["All", ""], ["Petrol", "Petrol"], ["Diesel", "Diesel"], ["Electric", "Electric"]], class: "form-control" %>
+      </div>
+
+      <div id="truck-filters" class="engine-filters">
+        <%= f.label :min_towing, "Min Towing Capacity" %>
+        <%= f.number_field :min_towing, class: "form-control" %>
+      </div>
+
+      <div id="boat-filters" class="engine-filters">
+        <%= f.label :min_power, "Min Power" %>
+        <%= f.number_field :min_power, class: "form-control" %>
+      </div>
+
+        <div class="form-row">
+            <div class="col-12">
+              <%= f.submit "Search Engines", class: "filter-button" %>
+            </div>
+        </div>
+      </form>
+    </div>
+  <% end %>
+</div>
+<!-- Hide/Show Filters Based on Selection -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    function toggleFilters() {
+      let engineType = document.getElementById("engine_type").value;
+      document.querySelectorAll(".engine-filters").forEach(el => el.style.display = "none");
+      if (engineType === "CarEngine") document.getElementById("car-filters").style.display = "block";
+      if (engineType === "TruckEngine") document.getElementById("truck-filters").style.display = "block";
+      if (engineType === "BoatEngine") document.getElementById("boat-filters").style.display = "block";
+    }
+
+    document.getElementById("engine_type").addEventListener("change", toggleFilters);
+    toggleFilters(); // Run on page load
+  });
+</script>

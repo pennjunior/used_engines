@@ -34,6 +34,6 @@ class EngineOrdersController < ApplicationController
   private
 
   def engine_order_params
-    params.require(:engine_order).permit(:name, :email, :phone, :location, :quantity, :total_price)
+    params.require(:engine_order).permit(:name, :email, :phone, :location, :quantity, :total_price, :extra_info)
   end
 end
