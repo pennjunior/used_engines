@@ -10,9 +10,6 @@ class EnginesController < ApplicationController
     # Appling Filters
     @engines = filter_engines(@engines, params)
 
-    set_meta_tags title: "Engines for Sale - Find New & Used Car Engines",
-                description: "Shop high-quality car engines for sale, including petrol, diesel, hybrid, and electric engines. Get the best deals on powerful and fuel-efficient engines!",
-                keywords: "car engines, engines for sale, used engines, new engines, V8 engine, diesel engine, hybrid engine, performance engines"
   end
 
   def show

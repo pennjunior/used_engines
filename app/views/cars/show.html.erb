@@ -1,8 +1,13 @@
 <div class="bike-contain" data-controller="showcars">
   <div class="bike-main-content">
     <div class="bike-main-image">
-      <% content_for :title, "#{@car.make} #{@car.model} #{@car.year} for Sale | AutoBidSeller" %>
-      <% content_for :meta_description, @car.description.truncate(156) %>
+      <% content_for :title, "#{@engine.title} for Sale | Latest Auto Events & Exhibitions" %>
+      <% content_for :meta_description, @engine.engineable.description.truncate(156) %>
+      <% content_for :meta_keywords, "engine for sale, #{@engine.title}, used #{@engine.title}, new #{@engine.title}, buy #{@engine.title} engine, performance engine" %>
+
+      <% content_for :meta_og_title, "#{@engine.title} for Sale - Best Deals on #{@engine.title} Engines" %>
+      <% content_for :meta_og_description, @engine.engineable.description.truncate(156) %>
+      <% content_for :meta_og_image, cl_image_path(@engine.photos.first.key) %>
 
       <% if @car.photos.attached? %>
         <% @car.photos.each_with_index do |photo, index| %>
@@ -50,6 +55,7 @@
               <%= cl_image_tag photo.key,
                 height: 100, width: 100, crop: :fill,
                 class: "thumbnail",
+                alt: "#{@car.make} #{@car.model} #{@car.year}",
                 data: { showcarsTarget: "thumbnail", action: "click->showcars#selectSlide", index: index + 1 } %>
             <% end %>
           </div>
