@@ -89,7 +89,32 @@ class PagesController < ApplicationController
                   keywords: "Volkswagen, VW Golf, VW Jetta, Volkswagen Tiguan, used Volkswagen, German cars"
   end
 
+  def faq
+  end
 
+  def contact
+  end
+
+  def how_to_buy
+  end
+
+  def how_to_choose_a_car
+  end
+
+  def how_to_pay
+  end
+
+  def warranty
+  end
+
+  def inquiry
+  end
+
+  def auction
+  end
+
+  def prime_seller
+  end
 
   private
 
@@ -98,4 +123,5 @@ class PagesController < ApplicationController
     params[:make].present? || params[:model].present? || params[:steering].present? ||
       params[:min_price].present? || params[:max_price].present? || params[:year].present?
   end
+
 end

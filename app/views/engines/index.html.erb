@@ -28,6 +28,25 @@
   <div class="pagination-container">
     <%= paginate @paginated_items %>
   </div>
-
 </div>
+<div class="used-car-promo">
+    <div class="promo-content">
+        <h2>Find Your Perfect Engine with AutoBidSeller</h2>
+        <p>
+            Whether you're restoring a classic car, upgrading your truck, or repowering your boat,
+            AutoBidSeller offers a diverse selection of used and rebuilt engines.
+            Find reliable performance at competitive prices, backed by our commitment to quality.
+        </p>
+        <ul>
+            <li><strong>Wide Selection:</strong> Discover engines for cars, trucks, and boats.</li>
+            <li><strong>Quality Assurance:</strong> Rigorous inspection and testing of all engines.</li>
+            <li><strong>Competitive Prices:</strong> Get the best value for your investment.</li>
+            <li><strong>Expert Support:</strong> Our team is ready to help you find the right engine.</li>
+        </ul>
+        <%= link_to "Explore Engines", engines_path, class: "btn-cta" %>
+    </div>
+    <div class="promo-image">
+        <%= image_tag "pablo.jpg", alt: "Illustration of a happy family with a used car", style: "max-height: 500px" %>
+    </div>
+  </div>
 </div>

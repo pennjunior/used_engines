@@ -2,7 +2,7 @@
   <div class="bike-main-content">
     <div class="bike-main-image">
       <% content_for :title, "#{@engine.title} for Sale | Latest Auto Events & Exhibitions" %>
-      <% content_for :meta_description, "#{@engine.title} Stay updated with the hottest car shows and auto exhibitions! 🚘 AutoBidHub brings you exclusive coverage of classic car meets, luxury auto expos, and the latest vehicle showcases. Explore upcoming events, highlights, and behind-the-scenes insights." %>
+      <% content_for :meta_description, @engine.engineable.description.truncate(156) %>
 
       <% if @engine.engineable.photos.attached? %>
         <% @engine.engineable.photos.each_with_index do |photo, index| %>

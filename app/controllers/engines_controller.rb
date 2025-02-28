@@ -3,7 +3,7 @@ class EnginesController < ApplicationController
     if params[:query].present?
       @engines = Engine.search_by_details(params[:query])
     else
-      @paginated_items = Engine.page(params[:page]).order('RANDOM()').per(10)
+      @paginated_items = Engine.page(params[:page]).order('RANDOM()').per(15)
     #for the engine filters
     end
     @engines = Engine.includes(:engineable)
@@ -18,10 +18,6 @@ class EnginesController < ApplicationController
   def show
     @engine = Engine.friendly.find(params[:id])
     @order = EngineOrder.new(engine: @engine)
-
-    set_meta_tags title: "#{@engine.title} Engine for Sale",
-      description: "Explore top-quality #{@engine.title}, performance upgrades, and reliable replacements. 🚗 AutoBidHub brings you the latest engine innovations and powertrain solutions.",
-      keywords: "engines, #{@engine.title}, auto, performance"
   end
 
   def new

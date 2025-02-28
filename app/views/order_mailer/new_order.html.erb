@@ -49,20 +49,20 @@
 </head>
 <body>
   <div class="email-container">
-    <h1>🚗 New Car Order Received! 🚀</h1>
+    <h1>🚗 New Engine Order Received! 🚀</h1>
     <p>Dear Admin,</p>
-    <p>A new order has been placed for a car. Here are the details:</p>
+    <p>A new order has been placed for an engine. Here are the details:</p>
 
     <div class="order-details">
-      <p><strong>Car Model:</strong> <%= @order.car.make %> <%= @order.car.model %> (<%= @order.car.year %>)</p>
+      <p><strong>Engine:</strong> <%= @order.engine.title %></p>
       <p><strong>Customer Name:</strong> <%= @order.name %></p>
-      <p><strong>Email:</strong>  <%= @order.email %></p>
+      <p><strong>Email:</strong> <%= @order.email %></p>
       <p><strong>Phone:</strong> <%= @order.phone %></p>
       <p><strong>location:</strong> <%= @order.location %></p>
       <p><strong>Quantity:</strong> <%= @order.quantity %></p>
     </div>
 
-    <p class="footer">This is an automated notification from AutoBidHub. Please reply this customer.</p>
+    <p class="footer">This is an automated notification from AutoBidHub. Please do not reply to this email.</p>
   </div>
 </body>
 </html>

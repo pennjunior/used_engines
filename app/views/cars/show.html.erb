@@ -1,6 +1,9 @@
 <div class="bike-contain" data-controller="showcars">
   <div class="bike-main-content">
     <div class="bike-main-image">
+      <% content_for :title, "#{@car.make} #{@car.model} #{@car.year} for Sale | AutoBidSeller" %>
+      <% content_for :meta_description, @car.description.truncate(156) %>
+
       <% if @car.photos.attached? %>
         <% @car.photos.each_with_index do |photo, index| %>
           <div class="mySlides" data-showcars-target="slide" style="<%= index == 0 ? '' : 'display:none;' %>">

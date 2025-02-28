@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get '/mercedes', to: 'pages#mercedes'
   get '/carorders/:id/confirmation', to: 'car_orders#confirmation', as: 'order_confirmation'
   get 'engineorders/:id/confirmation', to: 'engine_orders#confirmation', as: 'engine_order_confirmation'
-
+  get 'faq', to: 'pages#faq'
   # get 'engines/index'
   # get 'engines/show'
   # get 'engines/new'

@@ -1,0 +1,47 @@
+/* General FAQ Container */
+.faq-container {
+  width: 80%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Individual FAQ Item */
+.faq-item {
+  background: #f8f9fa; /* Light gray background */
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.faq-item:hover {
+  background: #e9ecef; /* Slightly darker gray on hover */
+  border-color: #bbb;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* FAQ Question */
+.faq-item h3 {
+  font-family: 'Poppins', sans-serif; /* Modern font */
+  font-size: 18px;
+  font-weight: bold;
+  color: #000; /* Black */
+  margin: 0;
+}
+
+/* FAQ Answer */
+.faq-item p {
+  font-family: 'Roboto', sans-serif; /* Clean font for readability */
+  font-size: 16px;
+  color: #000; /* Black */
+  margin-top: 10px;
+  display: none;
+}
+
+/* Toggle FAQ answer visibility */
+.faq-item.active p {
+  display: block;
+}
