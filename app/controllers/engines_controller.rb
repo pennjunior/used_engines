@@ -1,16 +1,20 @@
 class EnginesController < ApplicationController
   def index
-    if params[:query].present?
-      @engines = Engine.search_by_details(params[:query])
-    else
-      @paginated_items = Engine.page(params[:page]).order('RANDOM()').per(15)
-    #for the engine filters
-    end
+    # Start with the Engine model, eager load engineable associations
     @engines = Engine.includes(:engineable)
-    # Appling Filters
+
+    # Apply search if a query is present
+    if params[:query].present?
+      @engines = @engines.search_by_details(params[:query])
+    end
+
+    # Apply filters
     @engines = filter_engines(@engines, params)
 
+    # Apply pagination to the final filtered/queried results
+    @paginated_items = @engines.page(params[:page]).per(15)
   end
+
 
   def show
     @engine = Engine.friendly.find(params[:id])
@@ -35,7 +39,9 @@ class EnginesController < ApplicationController
 
   def filter_engines(engines, params)
     # Filter by Engine Type
-    engines = engines.where(engineable_type: params[:engine_type]) if params[:engine_type].present?
+    if params[:engine_type].present?
+      engines = engines.where(engineable_type: params[:engine_type])
+    end
 
     # Filter by Price Range
     if params[:min_price].present? && params[:max_price].present?
@@ -58,5 +64,6 @@ class EnginesController < ApplicationController
 
     engines
   end
+
 
 end

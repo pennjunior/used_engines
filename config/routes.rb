@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resource :saved_engines, only: [:create, :destroy], controller: "saved_engines"
   end
   resources :engine_orders, only: [:index]
-
+  resources :reviews, only: [ :index, :show ]
   devise_for :users
 
   get '/audi', to: 'pages#audi'

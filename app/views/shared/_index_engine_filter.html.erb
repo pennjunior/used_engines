@@ -24,18 +24,6 @@
         <i class="fa-solid fa-minimize"></i>
       </div>
 
-
-      <div class="filter-group">
-        <input
-          type="text"
-          id="query"
-          name="query"
-          placeholder="Search by make, model, or year"
-          class="filter-input"
-          value="<%= params[:query] %>"
-        />
-      </div>
-
       <!-- Engine Type Filter -->
       <%= f.label :engine_type, "Car/Truck/Boat Type" %>
       <%= f.select :engine_type, [["All", ""], ["Car Engine", "CarEngine"], ["Truck Engine", "TruckEngine"], ["Boat Engine", "BoatEngine"]], class: "form-control" %>
