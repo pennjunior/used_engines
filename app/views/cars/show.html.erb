@@ -1,13 +1,13 @@
 <div class="bike-contain" data-controller="showcars">
   <div class="bike-main-content">
     <div class="bike-main-image">
-      <% content_for :title, "#{@engine.title} for Sale | Latest Auto Events & Exhibitions" %>
-      <% content_for :meta_description, @engine.engineable.description.truncate(156) %>
-      <% content_for :meta_keywords, "engine for sale, #{@engine.title}, used #{@engine.title}, new #{@engine.title}, buy #{@engine.title} engine, performance engine" %>
+      <% content_for :title, "#{@car.make} #{@car.model} #{@car.year} for Sale | Latest Auto Exhibitions" %>
+      <% content_for :meta_description, @car.description.truncate(156) %>
+      <% content_for :meta_keywords, "Used cars for sale, #{@car.make} #{@car.model} #{@car.year}, used #{@car.make} #{@car.model} #{@car.year}, new #{@car.make} #{@car.model} #{@car.year}, buy #{@car.make} #{@car.model} #{@car.year} car, performance car" %>
 
-      <% content_for :meta_og_title, "#{@engine.title} for Sale - Best Deals on #{@engine.title} Engines" %>
-      <% content_for :meta_og_description, @engine.engineable.description.truncate(156) %>
-      <% content_for :meta_og_image, cl_image_path(@engine.photos.first.key) %>
+      <% content_for :meta_og_title, "#{@car.make} #{@car.model} #{@car.year} for Sale - Best Deals on #{@car.make} #{@car.model} #{@car.year}" %>
+      <% content_for :meta_og_description, @car.description.truncate(156) %>
+      <% content_for :meta_og_image, cl_image_path(@car.photos.first.key) %>
 
       <% if @car.photos.attached? %>
         <% @car.photos.each_with_index do |photo, index| %>
