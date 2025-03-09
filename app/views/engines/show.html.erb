@@ -7,7 +7,7 @@
 
       <% content_for :meta_og_title, "#{@engine.title} for Sale - Best Deals on #{@engine.title} Engines" %>
       <% content_for :meta_og_description, @engine.engineable.description.truncate(156) %>
-      <% content_for :meta_og_image, cl_image_path(@engine.photos.first.key) %>
+      <% content_for :meta_og_image, cl_image_path(@engine.engineable.photos.first.key) %>
 
       <% if @engine.engineable.photos.attached? %>
         <% @engine.engineable.photos.each_with_index do |photo, index| %>
