@@ -26,7 +26,7 @@ class PagesController < ApplicationController
       @engines = Engine.global_search(params[:query]).all
       @scroll_to_engines = true
     else
-      @engines = Engine.order('RANDOM()').limit(5)
+      @engines = Engine.order('RANDOM()').limit(10)
     end
 
     # Random Reviews

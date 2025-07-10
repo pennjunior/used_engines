@@ -5,471 +5,471 @@ total_cars = 41
 progressbar = ProgressBar.create(total: total_cars, format: "%a %bᗧ%i %p%% %t")
 
 
-# vw_golf = Car.create!(
-#   category: "Hatchback",
-#   make: "Volkswagen",
-#   model: "Golf TSI",
-#   year: 2015,
-#   price: 5900.00,
-#   engine_type: "Inline-4 Turbocharged",
-#   fuel_type: "Petrol",
-#   engine_size: 1400,
-#   seats: 5,
-#   doors: 5,
-#   transmission: "Automatic",
-#   drivetrain: "Front-wheel drive",
-#   registration_year: "2019/6",
-#   dimension: "4.28×1.79×1.45 m",
-#   chassis_no: "125,904",
-#   engine_code: "EA211",
-#   steering: "Left",
-#   ext_color: "White",
-#   location: "Germany",
-#   weight: 1250,
-#   version_class: "Highline",
-#   max_capacity: "450 kg",
-#   description: "The Volkswagen Golf TSI is a versatile and reliable hatchback with a premium interior and advanced driving aids.",
-#   condition: "Used",
-#   availability: true
-# )
+vw_golf = Car.create!(
+  category: "Hatchback",
+  make: "Volkswagen",
+  model: "Golf TSI",
+  year: 2015,
+  price: 5900.00,
+  engine_type: "Inline-4 Turbocharged",
+  fuel_type: "Petrol",
+  engine_size: 1400,
+  seats: 5,
+  doors: 5,
+  transmission: "Automatic",
+  drivetrain: "Front-wheel drive",
+  registration_year: "2019/6",
+  dimension: "4.28×1.79×1.45 m",
+  chassis_no: "125,904",
+  engine_code: "EA211",
+  steering: "Left",
+  ext_color: "White",
+  location: "Germany",
+  weight: 1250,
+  version_class: "Highline",
+  max_capacity: "450 kg",
+  description: "The Volkswagen Golf TSI is a versatile and reliable hatchback with a premium interior and advanced driving aids.",
+  condition: "Used",
+  availability: true
+)
 
-# vw_golf_photos = [
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803791/img-1-960x_j2b7qg.avif",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-11-960x_vtq5rw.avif",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803791/img-10-960x_n810gf.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803791/img-4-960x_eltgop.avif",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803792/img-2-960x_twwbcp.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803791/img-3-960x_rnu6ft.avif",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-5-960x_aqr6pk.avif",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-37-960x_kyuuaq.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-7-960x_fauifn.avif",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-14-960x_lft3ed.avif"
-# ]
-# vw_golf_photos.each do |url|
-#   vw_golf.photos.attach(
-#     io: URI.open(url),
-#     filename: File.basename(URI.parse(url).path),
-#     content_type: "image/jpeg"
-#   )
-# end
+vw_golf_photos = [
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803791/img-1-960x_j2b7qg.avif",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-11-960x_vtq5rw.avif",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803791/img-10-960x_n810gf.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803791/img-4-960x_eltgop.avif",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803792/img-2-960x_twwbcp.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803791/img-3-960x_rnu6ft.avif",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-5-960x_aqr6pk.avif",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-37-960x_kyuuaq.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-7-960x_fauifn.avif",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735803790/img-14-960x_lft3ed.avif"
+]
+vw_golf_photos.each do |url|
+  vw_golf.photos.attach(
+    io: URI.open(url),
+    filename: File.basename(URI.parse(url).path),
+    content_type: "image/jpeg"
+  )
+end
 
-# progressbar.increment
-
-
-
-# bmw_3series = Car.create!(
-#   category: "Sedan",
-#   make: "BMW",
-#   model: "3 Series Gran Turismo",
-#   year: 2015,
-#   price: 8900.00,
-#   engine_type: "Inline-4 Turbocharged Diesel",
-#   fuel_type: "Diesel",
-#   engine_size: 2000,
-#   seats: 5,
-#   doors: 4,
-#   transmission: "Automatic",
-#   drivetrain: "Rear-wheel drive",
-#   registration_year: "2018/4",
-#   dimension: "4.70×1.82×1.44 m",
-#   chassis_no: "69,000",
-#   engine_code: "B47D20",
-#   steering: "Left",
-#   ext_color: "Alpine White",
-#   location: "France",
-#   weight: 1450,
-#   version_class: "M Sport",
-#   max_capacity: "450 kg",
-#   description: "The BMW 3 Series combines dynamic performance with luxury and cutting-edge technology, making it a European favorite.",
-#   condition: "Used",
-#   availability: true
-# )
-
-# bmw_3series_photos = [
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804289/img-1-960x_sngnte.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804289/img-6-960x_atw22a.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-47-960x_s7dtz1.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-46-960x_vqiwot.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-44-960x_gx2irn.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804289/img-10-960x_1_vfvmdu.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804289/img-8-960x_fn6ium.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-14-960x_pm3ufz.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-13-960x_ffjxwi.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-19-960x_gg8wsq.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-23-960x_drttpk.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-20-960x_cxinox.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-26-960x_ejerpk.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-33-960x_elwxgp.jpg"
-# ]
-# bmw_3series_photos.each do |url|
-#   bmw_3series.photos.attach(
-#     io: URI.open(url),
-#     filename: File.basename(URI.parse(url).path),
-#     content_type: "image/jpeg"
-#   )
-# end
-
-# progressbar.increment
+progressbar.increment
 
 
 
-# audi_a4_avant = Car.create!(
-#   category: "Sedan",
-#   make: "Audi",
-#   model: "A4 Avant",
-#   year: 2021,
-#   price: 15900.00,
-#   engine_type: "Inline-4 Turbocharged Diesel",
-#   fuel_type: "Diesel",
-#   engine_size: 2000,
-#   seats: 5,
-#   doors: 5,
-#   transmission: "Automatic",
-#   drivetrain: "Front-wheel drive",
-#   registration_year: "2017/9",
-#   dimension: "4.73×1.84×1.43 m",
-#   chassis_no: "34,610",
-#   engine_code: "CYMC",
-#   steering: "Left",
-#   ext_color: "Navarra Blue Metallic",
-#   location: "Netherlands",
-#   weight: 1500,
-#   version_class: "Ultra",
-#   max_capacity: "480 kg",
-#   description: "The Audi A4 Avant Ultra is a practical yet stylish wagon, ideal for families seeking efficiency and comfort.",
-#   condition: "Used",
-#   availability: true
-# )
+bmw_3series = Car.create!(
+  category: "Sedan",
+  make: "BMW",
+  model: "3 Series Gran Turismo",
+  year: 2015,
+  price: 8900.00,
+  engine_type: "Inline-4 Turbocharged Diesel",
+  fuel_type: "Diesel",
+  engine_size: 2000,
+  seats: 5,
+  doors: 4,
+  transmission: "Automatic",
+  drivetrain: "Rear-wheel drive",
+  registration_year: "2018/4",
+  dimension: "4.70×1.82×1.44 m",
+  chassis_no: "69,000",
+  engine_code: "B47D20",
+  steering: "Left",
+  ext_color: "Alpine White",
+  location: "France",
+  weight: 1450,
+  version_class: "M Sport",
+  max_capacity: "450 kg",
+  description: "The BMW 3 Series combines dynamic performance with luxury and cutting-edge technology, making it a European favorite.",
+  condition: "Used",
+  availability: true
+)
 
-# audi_a4_avant_photos = [
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805450/img-3-960x_pjtsqd.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805446/img-4-960x_hqmiwx.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805446/img-6-960x_1_mdqov3.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805446/img-5-960x_anyrqr.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805445/img-7-960x_bqdhyv.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805445/img-10-960x_2_wampvc.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805445/img-8-960x_1_d0cv2f.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805444/img-16-960x_ml7jsc.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805445/img-9-960x_qvfaqh.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805444/img-11-960x_v9f9zc.jpg"
-# ]
-# audi_a4_avant_photos.each do |url|
-#   audi_a4_avant.photos.attach(
-#     io: URI.open(url),
-#     filename: File.basename(URI.parse(url).path),
-#     content_type: "image/jpeg"
-#   )
-# end
+bmw_3series_photos = [
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804289/img-1-960x_sngnte.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804289/img-6-960x_atw22a.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-47-960x_s7dtz1.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-46-960x_vqiwot.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-44-960x_gx2irn.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804289/img-10-960x_1_vfvmdu.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804289/img-8-960x_fn6ium.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-14-960x_pm3ufz.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-13-960x_ffjxwi.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-19-960x_gg8wsq.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-23-960x_drttpk.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804288/img-20-960x_cxinox.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-26-960x_ejerpk.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735804287/img-33-960x_elwxgp.jpg"
+]
+bmw_3series_photos.each do |url|
+  bmw_3series.photos.attach(
+    io: URI.open(url),
+    filename: File.basename(URI.parse(url).path),
+    content_type: "image/jpeg"
+  )
+end
 
-# progressbar.increment
-
-
-
-# renault_clio = Car.create!(
-#   category: "SUV",
-#   make: "Renault",
-#   model: "Kiger 1.0 Turbo Intens",
-#   year: 2020,
-#   price: 15900.00,
-#   engine_type: "Inline-4",
-#   fuel_type: "Petrol",
-#   engine_size: 1000,
-#   seats: 5,
-#   doors: 5,
-#   transmission: "Manual",
-#   drivetrain: "Front-wheel drive",
-#   registration_year: "2020/3",
-#   dimension: "4.05×1.79×1.44 m",
-#   chassis_no: "43,025",
-#   engine_code: "H4D",
-#   steering: "Left",
-#   ext_color: "Red",
-#   location: "France",
-#   weight: 1150,
-#   version_class: "Intens",
-#   max_capacity: "400 kg",
-#   description: "The Renault Clio Intens offers sleek styling, advanced connectivity, and a fun driving experience in a compact package.",
-#   condition: "Used",
-#   availability: true
-# )
-
-# renault_clio_photos = [
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805946/35349507_pcr7fi.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805950/35349505_ktm6j4.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805949/35349509_jhxzl6.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805949/35349510_wcd0ke.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805949/35349504_nbrg8m.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805948/35349502_csmkum.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805948/35349508_fjhjbb.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805949/35349500_wdt47i.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805946/35349499_bwqyvq.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805947/35349515_kpvar4.jpg"
-# ]
-# renault_clio_photos.each do |url|
-#   renault_clio.photos.attach(
-#     io: URI.open(url),
-#     filename: File.basename(URI.parse(url).path),
-#     content_type: "image/jpeg"
-#   )
-# end
-
-# progressbar.increment
+progressbar.increment
 
 
 
-# mercedes_cclass = Car.create!(
-#   category: "Sedan",
-#   make: "Mercedes-Benz",
-#   model: "C-Class C220d AMG Line",
-#   year: 2014,
-#   price: 8900.00,
-#   engine_type: "Inline-4 Turbocharged Diesel",
-#   fuel_type: "Fuel",
-#   engine_size: 2100,
-#   seats: 5,
-#   doors: 4,
-#   transmission: "Automatic",
-#   drivetrain: "Rear-wheel drive",
-#   registration_year: "2016/5",
-#   dimension: "4.68×1.81×1.44 m",
-#   chassis_no: "54,000",
-#   engine_code: "OM651",
-#   steering: "Right",
-#   ext_color: "White",
-#   location: "Japan",
-#   weight: 1550,
-#   version_class: "AMG Line",
-#   max_capacity: "450 kg",
-#   description: "The Mercedes-Benz C-Class AMG Line offers luxurious features and a dynamic diesel engine for both city and long-distance drives.",
-#   condition: "Used",
-#   availability: true
-# )
+audi_a4_avant = Car.create!(
+  category: "Sedan",
+  make: "Audi",
+  model: "A4 Avant",
+  year: 2021,
+  price: 15900.00,
+  engine_type: "Inline-4 Turbocharged Diesel",
+  fuel_type: "Diesel",
+  engine_size: 2000,
+  seats: 5,
+  doors: 5,
+  transmission: "Automatic",
+  drivetrain: "Front-wheel drive",
+  registration_year: "2017/9",
+  dimension: "4.73×1.84×1.43 m",
+  chassis_no: "34,610",
+  engine_code: "CYMC",
+  steering: "Left",
+  ext_color: "Navarra Blue Metallic",
+  location: "Netherlands",
+  weight: 1500,
+  version_class: "Ultra",
+  max_capacity: "480 kg",
+  description: "The Audi A4 Avant Ultra is a practical yet stylish wagon, ideal for families seeking efficiency and comfort.",
+  condition: "Used",
+  availability: true
+)
 
-# mercedes_cclass_photos = [
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809151/IMG_9155_ohkeuj.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809149/IMG_9154_oc16mu.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809148/IMG_9153_vzonxz.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809147/IMG_9157_laj0dk.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809128/IMG_9158_k7ng1m.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809148/IMG_9156_klnrqf.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809127/IMG_9159_qk10la.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809127/IMG_9161_xlqpqc.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809128/IMG_9160_flibxa.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809124/IMG_9163_ygfsgq.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809123/IMG_9162_ooc1eg.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809122/IMG_9165_zognge.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809122/IMG_9164_j9i4e9.jpg"
-# ]
-# mercedes_cclass_photos.each do |url|
-#   mercedes_cclass.photos.attach(
-#     io: URI.open(url),
-#     filename: File.basename(URI.parse(url).path),
-#     content_type: "image/jpeg"
-#   )
-# end
+audi_a4_avant_photos = [
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805450/img-3-960x_pjtsqd.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805446/img-4-960x_hqmiwx.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805446/img-6-960x_1_mdqov3.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805446/img-5-960x_anyrqr.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805445/img-7-960x_bqdhyv.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805445/img-10-960x_2_wampvc.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805445/img-8-960x_1_d0cv2f.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805444/img-16-960x_ml7jsc.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805445/img-9-960x_qvfaqh.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805444/img-11-960x_v9f9zc.jpg"
+]
+audi_a4_avant_photos.each do |url|
+  audi_a4_avant.photos.attach(
+    io: URI.open(url),
+    filename: File.basename(URI.parse(url).path),
+    content_type: "image/jpeg"
+  )
+end
 
-# progressbar.increment
+progressbar.increment
 
 
 
-# ford_focus = Car.create!(
-#   category: "Hatchback",
-#   make: "Ford",
-#   model: "Focus Titanium Flex",
-#   year: 2016,
-#   price: 4900.00,
-#   engine_type: "Inline-3 Turbocharged",
-#   fuel_type: "Petrol",
-#   engine_size: 1000,
-#   seats: 5,
-#   doors: 5,
-#   transmission: "Manual",
-#   drivetrain: "Front-wheel drive",
-#   registration_year: "2014/8",
-#   dimension: "4.36×1.82×1.47 m",
-#   chassis_no: "145,502",
-#   engine_code: "M1DA",
-#   steering: "Left",
-#   ext_color: "White",
-#   location: "Germany",
-#   weight: 1300,
-#   version_class: "Titanium",
-#   max_capacity: "400 kg",
-#   description: "The Ford Focus Titanium EcoBoost is an economical and agile hatchback, equipped with advanced driver assistance systems.",
-#   condition: "Used",
-#   availability: true
-# )
+renault_clio = Car.create!(
+  category: "SUV",
+  make: "Renault",
+  model: "Kiger 1.0 Turbo Intens",
+  year: 2020,
+  price: 15900.00,
+  engine_type: "Inline-4",
+  fuel_type: "Petrol",
+  engine_size: 1000,
+  seats: 5,
+  doors: 5,
+  transmission: "Manual",
+  drivetrain: "Front-wheel drive",
+  registration_year: "2020/3",
+  dimension: "4.05×1.79×1.44 m",
+  chassis_no: "43,025",
+  engine_code: "H4D",
+  steering: "Left",
+  ext_color: "Red",
+  location: "France",
+  weight: 1150,
+  version_class: "Intens",
+  max_capacity: "400 kg",
+  description: "The Renault Clio Intens offers sleek styling, advanced connectivity, and a fun driving experience in a compact package.",
+  condition: "Used",
+  availability: true
+)
 
-# ford_focus_photos = [
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809850/469956352_122141782016375358_9026623225387367048_n_e1zfds.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809849/470190627_122141782040375358_3392311668530608092_n_xku7vm.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809843/469968905_122141782256375358_8757106058425950965_n_jgixm0.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809843/470187878_122141782310375358_4313902843026542609_n_wx0gph.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809848/469955607_122141782262375358_7344494098208323906_n_hoar5o.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809847/470087070_122141782064375358_5602008121401458040_n_xgp1jz.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809846/470136729_122141782094375358_2274665934092659563_n_hpaqaz.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809846/470024851_122141782154375358_405597932714834194_n_t3uubj.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809843/470060572_122141782202375358_4235590050996605493_n_o1tewb.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809842/469957382_122141782424375358_786659282997899696_n_c1fqic.jpg"
-# ]
-# ford_focus_photos.each do |url|
-#   ford_focus.photos.attach(
-#     io: URI.open(url),
-#     filename: File.basename(URI.parse(url).path),
-#     content_type: "image/jpeg"
-#   )
-# end
+renault_clio_photos = [
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805946/35349507_pcr7fi.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805950/35349505_ktm6j4.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805949/35349509_jhxzl6.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805949/35349510_wcd0ke.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805949/35349504_nbrg8m.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805948/35349502_csmkum.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805948/35349508_fjhjbb.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805949/35349500_wdt47i.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805946/35349499_bwqyvq.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735805947/35349515_kpvar4.jpg"
+]
+renault_clio_photos.each do |url|
+  renault_clio.photos.attach(
+    io: URI.open(url),
+    filename: File.basename(URI.parse(url).path),
+    content_type: "image/jpeg"
+  )
+end
 
-# progressbar.increment
-
-
-
-# skoda_octavia = Car.create!(
-#   category: "Sedan",
-#   make: "Skoda",
-#   model: "Octavia TDI Elegance",
-#   year: 2013,
-#   price: 8900.00,
-#   engine_type: "Inline-4 Turbocharged Diesel",
-#   fuel_type: "Diesel",
-#   engine_size: 1600,
-#   seats: 5,
-#   doors: 4,
-#   transmission: "Manual",
-#   drivetrain: "Front-wheel drive",
-#   registration_year: "2015/4",
-#   dimension: "4.67×1.81×1.46 m",
-#   chassis_no: "98,100",
-#   engine_code: "CRUA",
-#   steering: "Left",
-#   ext_color: "White",
-#   location: "Czech Republic",
-#   weight: 1350,
-#   version_class: "Elegance",
-#   max_capacity: "500 kg",
-#   description: "The Skoda Octavia Elegance is a spacious, practical, and fuel-efficient sedan perfect for families and professionals.",
-#   condition: "Used",
-#   availability: true
-# )
-
-# skoda_octavia_photos = [
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810496/470190516_122126713880534446_145316736249922910_n_kq0a9a.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810495/470174375_122126712542534446_7567974928179725565_n_b1bbl6.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810494/470200078_122126712548534446_3750728031284612231_n_xad2zi.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810493/470210085_122126712536534446_7011824498790611505_n_ry92js.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810492/470218801_122126712554534446_2898950978625770452_n_ad1xwz.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810491/470218778_122126712494534446_3281410222266348874_n_rfm2lv.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810490/470594630_122126712530534446_6000156407787343229_n_ov68l7.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810490/470190074_122126712560534446_8497734874812168052_n_ee12sh.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810489/470620277_122126712518534446_7976687833982227928_n_oipqr3.jpg"
-# ]
-# skoda_octavia_photos.each do |url|
-#   skoda_octavia.photos.attach(
-#     io: URI.open(url),
-#     filename: File.basename(URI.parse(url).path),
-#     content_type: "image/jpeg"
-#   )
-# end
-
-# progressbar.increment
+progressbar.increment
 
 
-# peugeot_208 = Car.create!(
-#   category: "Hatchback",
-#   make: "Peugeot",
-#   model: "208 Allure",
-#   year: 2019,
-#   price: 8900.00,
-#   engine_type: "Inline-4",
-#   fuel_type: "Petrol",
-#   engine_size: 1200,
-#   seats: 5,
-#   doors: 5,
-#   transmission: "Automatic",
-#   drivetrain: "Front-wheel drive",
-#   registration_year: "2012/10",
-#   dimension: "3.97×1.74×1.46 m",
-#   chassis_no: "78,001",
-#   engine_code: "EB2",
-#   steering: "right",
-#   ext_color: "Dark Grey",
-#   location: "France",
-#   weight: 1100,
-#   version_class: "Allure",
-#   max_capacity: "350 kg",
-#   description: "The Peugeot 208 Allure is a stylish and compact city car with responsive handling and impressive fuel efficiency.",
-#   condition: "Used",
-#   availability: true
-# )
 
-# peugeot_208_photos = [
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811178/r_dbrpug.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811177/t_qvllkz.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811179/s_rdqddv.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811177/y_i4nqrv.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811173/a_ervpth.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811172/f_tqxx39.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811173/d_a7v7qg.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811172/g_fvjkgz.jpg"
-# ]
-# peugeot_208_photos.each do |url|
-#   peugeot_208.photos.attach(
-#     io: URI.open(url),
-#     filename: File.basename(URI.parse(url).path),
-#     content_type: "image/jpeg"
-#   )
-# end
+mercedes_cclass = Car.create!(
+  category: "Sedan",
+  make: "Mercedes-Benz",
+  model: "C-Class C220d AMG Line",
+  year: 2014,
+  price: 8900.00,
+  engine_type: "Inline-4 Turbocharged Diesel",
+  fuel_type: "Fuel",
+  engine_size: 2100,
+  seats: 5,
+  doors: 4,
+  transmission: "Automatic",
+  drivetrain: "Rear-wheel drive",
+  registration_year: "2016/5",
+  dimension: "4.68×1.81×1.44 m",
+  chassis_no: "54,000",
+  engine_code: "OM651",
+  steering: "Right",
+  ext_color: "White",
+  location: "Japan",
+  weight: 1550,
+  version_class: "AMG Line",
+  max_capacity: "450 kg",
+  description: "The Mercedes-Benz C-Class AMG Line offers luxurious features and a dynamic diesel engine for both city and long-distance drives.",
+  condition: "Used",
+  availability: true
+)
 
-# progressbar.increment
+mercedes_cclass_photos = [
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809151/IMG_9155_ohkeuj.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809149/IMG_9154_oc16mu.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809148/IMG_9153_vzonxz.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809147/IMG_9157_laj0dk.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809128/IMG_9158_k7ng1m.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809148/IMG_9156_klnrqf.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809127/IMG_9159_qk10la.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809127/IMG_9161_xlqpqc.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809128/IMG_9160_flibxa.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809124/IMG_9163_ygfsgq.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809123/IMG_9162_ooc1eg.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809122/IMG_9165_zognge.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809122/IMG_9164_j9i4e9.jpg"
+]
+mercedes_cclass_photos.each do |url|
+  mercedes_cclass.photos.attach(
+    io: URI.open(url),
+    filename: File.basename(URI.parse(url).path),
+    content_type: "image/jpeg"
+  )
+end
+
+progressbar.increment
 
 
-# nissan_qashqai = Car.create!(
-#   category: "SUV",
-#   make: "Nissan",
-#   model: "Qashqai Tekna",
-#   year: 2018,
-#   price: 8900.00,
-#   engine_type: "Inline-4",
-#   fuel_type: "Petrol",
-#   engine_size: 1600,
-#   seats: 5,
-#   doors: 5,
-#   transmission: "Manual",
-#   drivetrain: "Front-wheel drive",
-#   registration_year: "2013/6",
-#   dimension: "4.37×1.80×1.59 m",
-#   chassis_no: "67,248",
-#   engine_code: "R9M",
-#   steering: "Left",
-#   ext_color: "White",
-#   location: "Spain",
-#   weight: 1420,
-#   version_class: "Tekna",
-#   max_capacity: "470 kg",
-#   description: "The Nissan Qashqai Tekna is a versatile SUV offering a smooth ride, practical features, and great fuel economy.",
-#   condition: "Used",
-#   availability: true
-# )
 
-# nissan_qashqai_photos = [
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811863/471829655_1108093371106350_226398785594036741_n_sh8ctu.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811862/471950538_1108093261106361_814233963863639624_n_ggdypp.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811864/471670556_1108093394439681_8232319316717188358_n_pt1gqm.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811790/471857347_1108093517773002_2327471939404763654_n_v8dqcy.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811789/471766874_1108093564439664_8980773830571104873_n_ahmlir.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811788/471713483_1108093684439652_7810145602544961113_n_b4koom.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811782/471857684_1108093721106315_7389261375008324679_n_aib2cy.jpg",
-#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811782/471778516_1108094171106270_3995541643029211204_n_cdabey.jpg"
-# ]
-# nissan_qashqai_photos.each do |url|
-#   nissan_qashqai.photos.attach(
-#     io: URI.open(url),
-#     filename: File.basename(URI.parse(url).path),
-#     content_type: "image/jpeg"
-#   )
-# end
+ford_focus = Car.create!(
+  category: "Hatchback",
+  make: "Ford",
+  model: "Focus Titanium Flex",
+  year: 2016,
+  price: 4900.00,
+  engine_type: "Inline-3 Turbocharged",
+  fuel_type: "Petrol",
+  engine_size: 1000,
+  seats: 5,
+  doors: 5,
+  transmission: "Manual",
+  drivetrain: "Front-wheel drive",
+  registration_year: "2014/8",
+  dimension: "4.36×1.82×1.47 m",
+  chassis_no: "145,502",
+  engine_code: "M1DA",
+  steering: "Left",
+  ext_color: "White",
+  location: "Germany",
+  weight: 1300,
+  version_class: "Titanium",
+  max_capacity: "400 kg",
+  description: "The Ford Focus Titanium EcoBoost is an economical and agile hatchback, equipped with advanced driver assistance systems.",
+  condition: "Used",
+  availability: true
+)
 
-# progressbar.increment
+ford_focus_photos = [
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809850/469956352_122141782016375358_9026623225387367048_n_e1zfds.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809849/470190627_122141782040375358_3392311668530608092_n_xku7vm.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809843/469968905_122141782256375358_8757106058425950965_n_jgixm0.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809843/470187878_122141782310375358_4313902843026542609_n_wx0gph.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809848/469955607_122141782262375358_7344494098208323906_n_hoar5o.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809847/470087070_122141782064375358_5602008121401458040_n_xgp1jz.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809846/470136729_122141782094375358_2274665934092659563_n_hpaqaz.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809846/470024851_122141782154375358_405597932714834194_n_t3uubj.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809843/470060572_122141782202375358_4235590050996605493_n_o1tewb.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735809842/469957382_122141782424375358_786659282997899696_n_c1fqic.jpg"
+]
+ford_focus_photos.each do |url|
+  ford_focus.photos.attach(
+    io: URI.open(url),
+    filename: File.basename(URI.parse(url).path),
+    content_type: "image/jpeg"
+  )
+end
+
+progressbar.increment
+
+
+
+skoda_octavia = Car.create!(
+  category: "Sedan",
+  make: "Skoda",
+  model: "Octavia TDI Elegance",
+  year: 2013,
+  price: 8900.00,
+  engine_type: "Inline-4 Turbocharged Diesel",
+  fuel_type: "Diesel",
+  engine_size: 1600,
+  seats: 5,
+  doors: 4,
+  transmission: "Manual",
+  drivetrain: "Front-wheel drive",
+  registration_year: "2015/4",
+  dimension: "4.67×1.81×1.46 m",
+  chassis_no: "98,100",
+  engine_code: "CRUA",
+  steering: "Left",
+  ext_color: "White",
+  location: "Czech Republic",
+  weight: 1350,
+  version_class: "Elegance",
+  max_capacity: "500 kg",
+  description: "The Skoda Octavia Elegance is a spacious, practical, and fuel-efficient sedan perfect for families and professionals.",
+  condition: "Used",
+  availability: true
+)
+
+skoda_octavia_photos = [
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810496/470190516_122126713880534446_145316736249922910_n_kq0a9a.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810495/470174375_122126712542534446_7567974928179725565_n_b1bbl6.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810494/470200078_122126712548534446_3750728031284612231_n_xad2zi.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810493/470210085_122126712536534446_7011824498790611505_n_ry92js.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810492/470218801_122126712554534446_2898950978625770452_n_ad1xwz.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810491/470218778_122126712494534446_3281410222266348874_n_rfm2lv.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810490/470594630_122126712530534446_6000156407787343229_n_ov68l7.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810490/470190074_122126712560534446_8497734874812168052_n_ee12sh.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735810489/470620277_122126712518534446_7976687833982227928_n_oipqr3.jpg"
+]
+skoda_octavia_photos.each do |url|
+  skoda_octavia.photos.attach(
+    io: URI.open(url),
+    filename: File.basename(URI.parse(url).path),
+    content_type: "image/jpeg"
+  )
+end
+
+progressbar.increment
+
+
+peugeot_208 = Car.create!(
+  category: "Hatchback",
+  make: "Peugeot",
+  model: "208 Allure",
+  year: 2019,
+  price: 8900.00,
+  engine_type: "Inline-4",
+  fuel_type: "Petrol",
+  engine_size: 1200,
+  seats: 5,
+  doors: 5,
+  transmission: "Automatic",
+  drivetrain: "Front-wheel drive",
+  registration_year: "2012/10",
+  dimension: "3.97×1.74×1.46 m",
+  chassis_no: "78,001",
+  engine_code: "EB2",
+  steering: "right",
+  ext_color: "Dark Grey",
+  location: "France",
+  weight: 1100,
+  version_class: "Allure",
+  max_capacity: "350 kg",
+  description: "The Peugeot 208 Allure is a stylish and compact city car with responsive handling and impressive fuel efficiency.",
+  condition: "Used",
+  availability: true
+)
+
+peugeot_208_photos = [
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811178/r_dbrpug.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811177/t_qvllkz.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811179/s_rdqddv.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811177/y_i4nqrv.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811173/a_ervpth.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811172/f_tqxx39.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811173/d_a7v7qg.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811172/g_fvjkgz.jpg"
+]
+peugeot_208_photos.each do |url|
+  peugeot_208.photos.attach(
+    io: URI.open(url),
+    filename: File.basename(URI.parse(url).path),
+    content_type: "image/jpeg"
+  )
+end
+
+progressbar.increment
+
+
+nissan_qashqai = Car.create!(
+  category: "SUV",
+  make: "Nissan",
+  model: "Qashqai Tekna",
+  year: 2018,
+  price: 8900.00,
+  engine_type: "Inline-4",
+  fuel_type: "Petrol",
+  engine_size: 1600,
+  seats: 5,
+  doors: 5,
+  transmission: "Manual",
+  drivetrain: "Front-wheel drive",
+  registration_year: "2013/6",
+  dimension: "4.37×1.80×1.59 m",
+  chassis_no: "67,248",
+  engine_code: "R9M",
+  steering: "Left",
+  ext_color: "White",
+  location: "Spain",
+  weight: 1420,
+  version_class: "Tekna",
+  max_capacity: "470 kg",
+  description: "The Nissan Qashqai Tekna is a versatile SUV offering a smooth ride, practical features, and great fuel economy.",
+  condition: "Used",
+  availability: true
+)
+
+nissan_qashqai_photos = [
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811863/471829655_1108093371106350_226398785594036741_n_sh8ctu.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811862/471950538_1108093261106361_814233963863639624_n_ggdypp.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811864/471670556_1108093394439681_8232319316717188358_n_pt1gqm.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811790/471857347_1108093517773002_2327471939404763654_n_v8dqcy.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811789/471766874_1108093564439664_8980773830571104873_n_ahmlir.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811788/471713483_1108093684439652_7810145602544961113_n_b4koom.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811782/471857684_1108093721106315_7389261375008324679_n_aib2cy.jpg",
+  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735811782/471778516_1108094171106270_3995541643029211204_n_cdabey.jpg"
+]
+nissan_qashqai_photos.each do |url|
+  nissan_qashqai.photos.attach(
+    io: URI.open(url),
+    filename: File.basename(URI.parse(url).path),
+    content_type: "image/jpeg"
+  )
+end
+
+progressbar.increment
 
 
 silverado_320d = Car.create!(

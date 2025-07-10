@@ -10,8 +10,72 @@
       <%= render "shared/make" %>
     </div>
   <div class="main-content">
-    <h1>Recommended Used Cars</h1>
-    <div id="car-list">
+    <h1>Recommended Used Engines</h1>
+    <div class="engines">
+    <% @engines.each do |engine| %>
+      <a href="<%= engine_path(engine) %>" class="card">
+        <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
+        <div class="card-info">
+          <h4><%= engine.title %></h4>
+          <p class="price">Price: $<%= engine.price %></p>
+          <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
+          <p>
+              <i class="fas fa-tachometer-alt"></i>
+              Millage: <%= engine.engineable.mileage %> Mi
+            </p>
+            <button
+                data-controller="cart"
+                data-cart-target="button"
+                data-engine-id="<%= engine.id %>"
+                data-action="click->cart#add"
+                class="btn btn-primary">
+                <i class="fa fa-shopping-cart"></i>
+                Add to Cart
+            </button>
+          <% else %>
+            <p>
+              <i class="fas fa-bolt"></i>
+              Power: <%= engine.engineable.power %> HP
+            </p>
+            <button
+                data-controller="cart"
+                data-cart-target="button"
+                data-engine-id="<%= engine.id %>"
+                data-action="click->cart#add"
+                class="btn btn-primary">
+                <i class="fa fa-shopping-cart"></i>
+                Add to Cart
+            </button>
+          <% end %>
+        </div>
+      </a>
+    <% end %>
+  </div>
+
+  # blog content why choose a used car
+  <div class="used-car-promo">
+    <div class="promo-content">
+      <h2> Why Choose a Used Car? </h2>
+      <p>
+        Buying a used car is not just about saving money; it's about making a smart choice.
+        With lower depreciation rates, a wide selection of models, and certified pre-owned options,
+        you can drive home a reliable vehicle without breaking the bank.
+      </p>
+      <ul>
+        <li><strong>Save Money:</strong> Enjoy lower prices and reduced insurance costs.</li>
+        <li><strong>Certified Pre-Owned:</strong> Get quality assurance with warranties included.</li>
+        <li><strong>Wide Selection:</strong> Choose from thousands of makes and models.</li>
+        <li><strong>Eco-Friendly:</strong> Extend the lifecycle of a vehicle and reduce waste.</li>
+      </ul>
+    <%= link_to "Explore Used Cars", cars_path, class: "btn-cta" %>
+    </div>
+    <div class="promo-image">
+      <%= image_tag "bnw.jpg", alt: "Illustration of a happy family with a used car" %>
+    </div>
+  </div>
+  
+  
+<div id="car-list">
     <% @cars.each do |car| %>
       <a href="<%= car_path(car) %>" class="card">
         <% if car.photos.present? %>
@@ -33,49 +97,6 @@
   </div>
   </div>
 </div>
-<div class="used-car-promo">
-    <div class="promo-content">
-      <h2> Why Choose a Used Car? </h2>
-      <p>
-        Buying a used car is not just about saving money; it's about making a smart choice.
-        With lower depreciation rates, a wide selection of models, and certified pre-owned options,
-        you can drive home a reliable vehicle without breaking the bank.
-      </p>
-      <ul>
-        <li><strong>Save Money:</strong> Enjoy lower prices and reduced insurance costs.</li>
-        <li><strong>Certified Pre-Owned:</strong> Get quality assurance with warranties included.</li>
-        <li><strong>Wide Selection:</strong> Choose from thousands of makes and models.</li>
-        <li><strong>Eco-Friendly:</strong> Extend the lifecycle of a vehicle and reduce waste.</li>
-      </ul>
-    <%= link_to "Explore Used Cars", cars_path, class: "btn-cta" %>
-    </div>
-    <div class="promo-image">
-      <%= image_tag "bnw.jpg", alt: "Illustration of a happy family with a used car" %>
-    </div>
-  </div>
-
-  <div class="engines">
-    <% @engines.each do |engine| %>
-      <a href="<%= engine_path(engine) %>" class="card">
-        <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
-        <div class="card-info">
-          <h4><%= engine.title %></h4>
-          <p class="price">Price: $<%= engine.price %></p>
-          <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
-          <p>
-              <i class="fas fa-tachometer-alt"></i>
-              Millage: <%= engine.engineable.mileage %> Mi
-            </p>
-          <% else %>
-            <p>
-              <i class="fas fa-bolt"></i>
-              Power: <%= engine.engineable.power %> HP
-            </p>
-          <% end %>
-        </div>
-      </a>
-    <% end %>
-  </div>
 <div class="used-car-promo">
     <div class="promo-content">
       <h2> Discover More Than Cars </h2>

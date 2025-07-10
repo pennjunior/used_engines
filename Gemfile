@@ -34,6 +34,8 @@ gem "simple_form"
 gem "sassc-rails"
 gem "cloudinary"
 gem "dotenv-rails"
+# Gem for stripe
+gem 'stripe'
 gem 'activerecord-import'
 gem 'ruby-progressbar'
 gem "pg_search"

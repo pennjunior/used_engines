@@ -26,7 +26,7 @@
 }
 
 .hero-text h1 {
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   color: white;
 }
 
@@ -64,18 +64,22 @@
   margin: .5vmin 2vmin;
   border: 3px solid white;
 }
-.carousel .one,
-.carousel .two {
+.carousel .one {
+  background-image: url(mechanic-hero.jpg);
   background-position: center center;
   background-size: cover;
+  inset: 0; // shorthand for top/right/bottom/left: 0;
+  background-color: rgba(0, 0, 0, 10.4); // adjust 0.4 for more or less darkness
+  z-index: 1;
 }
-.carousel .one {
-  background-image: url(lambo.jpg);
 
-}
 .carousel .two {
   background-image: url(hero2.jpg);
+  background-position: center center;
+  background-size: cover;
+
 }
+
 
 #slide-btn-1:checked ~ .one,
 #slide-btn-2:checked ~ .two {

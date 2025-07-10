@@ -1,5 +1,7 @@
 class Engine < ApplicationRecord
-  include PgSearch::Model
+  
+
+  # handles he slugs for friendly domain
   extend FriendlyId
   friendly_id :generate_slug, use: [:slugged, :finders]
 
@@ -11,8 +13,12 @@ class Engine < ApplicationRecord
     slug.blank? || title_changed?
   end
 
+  #handles associations
   belongs_to :engineable, polymorphic: true
   has_many :engine_orders, dependent: :destroy
+
+  #performs general search in the pg database
+  include PgSearch::Model
   pg_search_scope :search_by_details,
     against: [:title, :year, :manufacturer],
     using: {

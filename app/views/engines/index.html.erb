@@ -20,15 +20,33 @@
           <h4><%= engine.title %></h4>
           <p class="price">Price: $<%= engine.price %></p>
           <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
-          <p>
+            <p>
               <i class="fas fa-tachometer-alt"></i>
               Millage: <%= engine.engineable.mileage %> Mi
             </p>
+            <button
+                data-controller="cart"
+                data-cart-target="button"
+                data-engine-id="<%= engine.id %>"
+                data-action="click->cart#add"
+                class="btn btn-primary">
+                <i class="fa fa-shopping-cart"></i>
+                Add to Cart
+            </button>
           <% else %>
             <p>
               <i class="fas fa-bolt"></i>
               Power: <%= engine.engineable.power %> HP
             </p>
+            <button
+                data-controller="cart"
+                data-cart-target="button"
+                data-engine-id="<%= engine.id %>"
+                data-action="click->cart#add"
+                class="btn btn-primary">
+                <i class="fa fa-shopping-cart"></i>
+                Add to Cart
+            </button>
           <% end %>
         </div>
       </a>

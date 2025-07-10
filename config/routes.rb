@@ -27,6 +27,19 @@ Rails.application.routes.draw do
   get '/carorders/:id/confirmation', to: 'car_orders#confirmation', as: 'order_confirmation'
   get 'engineorders/:id/confirmation', to: 'engine_orders#confirmation', as: 'engine_order_confirmation'
   get 'faq', to: 'pages#faq'
+  # routes for the carts
+  post "cart/add/:engine_id", to: "cart#add", as: :add_to_cart
+  
+  delete '/remove_cart/:id', to: "cart#remove", as: :remove_cart
+  get "cart", to: "cart#show", as: :cart
+
+  # routes for the controller
+  resources :orders, only: [:create]
+  get "orders/success", to: "orders#success"
+  get "orders/cancel", to: "orders#cancel"
+
+ 
+
   # get 'engines/index'
   # get 'engines/show'
   # get 'engines/new'

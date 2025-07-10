@@ -909,7 +909,7 @@ end
 
 Engine.create!(
   title: "Honda K20C1 2.0L Turbo Engine",
-  price: honda_k20c1.price,\
+  price: honda_k20c1.price,                                     
   description: honda_k20c1.description,
   engineable: honda_k20c1
 )
