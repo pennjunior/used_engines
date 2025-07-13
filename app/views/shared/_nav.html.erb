@@ -20,22 +20,21 @@
   
   
   <!-- add to cart -->
+  <%= turbo_frame_tag "cart" do %>
     <div data-controller="cart-badge" class="relative" style="position: relative; margin-left: 10px;">
       <%= link_to "#", class: "text-block-24", data: { action: "click->cart-badge#toggle" } do %>
         <i class="fa-solid fa-cart-shopping"></i>
       <% end %>
 
-      <span
-        
-        data-cart-badge-target="count"
-        class="cart-total-items"
-      >
-        <%= (session[:cart] || []).size %>
+      <span id="cart-count" class="cart-total-items" data-cart-badge-target="count">
+        <%= @cart.line_items.sum(:quantity) %>
       </span>
+
       <div data-cart-badge-target="panel" class="cart-dropdown hidden">
-        <%= render "shared/dropdown" %>
+        <%= render "shared/dropdown", cart: @cart %>
       </div>
-  </div>
+    </div>
+<% end %>
 
   <ul class="user-links">
     <% if user_signed_in? %>

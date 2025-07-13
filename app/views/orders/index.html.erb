@@ -1,0 +1,14 @@
+<h1>Your Orders</h1>
+<% if @orders.any? %>
+    
+<% @orders.each do |order| %>
+    <div classs="order-card">
+       <% order.line_items.each do |item| %>
+            <li><%= item.engine.title %> | Qty: <%= item.quantity %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+<% else %>
+    <p>No Order place yet.</p>
+<% end %>

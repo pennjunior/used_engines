@@ -1,0 +1,3 @@
+<%= turbo_stream.replace("cart", partial: "shared/dropdown", locals: { cart: @cart }) %>
+
+<%= turbo_stream.replace("cart-count", partial: "shared/cart_count", locals: { cart: @cart }) %>

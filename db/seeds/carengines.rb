@@ -28,6 +28,7 @@ car1_urls.each do |url|
   )
 end
 Engine.create!(title: "Toyota Camry 2.5L Engine", price: car1.price, description: car1.description, engineable: car1)
+puts "Just Created #{Engine.count} engines"
 
 car2 = CarEngine.create!(
   horsepower: 174,
@@ -246,6 +247,9 @@ Engine.create!(
   description: silverado_engine.description,
   engineable: silverado_engine
 )
+
+puts "Just Created #{Engine.count} engines"
+
 altima_engine = CarEngine.create!(
   year: 2006,
   transmission: "Automatic",
@@ -285,6 +289,7 @@ Engine.create!(
   description: altima_engine.description,
   engineable: altima_engine
 )
+puts "Just Created #{Engine.count} engines"
 
 bmw_n54_engine = CarEngine.create!(
   year: "2007-2013",  # Changed year to string representing range
@@ -432,6 +437,7 @@ Engine.create!(
   description: corvette_ls3_engine.description,
   engineable: corvette_ls3_engine
 )
+puts "Just Created #{Engine.count} engines"
 
 accord_engine = CarEngine.create!(
   year: "2018-2023",  # Changed year to range
@@ -585,6 +591,8 @@ Engine.create!(
   description: nissan_vr38.description,
   engineable: nissan_vr38
 )
+
+puts "Just Created #{Engine.count} engines"
 mazda_13b = CarEngine.create!(
   year: "2004-2008",
   transmission: "Automatic",
@@ -876,6 +884,9 @@ Engine.create!(
   description: chevrolet_6_2.description,
   engineable: chevrolet_6_2
 )
+
+puts "Just Created #{Engine.count} engines"
+
 honda_k20c1 = CarEngine.create!(
   year: "2017-2024",
   transmission: "Automatic",
@@ -1327,12 +1338,15 @@ honda_k20_photos.each do |url|
   )
 end
 
+
 Engine.create!(
   title: "Honda Accord K24A 2.4L Engine ",
   price: honda_k20.price,
   description: honda_k20.description,
   engineable: honda_k20
 )
+
+puts "Just Created #{Engine.count} engines"
 nissan_vk56 = CarEngine.create!(
   year: "2004-2024",
   transmission: "Automatic",
@@ -1684,3 +1698,4 @@ Engine.create!(
   description: chevrolet_ls7.description,
   engineable: chevrolet_ls7
 )
+puts "Now we have #{Engine.count} engines"

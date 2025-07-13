@@ -1,4 +1,10 @@
 class OrdersController < ApplicationController
+
+  def index 
+    @orders = Order.order(created_at: :desc)
+  end
+
+
   def create
     cart = session[:cart] || []
     engines = Engine.where(id: cart)

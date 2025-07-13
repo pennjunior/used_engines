@@ -17,6 +17,11 @@ class Engine < ApplicationRecord
   belongs_to :engineable, polymorphic: true
   has_many :engine_orders, dependent: :destroy
 
+  
+
+  
+  has_many :carts, through: :line_items
+
   #performs general search in the pg database
   include PgSearch::Model
   pg_search_scope :search_by_details,

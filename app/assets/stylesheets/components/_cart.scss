@@ -62,7 +62,7 @@
 
 .cart-dropdown {
   position: absolute; /* or fixed, depending on UX */
-  right: 0;
+  right: -90px;
   top: 100%;
   background: white;
   padding: 0.1rem;
@@ -91,6 +91,7 @@
 
 .text-rd {
   color: rgb(216, 119, 119);
+  border: none;
 }
 
 .text-rd:hover {
@@ -102,4 +103,32 @@
   padding: 10px 45px;
   color: #ccc;
   background-color: #40005b;
+}
+
+
+.order-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.order-card h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.order-card p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.cart-thumbnail {
+  width: 50px;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   root to: "pages#home"
 
   # get 'search', to: 'search#index'
@@ -27,26 +28,31 @@ Rails.application.routes.draw do
   get '/carorders/:id/confirmation', to: 'car_orders#confirmation', as: 'order_confirmation'
   get 'engineorders/:id/confirmation', to: 'engine_orders#confirmation', as: 'engine_order_confirmation'
   get 'faq', to: 'pages#faq'
-  # routes for the carts
-  post "cart/add/:engine_id", to: "cart#add", as: :add_to_cart
   
-  delete '/remove_cart/:id', to: "cart#remove", as: :remove_cart
-  get "cart", to: "cart#show", as: :cart
 
   # routes for the controller
-  resources :orders, only: [:create]
-  get "orders/success", to: "orders#success"
-  get "orders/cancel", to: "orders#cancel"
+  # resources :orders, only: [:create, :index ]
+  # get "orders/success", to: "orders#success"
+  # get "orders/cancel", to: "orders#cancel"
+  post "cart/add_item", to: "carts#add_item"
+  post "cart/remove/:id", to: "carts#remove_item", as: :cart_remove_item
+  get "cart/checkout", to: "carts#checkout"
 
- 
+  # resource :cart, only: [:show] do
+  #   post "add_item", to: "carts#add_item"
+  #   post "remove_item/:id", to: "carts#remove_item", as: "remove_item"
+  #   get "checkout", to: "carts#checkout"
+  # end
 
-  # get 'engines/index'
-  # get 'engines/show'
-  # get 'engines/new'
-  # get 'engines/create'
-  # get 'engines/edit'
-  # get 'engines/update'
-  # get 'engines/destroy'
+
+  # resources :carts, only: [:show] do
+  #   member do
+  #     post "add_item/:engine_id", to: "carts#add_item", as: :add_item
+  #     delete "remove_item/:engine_id", to: "carts#remove_item", as: :remove_item
+  #   end
+  # end
+
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

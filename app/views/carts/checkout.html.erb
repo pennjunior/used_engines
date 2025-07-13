@@ -1,0 +1,17 @@
+<h2>Your Cart</h2>
+
+<% if @line_items.any? %>
+  <ul>
+    <% @line_items.each do |item| %>
+      <li>
+        <strong><%= item.engine.title %></strong> — Quantity: <%= item.quantity %> — Total: <%= number_to_currency(item.total) %>
+      </li>
+    <% end %>
+  </ul>
+
+  <p><strong>Total:</strong> <%= number_to_currency(@cart.total) %></p>
+
+  <%= link_to "Place Order", "#", class: "btn btn-success" %>
+<% else %>
+  <p>Your cart is empty.</p>
+<% end %>

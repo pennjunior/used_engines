@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :cars, through: :saved_cars
   has_many :saved_cars, dependent: :destroy
   has_many :saved_engines, dependent: :destroy
+  has_one :cart, dependent: :destroy
 end

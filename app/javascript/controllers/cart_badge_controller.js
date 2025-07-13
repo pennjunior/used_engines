@@ -1,16 +1,22 @@
-// app/javascript/controllers/cart_badge_controller.js
+// app/javascript/controllers/cart_controller.js
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["count", "panel"]
+  static targets = ["badge"]
 
-  toggle(event) {
+  added(event) {
     event.preventDefault()
-    event.stopPropagation()
-    this.panelTarget.classList.toggle("hidden")
-  }
+    const url = event.target.action
 
-  update(newCount) {
-    this.countTarget.textContent = newCount
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": document.querySelector("[name='csrf-token']").content
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.badgeTarget.textContent = data.count
+      })
   }
 }

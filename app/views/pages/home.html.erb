@@ -23,36 +23,25 @@
               <i class="fas fa-tachometer-alt"></i>
               Millage: <%= engine.engineable.mileage %> Mi
             </p>
-            <button
-                data-controller="cart"
-                data-cart-target="button"
-                data-engine-id="<%= engine.id %>"
-                data-action="click->cart#add"
-                class="btn btn-primary">
-                <i class="fa fa-shopping-cart"></i>
-                Add to Cart
-            </button>
+           
           <% else %>
             <p>
               <i class="fas fa-bolt"></i>
               Power: <%= engine.engineable.power %> HP
             </p>
-            <button
-                data-controller="cart"
-                data-cart-target="button"
-                data-engine-id="<%= engine.id %>"
-                data-action="click->cart#add"
-                class="btn btn-primary">
-                <i class="fa fa-shopping-cart"></i>
-                Add to Cart
-            </button>
           <% end %>
         </div>
       </a>
+
+      <%= form_with url: cart_add_item_path, method: :post, data: { turbo: true } do |f| %>
+        <%= hidden_field_tag :engine_id, engine.id %>
+        <%= f.number_field :quantity, value: 1, min: 1 %>
+        <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+      <% end %>
     <% end %>
   </div>
 
-  # blog content why choose a used car
+  
   <div class="used-car-promo">
     <div class="promo-content">
       <h2> Why Choose a Used Car? </h2>
