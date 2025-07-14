@@ -1,0 +1,3 @@
+<%= turbo_stream.remove "line_item_#{@line_item_id}" %>
+<%= turbo_stream.replace "cart-count", partial: "shared/cart_count", locals: { cart: @cart } %>
+<%= turbo_stream.replace "checkout-line-items", partial: "shared/checkout_list", locals: { line_items: @cart.line_items } %>

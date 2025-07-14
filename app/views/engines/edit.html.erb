@@ -1,2 +1,53 @@
-<h1>Engines#edit</h1>
-<p>Find me in app/views/engines/edit.html.erb</p>
+<h1>Edit Car Engine</h1>
+
+<%= form_with(model: @engine, local: true, html: { class: "engine-form" }) do |f| %>
+  <% if @engine.errors.any? %>
+    <div class="error-messages">
+      <h2><%= pluralize(@engine.errors.count, "error") %> prevented saving:</h2>
+      <ul>
+        <% @engine.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <!-- Engine fields -->
+  <h2>Engine Metadata</h2>
+  <%= f.fields_for :engine do |e| %>
+    <div class="form-lines"><%= e.label :title %><br><%= e.text_field :title %></div>
+    <div class="d-none"><%= e.label :price %><br><%= e.number_field :price, step: 0.01 %></div>
+    <div class="d-none"><%= e.label :description %><br><%= e.text_area :description %></div>
+    <div class="d-none"><%= e.label :slug %><br><%= e.text_field :slug %></div>
+    <%= e.hidden_field :id %>
+  <% end %>
+
+  <!-- CarEngine fields -->
+  <%= f.fields_for :engineable do |c| %>
+   
+    <h2>Car Engine Details</h2>
+    <div class="form-lines"><%= c.label :horsepower %><br><%= c.number_field :horsepower %></div>
+    <div class="form-lines"><%= c.label :fuel_type %><br><%= c.text_field :fuel_type %></div>
+    <div class="form-lines"><%= c.label :transmission %><br><%= c.text_field :transmission %></div>
+    <div class="form-lines"><%= c.label :mileage %><br><%= c.number_field :mileage %></div>
+    <div class="form-lines"><%= c.label :manufacturer %><br><%= c.text_field :manufacturer %></div>
+    <div class="form-lines"><%= c.label :year %><br><%= c.text_field :year %></div>
+    <div class="form-lines"><%= c.label :price %><br><%= c.number_field :price, step: 0.01 %></div>
+    <div class="form-lines"><%= c.label :condition %><br><%= c.text_field :condition %></div>
+    <div class="form-lines"><%= c.label :description %><br><%= c.text_area :description %></div>
+
+    <h2>Photos</h2>
+    <% if @engine.engineable.photos.attached? %>
+        <div class="photo-previews">
+        <% @engine.engineable.photos.each do |photo| %>
+            <%= image_tag photo, alt: "Car photo", class: "edit-thumbnail" %>
+        <% end %>
+        </div>
+    <% end %>
+    <div class="form-lines">
+        <%= c.label :photos, "Upload New Photos" %><br>
+        <%= f.file_field :photos, multiple: true, direct_upload: true %>
+    </div>
+    <% end %>
+  
+  <%= f.submit "Update Car Engine", class: "submit-button" %>
+<% end %>

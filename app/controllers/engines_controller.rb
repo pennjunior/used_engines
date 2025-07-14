@@ -22,20 +22,68 @@ class EnginesController < ApplicationController
   end
 
   def new
+    @car_engine = CarEngine.new
+    @car_engine.build_engine
   end
 
   def create
+    @car_engine = CarEngine.new(car_engine_params)
+    if @car_engine.save
+      redirect_to @car_engine, notice: 'Car engine created successfully.'
+    else
+      render :new
+    end
   end
 
   def edit
+    @engine = Engine.friendly.find(params[:id])
+    @engine.build_engineable if @engine.engineable.nil?
   end
 
+
   def update
+    @engine = Engine.friendly.find(params[:id])
+
+    # Attach photos to the engineable (CarEngine)
+    if params[:engine][:photos].present?
+      @engine.engineable.photos.purge # ⬅️ Delete old photos
+      params[:engine][:photos].each do |photo|
+        @engine.engineable.photos.attach(photo)
+      end
+    end
+
+    if @engine.update(engine_params.except(:photos))
+      redirect_to @engine, notice: 'Car engine updated successfully.'
+    else
+      render :edit
+    end
   end
 
   def destroy
   end
   private
+
+  def engine_params
+    params.require(:engine).permit(
+      :title,
+      :price,
+      :description,
+      :slug,
+      photos: [], # allow multiple uploads
+      engineable_attributes: [
+        :id,
+        :horsepower,
+        :fuel_type,
+        :transmission,
+        :mileage,
+        :manufacturer,
+        :year,
+        :condition,
+        :description
+      ]
+    )
+  end
+
 
   def filter_engines(engines, params)
     # Filter by Engine Type

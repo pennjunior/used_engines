@@ -1,0 +1,16 @@
+<% if line_items.any? %>
+  <% line_items.each do |item| %>
+    <div id="line_item_<%= item.id %>" class="order-item">
+      <%= image_tag item.engine.engineable.photos.first, alt: item.engine.title, class: "bike-thumbnail" %>
+      <div>
+        <p><strong>Engine Ordered:</strong> <%= item.engine.title %></p>
+        <p>Quantity: <%= item.quantity %> | <strong>Total:</strong> <%= number_to_currency(item.total) %></p>
+        <%= button_to "Remove", cart_remove_item_path(item.id), method: :post,
+              form: { data: { turbo_confirm: "Are you sure?" } },
+              class: "text-rd" %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p style="font-weight: 600;">Your Cart is Empty</p>
+<% end %>

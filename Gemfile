@@ -44,6 +44,8 @@ gem 'friendly_id', '~> 5.4'
 gem "meta-tags", "~> 2.22"
 gem 'sitemap_generator', '~> 6.3'
 gem 'honeycomb'
+gem "image_processing", "~> 1.12"
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

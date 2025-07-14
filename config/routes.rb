@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :engine_orders, only: [:new, :create]
     resource :saved_engines, only: [:create, :destroy], controller: "saved_engines"
   end
+  resources :car_engines
   resources :engine_orders, only: [:index]
   resources :reviews, only: [ :index, :show ]
   devise_for :users

@@ -1,2 +1,22 @@
-<h1>Engines#new</h1>
-<p>Find me in app/views/engines/new.html.erb</p>
+<h1 class="text-center">Engines#new</h1>
+<%= form_with(model: @car_engine, local: true, html: { multipart: true, class: "engine-form" }) do |f| %>
+  <div class="form-lines"><%= f.label :horsepower %><br><%= f.number_field :horsepower %></div>
+  <div class="form-lines"><%= f.label :fuel_type %><br><%= f.text_field :fuel_type %></div>
+  <div class="form-lines"><%= f.label :transmission %><br><%= f.text_field :transmission %></div>
+  <div class="form-lines"><%= f.label :mileage %><br><%= f.number_field :mileage %></div>
+  <div class="form-lines"><%= f.label :manufacturer %><br><%= f.text_field :manufacturer %></div>
+  <div class="form-lines"><%= f.label :year %><br><%= f.text_field :year %></div>
+  <div class="form-lines"><%= f.label :price %><br><%= f.number_field :price, step: 0.01 %></div>
+  <div class="form-lines"><%= f.label :condition %><br><%= f.text_field :condition %></div>
+  <div class="form-lines"><%= f.label :description %><br><%= f.text_area :description %></div>
+
+  <h2>Engine Metadata</h2>
+  <%= f.fields_for :engine do |e| %>
+    <div class="form-lines"><%= e.label :title %><br><%= e.text_field :title %></div>
+    <div class="form-lines"><%= e.label :price %><br><%= e.number_field :price, step: 0.01 %></div>
+    <div class="form-lines"><%= e.label :description %><br><%= e.text_area :description %></div>
+    <div class="form-lines"><%= e.label :slug %><br><%= e.text_field :slug %></div>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

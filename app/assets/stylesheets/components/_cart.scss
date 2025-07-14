@@ -132,3 +132,35 @@
   border: 1px solid #ddd;
   border-radius: 5px;
 }
+
+.checkout-total {
+  font-size: large;
+  font-weight: 900;
+  padding: 10px;
+  color: white;
+  background-color: #40005b;
+  margin: 3px;
+  text-align: center;
+}
+
+.checkout-success {
+  text-decoration:  none;
+  width: 100%;
+  font-size: large;
+  font-weight: 900;
+  padding: 10px;
+  color: white;
+  background-color: #024cd5;
+  margin: 5px;
+  text-align: center;
+}
+
+.checkout-success:hover {
+  background-color: #13ed58;
+}
+
+
+.fade-out-remove {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}

@@ -37,6 +37,7 @@ class CartsController < ApplicationController
     line_item = @cart.line_items.find_by(id: params[:id])
 
     if line_item
+      @line_item_id = line_item.id
       line_item.destroy
       respond_to do |format|
         format.turbo_stream
@@ -44,9 +45,13 @@ class CartsController < ApplicationController
       end
     else
       Rails.logger.warn "⚠️ Could not find line item with id=#{params[:id]}"
-      head :not_found
+      respond_to do |format|
+        format.html { redirect_to cart_path, alert: "Item not found." }
+        format.turbo_stream { head :not_found }
+      end
     end
   end
+
 
 
   def checkout

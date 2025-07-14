@@ -3,14 +3,16 @@ class Engine < ApplicationRecord
 
   # handles he slugs for friendly domain
   extend FriendlyId
-  friendly_id :generate_slug, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: [:slugged, :finders]
 
-  def generate_slug
-    title.present? ? title.parameterize : "engine-#{SecureRandom.hex(4)}"
+  def slug_candidates
+    [
+      :title,
+      [:title, :manufacturer]
+    ]
   end
-
-  def should_generate_new_friendly_id?
-    slug.blank? || title_changed?
+  def manufacturer
+    engineable.try(:manufacturer)
   end
 
   #handles associations
@@ -21,6 +23,8 @@ class Engine < ApplicationRecord
 
   
   has_many :carts, through: :line_items
+
+  accepts_nested_attributes_for :engineable
 
   #performs general search in the pg database
   include PgSearch::Model

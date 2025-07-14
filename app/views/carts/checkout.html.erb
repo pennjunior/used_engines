@@ -1,17 +1,28 @@
-<h2>Your Cart</h2>
-
-<% if @line_items.any? %>
-  <ul>
-    <% @line_items.each do |item| %>
-      <li>
-        <strong><%= item.engine.title %></strong> — Quantity: <%= item.quantity %> — Total: <%= number_to_currency(item.total) %>
-      </li>
-    <% end %>
-  </ul>
-
-  <p><strong>Total:</strong> <%= number_to_currency(@cart.total) %></p>
-
-  <%= link_to "Place Order", "#", class: "btn btn-success" %>
-<% else %>
-  <p>Your cart is empty.</p>
+<p class="checkout-total" >Your Cart Items</p>
+<%= turbo_frame_tag "checkout-line-items" do %>
+    <% if @line_items.any? %>
+        <% @line_items.each do |item| %>
+            <div id="line_item_<%= item.id %>">
+                <div class="order-items">
+                    <div class="order-item">
+                    <%= image_tag item.engine.engineable.photos.first, alt: item.engine.title, class: "bike-thumbnail" %>
+                    <div>
+                        <p><strong>Engine Ordered:</strong> <%= "#{item.engine.title}" %></p>
+                        <p>Quantity: <%= item.quantity %>  | <strong>Total:</strong> <%= number_to_currency(item.total) %></p>
+                        <%= button_to "Remove", cart_remove_item_path(item.id), method: :post, 
+                        form: { data: { turbo_confirm: "Are you sure?" } }, 
+                        class: "text-rd" %>
+                    </div>
+                    </div>
+                </div>
+            </div>   
+        <% end %>
+  <p class="checkout-total" >Total: <%= number_to_currency(@cart.total) %></p>
+  <%= link_to "Place Order", "#", class: "checkout-success" %>
+    <% else %>
+    <div  style="margin: 100px; text-align: center;">
+        <p style="font-weight: 600;">Your Cart is Empty</p>
+        <%= link_to "return To Engines", root_path, data: { turbo_frame: "_top" } %>
+     </div>
+  <% end %>
 <% end %>

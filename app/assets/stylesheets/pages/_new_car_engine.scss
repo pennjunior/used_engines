@@ -1,0 +1,22 @@
+
+.engine-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-lines {
+    width: 100%;
+    color: black;
+    font-size: 1.1rem;
+    margin-bottom: 1.0rem;
+    padding: 5px 5px;
+    border: 1px solid black;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
