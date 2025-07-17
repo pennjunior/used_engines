@@ -162,19 +162,19 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_17_142728) do
     t.bigint "engine_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity"
     t.bigint "cart_id", null: false
+    t.integer "quantity"
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["engine_id"], name: "index_line_items_on_engine_id"
   end
 
-  # create_table "orders", force: :cascade do |t|
-  #   t.decimal "total"
-  #   t.string "status"
-  #   t.datetime "created_at", null: false
-  #   t.datetime "updated_at", null: false
-  #   t.string "stripe_session_id"
-  # end
+  create_table "orders", force: :cascade do |t|
+    t.decimal "total"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "stripe_session_id"
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"
