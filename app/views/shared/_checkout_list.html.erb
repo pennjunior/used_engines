@@ -5,9 +5,13 @@
       <div>
         <p><strong>Engine Ordered:</strong> <%= item.engine.title %></p>
         <p>Quantity: <%= item.quantity %> | <strong>Total:</strong> <%= number_to_currency(item.total) %></p>
-        <%= button_to "Remove", cart_remove_item_path(item.id), method: :post,
-              form: { data: { turbo_confirm: "Are you sure?" } },
-              class: "text-rd" %>
+        <%= button_to(
+            "<i class='fa-solid fa-trash'></i>".html_safe,
+            cart_remove_item_path(item.id),
+            method: :post,
+            form: { data: { turbo_confirm: "Are you sure?" } },
+            class: "text-rd"
+          ) %>
       </div>
     </div>
   <% end %>

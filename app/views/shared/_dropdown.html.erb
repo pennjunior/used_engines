@@ -6,15 +6,18 @@
         <div class="flex justify-between items-center">
           <%= image_tag line_item.engine.engineable.photos.first, alt: line_item.engine.title, class: "cart-thumbnail" %>
           <strong><%= line_item.engine.title %> (x<%= line_item.quantity %>)</strong>
-          <%= button_to "Remove", cart_remove_item_path(line_item.id), method: :post, 
-                form: { data: { turbo_confirm: "Are you sure?" } }, 
-                class: "text-rd" %>
-          
+         <%= button_to(
+            "<i class='fa-solid fa-trash'></i>".html_safe,
+            cart_remove_item_path(line_item.id),
+            method: :post,
+            form: { data: { turbo_confirm: "Are you sure?" } },
+            class: "text-rd"
+          ) %>
         </div>
       </div>
     <% end %>
     <div class="pt-3">
-      <%= link_to "Checkout", cart_checkout_path, class: "checkout-btn" %>
+      <%= link_to "Checkout", cart_checkout_path, class: "checkout-btn", data: { turbo_frame: "_top" }%>
     </div>
   <% else %>
     <p style="font-weight: 600;">Your Cart is Empty</p>

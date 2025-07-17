@@ -28,11 +28,13 @@
               <i class="fas fa-tachometer-alt"></i>
               Millage: <%= engine.engineable.mileage %> Mi
             </p>
+
            <%= form_with url: cart_add_item_path, method: :post, data: { turbo: true } do |f| %>
             <%= hidden_field_tag :engine_id, engine.id %>
             <div class="d-none"><%= f.number_field :quantity, value: 1, min: 1 %></div>
             <%= f.submit "Add to Cart", class: "btn btn-primary" %>
           <% end %>
+          
           <% else %>
             <p>
               <i class="fas fa-bolt"></i>
@@ -50,9 +52,6 @@
       
     <% end %>
   </div>
-
-
-
   
   <div class="used-car-promo">
     <div class="promo-content">

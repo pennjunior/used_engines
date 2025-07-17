@@ -1,0 +1,5 @@
+<div
+  data-controller="stripe-checkout"
+  data-stripe-checkout-publishable-key-value="<%= Rails.configuration.stripe[:publishable_key] %>"
+  data-stripe-checkout-url-value="<%= cart_stripe_checkouts_path(@cart) %>">
+</div>

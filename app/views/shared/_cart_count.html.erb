@@ -1,1 +1,3 @@
-<span id="cart-count"><%= cart.line_items.sum(:quantity) %></span>
+<span id="cart-count" class="cart-total-items" data-cart-dropdown-target="count">
+        <%= @cart.line_items.sum(:quantity) %>
+      </span>

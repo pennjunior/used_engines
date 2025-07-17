@@ -18,6 +18,16 @@ Rails.application.routes.draw do
   resources :reviews, only: [ :index, :show ]
   devise_for :users
 
+  resources :carts do 
+    scope module: :carts do 
+      resources :purchases, only: [:new, :create] do 
+        get :success, on: :collection
+      end
+      resources :stripe_checkouts, only: [ :create]
+    end
+  end
+ get "cart/checkout", to: "carts#checkout"
+
   get '/audi', to: 'pages#audi'
   get '/bmw', to: 'pages#bmw'
   get '/ford', to: 'pages#ford'

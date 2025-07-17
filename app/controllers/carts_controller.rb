@@ -56,6 +56,7 @@ class CartsController < ApplicationController
 
   def checkout
     @line_items = @cart.line_items.includes(:engine)
+    @carts = @cart.line_items.includes(:engine)
   end
 
 

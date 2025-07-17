@@ -29,7 +29,7 @@ class Engine < ApplicationRecord
   #performs general search in the pg database
   include PgSearch::Model
   pg_search_scope :search_by_details,
-    against: [:title, :year, :manufacturer],
+    against: [:title, :engineable_type, :description],
     using: {
       tsearch: { prefix: true } # Allows partial matches (e.g., "Hon" matches "Honda")
     }
