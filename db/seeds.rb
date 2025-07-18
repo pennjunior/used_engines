@@ -11,7 +11,7 @@
 require 'ruby-progressbar'
 require "open-uri"
 
-Clear existing data
+# Clear existing data
 Car.destroy_all
 CarEngine.destroy_all
 TruckEngine.destroy_all
