@@ -20,6 +20,11 @@
   margin: 0 auto;
 }
 
+ .filter-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 
 .hero-text {
   color: white;
@@ -69,7 +74,7 @@
   background-position: center center;
   background-size: cover;
   inset: 0; // shorthand for top/right/bottom/left: 0;
-  background-color: rgba(0, 0, 0, 10.4); // adjust 0.4 for more or less darkness
+  background-color: rgba(0, 0, 0, 0.9); // adjust 0.4 for more or less darkness
   z-index: 1;
 }
 
@@ -77,6 +82,7 @@
   background-image: url(hero2.jpg);
   background-position: center center;
   background-size: cover;
+  background-color: rgba(0, 0, 0, 0.9); // adjust 0.4 for more or less darkness
 
 }
 
@@ -96,6 +102,7 @@
   // z-index: 2;
 }
 
+ 
 // .slide.two::before {
 // content: '';
 // position: absolute;
@@ -114,23 +121,41 @@
 
 /* Mobile View */
 @media (max-width: 768px) {
-  .filter-overlay {
-    position: absolute;
-    top: 10px; /* Space from the bottom of the screen */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%; /* Make the form container responsive */
-    z-index: 10;
-    padding: 10px;
-    border-radius: 5px;
+  // .filter-overlay {
+  //   position: absolute;
+  //   top: 10px; /* Space from the bottom of the screen */
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  //   width: 100%; /* Make the form container responsive */
+  //   z-index: 10;
+  //   padding: 10px;
+  //   border-radius: 5px;
+  // }
+  .hero-text{
+    text-align: center;
   }
+
   .hero-text h1 {
-    display: none;
+    margin-top: 130px;
     white-space: normal;
   }
 
   .hero-text .credit {
     white-space: normal;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .hero-button{
+    text-decoration:  none;
+    width: 100%;
+    font-size: large;
+    font-weight: 900;
+    padding: 10px;
+    color: white;
+    background-color: #40005b;
+    margin-top: 6px;
+    text-align: center;
   }
 
 }

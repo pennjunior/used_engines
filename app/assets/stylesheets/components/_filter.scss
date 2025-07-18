@@ -53,6 +53,12 @@ input, select {
   margin-right: 0;
 }
 
+@media (max-width: 600px) {
+  .filters {
+    display: none;
+  }
+  
+}
 // .results .car {
 //   border: 1px solid #ccc;
 //   padding: 10px;

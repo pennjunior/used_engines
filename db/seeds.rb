@@ -11,7 +11,8 @@
 require 'ruby-progressbar'
 require "open-uri"
 
-# Clear existing data
+Clear existing data
+Car.destroy_all
 CarEngine.destroy_all
 TruckEngine.destroy_all
 BoatEngine.destroy_all
@@ -37,7 +38,8 @@ require_relative "seeds/carengines.rb"
 require_relative "seeds/truckengine.rb"
 require_relative "seeds/more_engines.rb"
 
-# require_relative "seeds/cars.rb"
-# require_relative "seeds/cars_2.rb"
+require_relative "seeds/cars.rb"
+require_relative "seeds/cars_2.rb"
+puts "created #{Car.count} cars"
 
 puts "created #{Engine.count} engines"

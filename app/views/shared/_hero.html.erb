@@ -12,8 +12,11 @@
       <div class="hero-text">
         <h1>Find Your Perfect Engine fit</h1>
         <div class="credit"> Search with easy filters engine for Sale.</div>
+        <%= link_to "Explore Engines",  engines_path, class: "hero-button" %>
       </div>
-      <%= render "shared/filter" %>
+      <div class="filters">
+        <%= render "shared/filter" %>
+      </div>
       </div>
 
     </div>
@@ -27,8 +30,11 @@
       <div class="hero-text">
         <h1>Find the Best Used Cars at Lowest Prices</h1>
         <div class="credit">Discover Thousands of Cars for Sale</div>
+        <%= link_to "Explore Cars",  cars_path, class: "hero-button" %>
       </div>
-      <%= render "shared/filter" %>
+        <div class="filters">
+          <%= render "shared/filter" %>
+        </div>
       </div>
 
     </div>
