@@ -1,66 +1,67 @@
-car1 = CarEngine.create!(
-  horsepower: 203,
-  fuel_type: "Gasoline",
-  transmission: "Automatic",
-  mileage: 40000,
-  manufacturer: "Toyota",
-  year: 2018,
-  price: 2000,
-  condition: "Used",
-  description: "Toyota Camry 2.5L Inline-4 engine, perfect for mid-size sedans."
-)
-car1_urls = [
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304802/s-l1600_2_pgnwbn.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304802/s-l1600_5_ptswzc.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304802/s-l1600_4_l82nrr.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304803/s-l1600_3_mc68jj.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304803/s-l1600_ytlokv.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304802/s-l1600_1_bld1sh.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304803/s-l1600_6_lsodim.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304803/s-l1600_7_eoxcjq.webp"
-]
-# Attach car1s to car1
-car1_urls.each do |url|
-  car1.photos.attach(
-    io: URI.open(url),
-    filename: File.basename(URI.parse(url).path),
-    content_type: "image/webp"
-  )
-end
-Engine.create!(title: "Toyota Camry 2.5L Engine", price: car1.price, description: car1.description, engineable: car1)
-puts "Just Created #{Engine.count} engines"
+# car1 = CarEngine.create!(
+#   horsepower: 203,
+#   fuel_type: "Gasoline",
+#   transmission: "Automatic",
+#   mileage: 40000,
+#   manufacturer: "Toyota",
+#   year: 2018,
+#   price: 2000,
+#   condition: "Used",
+#   description: "Toyota Camry 2.5L Inline-4 engine, perfect for mid-size sedans."
+# )
+# car1_urls = [
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304802/s-l1600_2_pgnwbn.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304802/s-l1600_5_ptswzc.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304802/s-l1600_4_l82nrr.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304803/s-l1600_3_mc68jj.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304803/s-l1600_ytlokv.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304802/s-l1600_1_bld1sh.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304803/s-l1600_6_lsodim.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735304803/s-l1600_7_eoxcjq.webp"
+# ]
+# # Attach car1s to car1
+# car1_urls.each do |url|
+#   car1.photos.attach(
+#     io: URI.open(url),
+#     filename: File.basename(URI.parse(url).path),
+#     content_type: "image/webp"
+#   )
+# end
+# Engine.create!(title: "Toyota Camry 2.5L Engine", price: car1.price, description: car1.description, engineable: car1)
+# puts "Just Created #{Engine.count} engines"
 
-car2 = CarEngine.create!(
-  horsepower: 174,
-  fuel_type: "Gasoline",
-  transmission: "CVT",
-  mileage: 25000,
-  manufacturer: "Honda",
-  year: 2020,
-  price: 2500,
-  condition: "Used",
-  description: "Honda Civic 1.5L Turbocharged engine, excellent for performance and fuel economy."
-)
-car2_urls = [
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_12_r46xcy.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308140/s-l1600_11_kvz7fu.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308140/s-l1600_8_kjicoc.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308140/s-l1600_10_emljkl.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_3_hyajng.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308140/s-l1600_9_alix1o.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_5_irhr91.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_7_m5u45v.webp",
-  "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_ec9ovp.webp"
-]
-# Attach car2s to car2
-car2_urls.each do |url|
-  car2.photos.attach(
-    io: URI.open(url),
-    filename: File.basename(URI.parse(url).path),
-    content_type: "image/webp"
-  )
-end
-Engine.create!(title: "Honda Civic 1.5L Turbo Engine", price: car2.price, description: car2.description, engineable: car2)
+# car2 = CarEngine.create!(
+#   horsepower: 174,
+#   fuel_type: "Gasoline",
+#   transmission: "CVT",
+#   mileage: 25000,
+#   manufacturer: "Honda",
+#   year: 2020,
+#   price: 2500,
+#   condition: "Used",
+#   description: "Honda Civic 1.5L Turbocharged engine, excellent for performance and fuel economy."
+# )
+# car2_urls = [
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_12_r46xcy.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308140/s-l1600_11_kvz7fu.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308140/s-l1600_8_kjicoc.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308140/s-l1600_10_emljkl.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_3_hyajng.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308140/s-l1600_9_alix1o.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_5_irhr91.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_7_m5u45v.webp",
+#   "https://res.cloudinary.com/drxr1eiwp/image/upload/v1735308141/s-l1600_ec9ovp.webp"
+# ]
+# # Attach car2s to car2
+# car2_urls.each do |url|
+#   car2.photos.attach(
+#     io: URI.open(url),
+#     filename: File.basename(URI.parse(url).path),
+#     content_type: "image/webp"
+#   )
+# end
+
+# Engine.create!(title: "Honda Civic 1.5L Turbo Engine", price: car2.price, description: car2.description, engineable: car2)
 
 car3 = CarEngine.create!(
   horsepower: 268,
@@ -89,6 +90,7 @@ car3_urls.each do |url|
     content_type: "image/webp"
   )
 end
+
 Engine.create!(title: "Subaru WRX 2.0L Turbo Engine", price: car3.price, description: car3.description, engineable: car3)
 puts "created #{CarEngine.count} Car engines"
 
