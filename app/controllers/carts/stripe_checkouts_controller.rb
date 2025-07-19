@@ -23,6 +23,7 @@ module Carts
       })
 
       render json: { clientSecret: session.client_secret }
+      @cart_items.destroy_all
     end
   end
 end

@@ -1,26 +1,28 @@
-<div class="cart-dropdown">
-  <div class="cart-panel bg-white rounded-2xl shadow-lg w-72 max-h-96 overflow-y-auto p-4 space-y-3">
-  <% if @cart.line_items.present? %>
-    <% @cart.line_items.includes(:engine).each do |line_item| %>
-      <div id="line_item_<%= line_item.id %>"  class="cart-item flex justify-between items-center border-b border-gray-200 pb-2">
-        <div class="flex justify-between items-center">
-          <%= image_tag line_item.engine.engineable.photos.first, alt: line_item.engine.title, class: "cart-thumbnail" %>
-          <strong><%= line_item.engine.title %> (x<%= line_item.quantity %>)</strong>
-         <%= button_to(
-            "<i class='fa-solid fa-trash'></i>".html_safe,
-            cart_remove_item_path(line_item.id),
-            method: :post,
-            form: { data: { turbo_confirm: "Are you sure?" } },
-            class: "text-rd"
-          ) %>
+<div id="cart-dropdown-panel" data-cart-dropdown-target="panel" class="cart-dropdown">
+  <div class="cart-dropdown">
+    <div class="cart-panel bg-white rounded-2xl shadow-lg w-72 max-h-96 overflow-y-auto p-4 space-y-3">
+    <% if @cart.line_items.present? %>
+      <% @cart.line_items.includes(:engine).each do |line_item| %>
+        <div id="line_item_<%= line_item.id %>"  class="cart-item flex justify-between items-center border-b border-gray-200 pb-2">
+          <div class="flex justify-between items-center">
+            <%= image_tag line_item.engine.engineable.photos.first, alt: line_item.engine.title, class: "cart-thumbnail" %>
+            <strong><%= line_item.engine.title %> (x<%= line_item.quantity %>)</strong>
+          <%= button_to(
+              "<i class='fa-solid fa-trash'></i>".html_safe,
+              cart_remove_item_path(line_item.id),
+              method: :post,
+              form: { data: { turbo_confirm: "Are you sure?" } },
+              class: "text-rd"
+            ) %>
+          </div>
         </div>
+      <% end %>
+      <div class="pt-3">
+        <%= link_to "Checkout", cart_checkout_path, class: "checkout-btn", data: { turbo_frame: "_top" }%>
       </div>
+    <% else %>
+      <p style="font-weight: 600;">Your Cart is Empty</p>
     <% end %>
-    <div class="pt-3">
-      <%= link_to "Checkout", cart_checkout_path, class: "checkout-btn", data: { turbo_frame: "_top" }%>
-    </div>
-  <% else %>
-    <p style="font-weight: 600;">Your Cart is Empty</p>
-  <% end %>
-</div>
-</div>
+  </div>
+  </div>
+</div>  

@@ -124,7 +124,7 @@
 /* Flex container for the whole content */
 .content-wrapper {
   display: flex;
-  flex-wrap: wrap;  /* Allow wrapping if needed on smaller screens */
+  // flex-wrap: wrap;  /* Allow wrapping if needed on smaller screens */
   gap: 1px;        /* Space between left and right sections */
 }
 
@@ -186,12 +186,16 @@
     }
 
     .makes-section {
-      display: none;
+      
       flex: 0 0 auto;  /* Allow makes section to be as wide as needed */
       margin-bottom: 20px;
     }
 
     .main-content {
       flex: 1;  /* Full width on small screens */
+    }
+
+    .engine-lett-bar {
+      display: none;
     }
   }

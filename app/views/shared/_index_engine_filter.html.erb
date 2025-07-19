@@ -12,7 +12,7 @@
 
   <!-- Filter Form -->
   <div
-    class="filter-form-container makes-section"
+    class="filter-form-container engine-lett-bar"
     id="filter-form-container"
     data-toggle-target="filterForm">
     <%= form_with(url: engines_path, method: :get, local: true, class: "filter-form") do |f| %>
@@ -73,6 +73,7 @@
     </div>
   <% end %>
 </div>
+
 <!-- Hide/Show Filters Based on Selection -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -88,3 +89,4 @@
     toggleFilters(); // Run on page load
   });
 </script>
+</div>

@@ -2,7 +2,7 @@
 <%= turbo_frame_tag "checkout-line-items" do %>
     <% if @line_items.any? %>
         <% @line_items.each do |item| %>
-            <div id="line_item_<%= item.id %>">
+            <div id="line_item_<%= item.id %>" style="margin-left: 2.0rem; margin-right: 1.0rem;">
                 <div class="order-items">
                     <div class="order-item">
                     <%= image_tag item.engine.engineable.photos.first, alt: item.engine.title, class: "bike-thumbnail" %>
@@ -21,8 +21,6 @@
                 </div>
             </div>   
         <% end %>
-  <p class="checkout-total" >Total: <%= number_to_currency(@cart.total) %></p>
-
     <% else %>
     <div  style="margin: 100px; text-align: center;">
         <p style="font-weight: 600;">Your Cart is Empty</p>
@@ -30,4 +28,7 @@
      </div>
   <% end %>
 <% end %>
-  <%= link_to "Purchase",  new_cart_purchase_path(@cart), class: "checkout-success" %>
+ <p class="checkout-total" > Total: <%= number_to_currency(@cart.total) %>
+    <%= link_to "Click to Purchase",  new_cart_purchase_path(@cart), class: "checkout-success" %>
+ </p>
+  

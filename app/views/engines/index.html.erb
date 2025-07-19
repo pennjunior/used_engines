@@ -8,60 +8,64 @@
 
 
 <div class="content-wrapper">
-  <div>
+  <div class="makes-section">
     <%= render "shared/index_engine_filter" %>
   </div>
   <div class="main-content">
-<div class="engines">
-    <% if  @paginated_items.any? %>
-      <% @paginated_items.each do |engine| %>
-        <a href="<%= engine_path(engine) %>" class="card">
-          <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
-          <div class="card-info">
-            <h4><%= engine.title %></h4>
-            <p class="price">Price: $<%= engine.price %></p>
-            <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
-              <p>
-                <i class="fas fa-tachometer-alt"></i>
-                Millage: <%= engine.engineable.mileage %> Mi
-              </p>
-              <button
-                  data-controller="cart"
-                  data-cart-target="button"
-                  data-engine-id="<%= engine.id %>"
-                  data-action="click->cart#add"
-                  class="btn btn-primary">
-                  <i class="fa fa-shopping-cart"></i>
-                  Add to Cart
-              </button>
-            <% else %>
-              <p>
-                <i class="fas fa-bolt"></i>
-                Power: <%= engine.engineable.power %> HP
-              </p>
-              <button
-                  data-controller="cart"
-                  data-cart-target="button"
-                  data-engine-id="<%= engine.id %>"
-                  data-action="click->cart#add"
-                  class="btn btn-primary">
-                  <i class="fa fa-shopping-cart"></i>
-                  Add to Cart
-              </button>
-            <% end %>
-          </div>
-        </a>
-      <% end %>
-      <% else %>
-        <div style="margin: 30px;">
-          <h1>Search Results</h1>
-          <p>We don't have engines with name: <strong style="text-decoration: underline; font-size: 1.1rem;"> <%= params[:query]%></strong></p>
-        </div>
-      <% end %>
+    <div class="engines">
+        <% if  @paginated_items.any? %>
+          <% @paginated_items.each do |engine| %>
+            <a href="<%= engine_path(engine) %>" class="card">
+              <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
+              <div class="card-info">
+                <h4><%= engine.title %></h4>
+                <p class="price">Price: $<%= engine.price %></p>
+                <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
+                  <p>
+                    <i class="fas fa-tachometer-alt"></i>
+                    Millage: <%= engine.engineable.mileage %> Mi
+                  </p>
+                  <button
+                      data-controller="cart"
+                      data-cart-target="button"
+                      data-engine-id="<%= engine.id %>"
+                      data-action="click->cart#add"
+                      class="btn btn-primary">
+                      <i class="fa fa-shopping-cart"></i>
+                      Add to Cart
+                  </button>
+                <% else %>
+                  <p>
+                    <i class="fas fa-bolt"></i>
+                    Power: <%= engine.engineable.power %> HP
+                  </p>
+                  <button
+                      <%# id="add-to-cart-<%#= engine.id %>" %>
+                      data-controller="cart"
+                      data-cart-target="button"
+                      data-engine-id="<%= engine.id %>"
+                      data-action="click->cart#add"
+                      class="btn btn-primary">
+                      <i class="fa fa-shopping-cart"></i>
+                      Add to Cart
+                  </button>
+                <% end %>
+              </div>
+            </a>
+          <% end %>
+          <% else %>
+            <div style="margin: 30px;">
+              <h1>Search Results</h1>
+              <p>We don't have engines with name: <strong style="text-decoration: underline; font-size: 1.1rem;"> <%= params[:query]%></strong></p>
+            </div>
+          <% end %>
+      </div>
+      <div class="pagination-container">
+        <%= paginate @paginated_items %>
+      </div>
+    </div>
   </div>
-  <div class="pagination-container">
-    <%= paginate @paginated_items %>
-  </div>
+
 </div>
 <div class="used-car-promo">
     <div class="promo-content">
@@ -82,5 +86,4 @@
     <div class="promo-image">
         <%= image_tag "pablo.jpg", alt: "Illustration of a happy family with a used car", style: "max-height: 500px" %>
     </div>
-  </div>
 </div>
