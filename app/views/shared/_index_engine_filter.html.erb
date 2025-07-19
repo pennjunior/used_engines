@@ -12,7 +12,7 @@
 
   <!-- Filter Form -->
   <div
-    class="filter-form-container"
+    class="filter-form-container makes-section"
     id="filter-form-container"
     data-toggle-target="filterForm">
     <%= form_with(url: engines_path, method: :get, local: true, class: "filter-form") do |f| %>
@@ -23,6 +23,16 @@
         data-action="click->toggle#hideFilterForm">
         <i class="fa-solid fa-minimize"></i>
       </div>
+
+      <div class="filter-group">
+        <input
+          type="text"
+          id="query"
+          name="query"
+          placeholder="Search by make, model, or year"
+          class="filter-input"
+          value="<%= params[:query] %>"
+        />
 
       <!-- Engine Type Filter -->
       <%= f.label :engine_type, "Car/Truck/Boat Type" %>

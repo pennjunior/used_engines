@@ -3,6 +3,6 @@ class LineItem < ApplicationRecord
   belongs_to :engine
 
   def total
-    engine.price * quantity 
+    (engine.price || 0) * (quantity || 0)
   end
 end

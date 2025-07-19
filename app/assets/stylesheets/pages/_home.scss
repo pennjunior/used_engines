@@ -186,6 +186,7 @@
     }
 
     .makes-section {
+      display: none;
       flex: 0 0 auto;  /* Allow makes section to be as wide as needed */
       margin-bottom: 20px;
     }

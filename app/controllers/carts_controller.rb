@@ -17,7 +17,7 @@ class CartsController < ApplicationController
     current_item = @cart.line_items.find_by(engine_id: @engine.id)
 
     if current_item
-        current_item.update(quantity: current_item.quantity + quantity)
+        current_item.update(quantity: (current_item.quantity).to_i + quantity)
     else
         @cart.line_items.create(engine: @engine, quantity: quantity)
     end

@@ -12,7 +12,7 @@ class EnginesController < ApplicationController
     @engines = filter_engines(@engines, params)
 
     # Apply pagination to the final filtered/queried results
-    @paginated_items = @engines.page(params[:page]).per(15)
+    @paginated_items = @engines.order(created_at: :desc).page(params[:page]).per(15)
   end
 
 
