@@ -1,4 +1,5 @@
 class EnginesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     # Start with the Engine model, eager load engineable associations
     @engines = Engine.includes(:engineable)

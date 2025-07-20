@@ -35,11 +35,11 @@ require "open-uri"
 # require_relative "seeds/reviews.rb"
 # require_relative "seeds/boatengine.rb"
 # require_relative "seeds/carengines.rb"
-require_relative "seeds/truckengine.rb"
-require_relative "seeds/more_engines.rb"
-
-require_relative "seeds/cars.rb"
-require_relative "seeds/cars_2.rb"
+# require_relative "seeds/truckengine.rb"
+# db/seeds/more_engine2.rb
+require_relative "seeds/more_engine2.rb"
+# require_relative "seeds/cars.rb"
+# require_relative "seeds/cars_2.rb"
 puts "created #{Car.count} cars"
 
 puts "created #{Engine.count} engines"
