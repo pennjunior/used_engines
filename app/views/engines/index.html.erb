@@ -15,48 +15,43 @@
     <div class="engines">
         <% if  @paginated_items.any? %>
           <% @paginated_items.each do |engine| %>
-            <a href="<%= engine_path(engine) %>" class="card">
-              <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
+          <div class="card">
+              <%= link_to engine_path(engine) do %>
+                <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
+              <% end %>
               <div class="card-info">
-                <h4><%= engine.title %></h4>
-                <p class="price">Price: $<%= engine.price %></p>
+                <%= link_to engine_path(engine), style: "text-decoration: none;" do %>
+                  <h4><%= engine.title %></h4>
+                  <p class="price">Price: $<%= engine.price %></p>
+                <% end %>
                 <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
                   <p>
                     <i class="fas fa-tachometer-alt"></i>
                     Millage: <%= engine.engineable.mileage %> Mi
                   </p>
-                  <button
-                      data-controller="cart"
-                      data-cart-target="button"
-                      data-engine-id="<%= engine.id %>"
-                      data-action="click->cart#add"
-                      class="btn btn-primary">
-                      <i class="fa fa-shopping-cart"></i>
-                      Add to Cart
-                  </button>
+                   <%= form_with url: cart_add_item_path, method: :post, data: { turbo: true } do |f| %>
+                      <%= hidden_field_tag :engine_id, engine.id %>
+                      <div class="d-none"><%= f.number_field :quantity, value: 1, min: 1 %></div>
+                      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+                    <% end %>
                 <% else %>
                   <p>
                     <i class="fas fa-bolt"></i>
                     Power: <%= engine.engineable.power %> HP
                   </p>
-                  <button
-                      <%# id="add-to-cart-<%#= engine.id %>" %>
-                      data-controller="cart"
-                      data-cart-target="button"
-                      data-engine-id="<%= engine.id %>"
-                      data-action="click->cart#add"
-                      class="btn btn-primary">
-                      <i class="fa fa-shopping-cart"></i>
-                      Add to Cart
-                  </button>
+                  <%= form_with url: cart_add_item_path, method: :post, data: { turbo: true } do |f| %>
+                    <%= hidden_field_tag :engine_id, engine.id %>
+                    <div class="d-none"><%= f.number_field :quantity, value: 1, min: 1 %></div>
+                    <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+                  <% end %>
                 <% end %>
               </div>
-            </a>
+            </div>
           <% end %>
           <% else %>
             <div style="margin: 30px;">
               <h1>Search Results</h1>
-              <p>We don't have engines with name: <strong style="text-decoration: underline; font-size: 1.1rem;"> <%= params[:query]%></strong></p>
+              <p>It seems we can't find an engines with name: <strong style="text-decoration: underline; font-size: 1.1rem;"> <%= params[:query]%></strong></p>
             </div>
           <% end %>
       </div>

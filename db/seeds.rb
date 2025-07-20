@@ -34,7 +34,7 @@ require "open-uri"
 # puts "Reviews destroyed"
 # require_relative "seeds/reviews.rb"
 # require_relative "seeds/boatengine.rb"
-require_relative "seeds/carengines.rb"
+# require_relative "seeds/carengines.rb"
 require_relative "seeds/truckengine.rb"
 require_relative "seeds/more_engines.rb"
 

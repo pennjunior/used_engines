@@ -1,1 +1,33 @@
 <p>Yes we succeeded to get the payment</p>
+  <div class="thank-you-section">
+    <h1>Thank You for Your Inquiry!</h1>
+    <p>We’ve received your order and will be in touch soon with more details.</p>
+  </div>
+
+  <div class="order-summary">
+    <h2>Order Summary</h2>
+    <p><strong>Order Number:</strong> #<%= @carts.id %></p>
+    <p><strong>Date:</strong> <%= @carts.created_at.strftime('%B %d, %Y') %></p>
+
+    <div class="order-items">
+        <div class="order-item">
+          <%= image_tag @carts.engine.engineable.photos.first, alt: @carts.engine.title, class: "bike-thumbnail" %>
+          <div>
+            <p><strong>Engine Ordered:</strong> <%= "#{@carts.engine.title}" %></p>
+            <p><strong>Price:</strong> <%= number_to_currency(@carts.engine.price) %></p>
+          </div>
+        </div>
+    </div>
+
+    <p><strong>Total:</strong> <%= number_to_currency(@carts.engine.price) %></p>
+  </div>
+
+  <div class="next-steps">
+    <h2>What’s Next?</h2>
+    <p>We will contact you within 30 minutes to confirm the details of your order. If you have any questions, don’t hesitate to reach out!</p>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Explore More Engines", engines_path, class: "primary-btn" %>
+  </div>
+</div>

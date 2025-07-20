@@ -24,11 +24,11 @@
     <% else %>
     <div  style="margin: 100px; text-align: center;">
         <p style="font-weight: 600;">Your Cart is Empty</p>
-        <%= link_to "return To Engines", root_path, data: { turbo_frame: "_top" } %>
+        <%= link_to "Return To Engines", engines_path, data: { turbo_frame: "_top" } %>
      </div>
   <% end %>
 <% end %>
- <p class="checkout-total" > Total: <%= number_to_currency(@cart.total) %>
-    <%= link_to "Click to Purchase",  new_cart_purchase_path(@cart), class: "checkout-success" %>
+ <p class="checkout-total" style="margin-bottom: 6.1rem;" > Total: <%= number_to_currency(@cart.total) %>
+    <%= link_to "Pay",  new_cart_purchase_path(@cart), class: "checkout-success" %>
  </p>
   
