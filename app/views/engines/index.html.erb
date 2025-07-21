@@ -17,34 +17,22 @@
           <% @paginated_items.each do |engine| %>
           <div class="card">
               <%= link_to engine_path(engine) do %>
-                <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
+                <% if engine.engineable.present? && engine.engineable.photos.any? %>
+                  <%= image_tag engine.engineable.photos.first, alt: engine.title, height: 250, width: 300, class: "engine-image" %>
+                <% else %>
+                  <div style="height: 250px; width: 300px; display: flex; align-items: center; justify-content: center; background: #eee;">
+                    <span>Deleted or no photos</span>
+                  </div>
+                <% end %>
               <% end %>
+
               <div class="card-info">
                 <%= link_to engine_path(engine), style: "text-decoration: none;" do %>
                   <h4><%= engine.title %></h4>
                   <p class="price">Price: $<%= engine.price %></p>
                 <% end %>
-                <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
-                  <p>
-                    <i class="fas fa-tachometer-alt"></i>
-                    Millage: <%= engine.engineable.mileage %> Mi
-                  </p>
-                   <%= form_with url: cart_add_item_path, method: :post, data: { turbo: true } do |f| %>
-                      <%= hidden_field_tag :engine_id, engine.id %>
-                      <div class="d-none"><%= f.number_field :quantity, value: 1, min: 1 %></div>
-                      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-                    <% end %>
-                <% else %>
-                  <p>
-                    <i class="fas fa-bolt"></i>
-                    Power: <%= engine.engineable.power %> HP
-                  </p>
-                  <%= form_with url: cart_add_item_path, method: :post, data: { turbo: true } do |f| %>
-                    <%= hidden_field_tag :engine_id, engine.id %>
-                    <div class="d-none"><%= f.number_field :quantity, value: 1, min: 1 %></div>
-                    <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-                  <% end %>
-                <% end %>
+               
+              <%# lets paste them here %>
               </div>
             </div>
           <% end %>

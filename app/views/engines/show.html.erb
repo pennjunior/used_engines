@@ -70,7 +70,7 @@
   <!-- Order Form Section -->
   <div class="bike-form">
       <div class="row m-2">
-        <h2 style="font-family: 'Montserrat', sans-serif"><%= "#{@engine.title} For Sale" %></h2>
+        <h2 style="font-family: 'Montserrat', sans-serif"><%= "#{@engine.title}" %></h2>
         <h2 style="color: blue; font-size: 1.5rem; font-weight: 800;"><%= number_to_currency(@engine.price) %></h2>
       </div>
     <p style="font-weight: 700; text-align: center;"> PLACE A QUICK ORDER</p>
@@ -227,6 +227,11 @@
       <td><strong>Description:</strong></td>
       <td><%= @engine.description %></td>
     </tr>
+    <tr>
+      <td><strong>Situation</strong></td>
+      <td>Used: An item that has been used previously. The item may have some signs of cosmetic wear, but is fully operational and functions as intended. This item may be a floor model or store return that has been used. See the seller's listing for full
+         details and description of any imperfections.</td>
+    <tr>
   </table>
   <div class="actions">
     <%= link_to "Explore More Engines", engines_path, class: "primary-btn" %>
