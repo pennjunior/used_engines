@@ -61,6 +61,8 @@ class EnginesController < ApplicationController
   end
 
   def destroy
+    @engine = Engine.friendly.find(params[:id])
+    @engine.destroy
   end
   private
 

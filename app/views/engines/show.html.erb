@@ -238,13 +238,13 @@
   <% end %>
 
   <% if current_user&.admin? %>
-  <%= link_to edit_engine_path(@engine.engineable), class: "back-link" do %>
-    <i class="fas fa-edit"></i> Edit Car
+  <%= link_to edit_engine_path(@engine), class: "btn btn-primary", style: "max-width: 300px;" do %>
+    <i class="fas fa-edit"></i> Edit Engine
   <% end %>
 
-  <%= button_to engine_path(@engine.engineable), method: :delete, data: { confirm: 'Are you sure?' }, class: "back-link" do %>
-    <i class="fas fa-trash-alt"></i> Delete
-  <% end %>
+  <%#= button_to engine_path(@engine), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary", style: "max-width: 300px;" do %>
+    <%# <i class="fas fa-trash-alt"></i> Delete %>
+  <%# end %>
 <% end %>
 
 </div>
