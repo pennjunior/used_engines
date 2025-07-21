@@ -32,7 +32,29 @@
                   <p class="price">Price: $<%= engine.price %></p>
                 <% end %>
                
-              <%# lets paste them here %>
+              <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>
+                  <p>
+                    <i class="fas fa-tachometer-alt"></i>
+                    Millage: <%= engine.engineable.mileage %> Mi
+                  </p>
+                   <%= form_with url: cart_add_item_path, method: :post, data: { turbo: true } do |f| %>
+                      <%= hidden_field_tag :engine_id, engine.id %>
+                      <div class="d-none"><%= f.number_field :quantity, value: 1, min: 1 %></div>
+                      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+                    <% end %>
+                <% else %>
+                  <p>
+                    <i class="fas fa-bolt"></i>
+                    Power: <%= engine.engineable.power %> HP
+                  </p>
+                  
+                  <%= form_with url: cart_add_item_path, method: :post, data: { turbo: true } do |f| %>
+                    <%= hidden_field_tag :engine_id, engine.id %>
+                    <div class="d-none"><%= f.number_field :quantity, value: 1, min: 1 %></div>
+                    <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+                  <% end %>
+                <% end %>
+
               </div>
             </div>
           <% end %>
