@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get '/carorders/:id/confirmation', to: 'car_orders#confirmation', as: 'order_confirmation'
   get 'engineorders/:id/confirmation', to: 'engine_orders#confirmation', as: 'engine_order_confirmation'
   get 'faq', to: 'pages#faq'
-  
+  get 'feed/google', to: 'feed#google', defaults: { format: 'xml' }
 
   # routes for the controller
   # resources :orders, only: [:create, :index ]
