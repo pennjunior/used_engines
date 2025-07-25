@@ -1,0 +1,83 @@
+/* FAQ Section Wrapper */
+[data-controller="faq"] {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+[data-controller="faq"] h1 {
+  font-size: 2rem;
+  margin: 40px 0 20px;
+  color: #007BFF;
+  border-left: 4px solid #007BFF;
+  padding-left: 12px;
+}
+
+/* FAQ Item Container */
+.faq-item {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.faq-item:hover {
+  background: #f9f9f9;
+}
+
+/* Question Text */
+.faq-item h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.faq-item h3::after {
+  content: '+';
+  font-size: 1.2rem;
+  color: #007BFF;
+  transition: transform 0.3s ease;
+}
+
+/* Active/Expanded State */
+.faq-item.active h3::after {
+  content: '–';
+  transform: rotate(180deg);
+}
+
+/* Answer Text */
+.faq-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 10px;
+  color: #555;
+  display: none;
+  transition: all 0.3s ease;
+}
+
+/* When not hidden (JavaScript will toggle) */
+.faq-item p:not(.hidden) {
+  display: block;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  [data-controller="faq"] h1 {
+    font-size: 1.5rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1rem;
+  }
+
+  .faq-item p {
+    font-size: 0.95rem;
+  }
+}

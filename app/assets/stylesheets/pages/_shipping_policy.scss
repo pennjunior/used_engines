@@ -1,0 +1,59 @@
+.shipping-policy {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px 60px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.shipping-policy h1 {
+  font-size: 2.4rem;
+  color: #007BFF;
+  margin-bottom: 30px;
+  border-left: 5px solid #007BFF;
+  padding-left: 15px;
+}
+
+.shipping-policy h2 {
+  font-size: 1.6rem;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.shipping-policy p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.shipping-policy ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.shipping-policy ul li {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+
+.shipping-policy a {
+  color: #007BFF;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .shipping-policy h1 {
+    font-size: 1.8rem;
+  }
+
+  .shipping-policy h2 {
+    font-size: 1.3rem;
+  }
+
+  .shipping-policy p,
+  .shipping-policy ul li {
+    font-size: 1rem;
+  }
+}

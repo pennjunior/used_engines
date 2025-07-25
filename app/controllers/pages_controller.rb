@@ -71,25 +71,21 @@ class PagesController < ApplicationController
   def contact
   end
 
-  def how_to_buy
+  def shipping_policy
   end
 
-  def how_to_choose_a_car
-  end
 
-  def how_to_pay
+  def privacy_policy
   end
 
   def warranty
   end
 
-  def inquiry
+  def about_us
   end
 
-  def auction
-  end
-
-  def prime_seller
+  def returns_policy
+    
   end
 
   private

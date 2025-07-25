@@ -38,8 +38,14 @@ Rails.application.routes.draw do
   get '/mercedes', to: 'pages#mercedes'
   get '/carorders/:id/confirmation', to: 'car_orders#confirmation', as: 'order_confirmation'
   get 'engineorders/:id/confirmation', to: 'engine_orders#confirmation', as: 'engine_order_confirmation'
-  get 'faq', to: 'pages#faq'
+  get '/faq', to: 'pages#faq'
   get 'feed/google', to: 'feed#google', defaults: { format: 'xml' }
+  get '/about-us', to: 'pages#about_us' 
+  get '/warranty', to: 'pages#warranty' 
+  get '/privacy-policy', to: 'pages#privacy_policy'
+  get '/shipping-policy', to: 'pages#shipping_policy'
+  get '/returns-and-refund', to: 'pages#returns_policy'
+  get '/contact-us', to: 'pages#contact'
 
   # routes for the controller
   # resources :orders, only: [:create, :index ]
