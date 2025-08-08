@@ -1,34 +1,549 @@
-<p class="checkout-total" >Your Cart Items</p>
-<%= turbo_frame_tag "checkout-line-items" do %>
-    <% if @line_items.any? %>
-        <% @line_items.each do |item| %>
-            <div id="line_item_<%= item.id %>" style="margin-left: 2.0rem; margin-right: 1.0rem;">
-                <div class="order-items">
-                    <div class="order-item">
-                    <%= image_tag item.engine.engineable.photos.first, alt: item.engine.title, class: "bike-thumbnail" %>
-                    <div>
-                        <p><strong>Engine Ordered:</strong> <%= "#{item.engine.title}" %></p>
-                        <p>Quantity: <%= item.quantity %>  | <strong>Total:</strong> <%= number_to_currency(item.total) %></p>
-                        <%= button_to(
-                            "<i class='fa-solid fa-trash'></i>".html_safe,
-                            cart_remove_item_path(item.id),
-                            method: :post,
-                            form: { data: { turbo_confirm: "Are you sure?" } },
-                            class: "text-rd"
-                        ) %>
-                    </div>
-                    </div>
+<!-- Professional Checkout Page using your actual data -->
+<div class="checkout-container">
+  <!-- Header -->
+  <div class="checkout-header">
+    <div class="progress-indicator">
+      <div class="progress-step completed"></div>
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
+    </div>
+    <h1>Your Shopping Cart</h1>
+    <p>Review your items and proceed to checkout</p>
+  </div>
+
+  <div class="main-content">
+    <!-- Cart Items Section -->
+    <div class="cart-section">
+      <div class="section-header">
+        <svg class="cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V16.5M9 19.5C9.8 19.5 10.5 20.2 10.5 21S9.8 22.5 9 22.5 7.5 21.8 7.5 21 8.2 19.5 9 19.5ZM20 19.5C20.8 19.5 21.5 20.2 21.5 21S20.8 22.5 20 22.5 18.5 21.8 18.5 21 19.2 19.5 20 19.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h2>Cart Items</h2>
+      </div>
+      
+      <%= turbo_frame_tag "checkout-line-items" do %>
+        <div class="cart-items">
+          <% if @line_items.any? %>
+            <% @line_items.each do |item| %>
+              <div id="line_item_<%= item.id %>" class="cart-item">
+                <%= image_tag item.engine.engineable.photos.first, alt: item.engine.title, class: "item-image" %>
+                <div class="item-details">
+                  <div class="item-title"><%= item.engine.title %></div>
+                  <div class="item-meta">Quantity: <%= item.quantity %></div>
+                  <div class="item-price"><%= number_to_currency(item.total) %></div>
                 </div>
-            </div>   
+                <div class="item-actions">
+                  <%= button_to cart_remove_item_path(item.id), 
+                      method: :post,
+                      form: { data: { turbo_confirm: "Are you sure?" } },
+                      class: "remove-btn" do %>
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                      <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="empty-cart">
+              <svg class="empty-cart-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V16.5M9 19.5C9.8 19.5 10.5 20.2 10.5 21S9.8 22.5 9 22.5 7.5 21.8 7.5 21 8.2 19.5 9 19.5ZM20 19.5C20.8 19.5 21.5 20.2 21.5 21S20.8 22.5 20 22.5 18.5 21.8 18.5 21 19.2 19.5 20 19.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h3>Your Cart is Empty</h3>
+              <p>Add some items to get started!</p>
+              <%= link_to "Return To Engines", engines_path, class: "shop-link", data: { turbo_frame: "_top" } %>       
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <div class="summary-header">
+        <h3>
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M7 11.5a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H7.5a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+          Order Summary
+        </h3>
+      </div>
+      
+      <div class="summary-content">
+        <% if @line_items.any? %>
+          <div class="summary-row">
+            <span class="summary-label">Items (<%= @line_items.sum(:quantity) %>)</span>
+            <span class="summary-value"><%= number_to_currency(@cart.total) %></span>
+          </div>
+          
+          <div class="summary-row">
+            <span class="summary-label">Shipping</span>
+            <span class="summary-value">Calculated at checkout</span>
+          </div>
+          
+          <div class="summary-row">
+            <span class="summary-label">Tax</span>
+            <span class="summary-value">Calculated at checkout</span>
+          </div>
+          
+          <div class="summary-row total-row">
+            <span class="summary-label">Total</span>
+            <span class="summary-value"><%= number_to_currency(@cart.total) %></span>
+          </div>
+        <% else %>
+          <div class="summary-row">
+            <span class="summary-label">Cart Total</span>
+            <span class="summary-value">$0.00</span>
+          </div>
         <% end %>
-    <% else %>
-    <div  style="margin: 100px; text-align: center;">
-        <p style="font-weight: 600;">Your Cart is Empty</p>
-        <%= link_to "Return To Engines", engines_path, data: { turbo_frame: "_top" } %>
-     </div>
-  <% end %>
-<% end %>
- <p class="checkout-total" style="margin-bottom: 6.1rem;" > Total: <%= number_to_currency(@cart.total) %>
-    <%= link_to "Pay",  new_cart_purchase_path(@cart), class: "checkout-success" %>
- </p>
+        
+        <% if @line_items.any? %>
+          <div data-controller="checkout" data-checkout-cart-id-value="<%= @cart.id %>">
+            <button class="checkout-button" data-action="click->checkout#open">
+              <svg style="margin-right: 8px;" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+              </svg>
+              Proceed to Checkout
+            </button>
+            <%= turbo_frame_tag "checkout-modal-frame" %>
+          </div>
+        <% else %>
+          <button class="checkout-button" disabled>
+            Cart is Empty
+          </button>
+        <% end %>
+        
+        <div class="security-badges">
+          <div class="security-badge">
+            <svg class="security-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"/>
+            </svg>
+            <span>Secure Checkout</span>
+          </div>
+          
+          <div class="security-badge">
+            <svg class="security-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 8H17V6C17 3.24 14.76 1 12 1S7 3.24 7 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8ZM12 17C10.9 17 10 16.1 10 15S10.9 13 12 13 14 13.9 14 15 13.1 17 12 17ZM15.1 8H8.9V6C8.9 4.29 10.29 2.9 12 2.9S15.1 4.29 15.1 6V8Z"/>
+            </svg>
+            <span>SSL Protected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #f8fafc;
+  line-height: 1.6;
+  color: #2d3748;
+}
+
+.checkout-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.checkout-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.checkout-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="%23fff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>') repeat-x;
+  opacity: 0.3;
+}
+
+.checkout-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.checkout-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  align-items: start;
+}
+
+.cart-section {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.section-header {
+  background: #f8fafc;
+  padding: 20px 30px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+.cart-icon {
+  width: 24px;
+  height: 24px;
+  fill: #667eea;
+}
+
+.cart-items {
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 30px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s ease;
+}
+
+.cart-item:hover {
+  background: #fafbfc;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #f1f5f9;
+  border: 2px solid #e2e8f0;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.item-meta {
+  color: #4a5568;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.item-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.remove-btn {
+  background: #fed7d7;
+  color: #e53e3e;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover {
+  background: #feb2b2;
+  transform: scale(1.05);
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 60px 30px;
+  color: #4a5568;
+}
+
+.empty-cart-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  opacity: 0.5;
+}
+
+.empty-cart h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #2d3748;
+}
+
+.empty-cart p {
+  margin-bottom: 20px;
+}
+
+.shop-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.shop-link:hover {
+  transform: translateY(-2px);
+}
+
+.order-summary {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 20px;
+}
+
+.summary-header {
+  background: #f8fafc;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 16px 16px 0 0;
+}
+
+.summary-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summary-content {
+  padding: 24px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.summary-row:last-of-type {
+  border-bottom: none;
+}
+
+.summary-label {
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.summary-value {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.total-row {
+  border-top: 2px solid #e2e8f0;
+  margin-top: 12px;
+  padding-top: 16px;
+  font-size: 1.2rem;
+}
+
+.total-row .summary-label {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.total-row .summary-value {
+  color: #667eea;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.checkout-button {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.checkout-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.checkout-button:hover::before {
+  left: 100%;
+}
+
+.checkout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.checkout-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  background: #e2e8f0;
+  color: #4a5568;
+}
+
+.security-badges {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.security-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #4a5568;
+  font-size: 0.85rem;
+}
+
+.security-icon {
+  width: 16px;
+  height: 16px;
+  fill: #48bb78;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 30px 0;
+}
+
+.progress-step {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  position: relative;
+}
+
+.progress-step.active {
+  background: #667eea;
+}
+
+.progress-step.completed {
+  background: #48bb78;
+}
+
+@media (max-width: 768px) {
+  .checkout-header h1 {
+    font-size: 2rem;
+  }
   
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .order-summary {
+    order: -1;
+    position: static;
+  }
+  
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    text-align: left;
+  }
+  
+  .item-image {
+    width: 100%;
+    height: 200px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .item-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .checkout-container {
+    padding: 10px;
+  }
+}
+</style>

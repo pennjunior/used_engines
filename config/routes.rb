@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :reviews, only: [ :index, :show ]
   devise_for :users
 
+ 
+
   resources :carts do 
     scope module: :carts do 
       resources :purchases, only: [:new, :create] do 

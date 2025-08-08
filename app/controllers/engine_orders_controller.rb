@@ -25,6 +25,7 @@ class EngineOrdersController < ApplicationController
   def confirmation
     @order = EngineOrder.find(params[:id])
   end
+  
   private
 
   def engine_order_params

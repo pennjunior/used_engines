@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_18_144306) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_07_120835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -174,6 +174,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_18_144306) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "stripe_session_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.string "email"
+    t.string "phone"
+    t.text "shipping_address"
+    t.text "billing_address"
+    t.string "payment_method"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "cart_data"
+    t.decimal "total_amount"
   end
 
   create_table "reviews", force: :cascade do |t|

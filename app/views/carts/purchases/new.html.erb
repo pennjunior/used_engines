@@ -1,6 +1,56 @@
-<p class="checkout-total" >Card Payment</p>
-<div
-  data-controller="stripe-checkout"
-  data-stripe-checkout-publishable-key-value="<%= Rails.configuration.stripe[:publishable_key] %>"
-  data-stripe-checkout-url-value="<%= cart_stripe_checkouts_path(@cart) %>">
-</div>
+<%= turbo_frame_tag "checkout-modal-frame" do %>
+  <div class="modal-overlay">
+    <div class="modal-content">
+      <h2>Complete Your Purchase</h2>
+      
+      <!-- Show cart summary -->
+      <div class="cart-summary">
+        <% @cart_items.each do |item| %>
+          <div class="cart-item">
+            <%= item.engine.title %> - Qty: <%= item.quantity %>
+            <span>$<%= item.engine.price * item.quantity %></span>
+          </div>
+        <% end %>
+        <div class="total">
+          Total: $<%= @cart_items.sum { |item| item.engine.price * item.quantity } %>
+        </div>
+      </div>
+
+      <%= form_with model: [@cart, @purchase], local: false, data: { turbo_frame: "_top" } do |form| %>
+        <div class="form-group">
+          <%= form.label :email %>
+          <%= form.email_field :email, required: true %>
+        </div>
+        
+        <div class="form-group">
+          <%= form.label :phone %>
+          <%= form.telephone_field :phone, required: true %>
+        </div>
+        
+        <div class="form-group">
+          <%= form.label :billing_address %>
+          <%= form.text_field :billing_address, required: true %>
+        </div>
+        
+        <div class="form-group">
+          <%= form.label :shipping_address %>
+          <%= form.text_field :shipping_address, required: true %>
+        </div>
+        
+        <div class="form-group">
+          <%= form.label :payment_method %>
+          <%= form.select :payment_method, options_for_select([
+            ['Credit Card', 'credit_card'],
+            ['Bank Transfer', 'bank_transfer']
+          ]), { prompt: 'Select payment method' }, { required: true } %>
+        </div>
+        
+        <div class="form-actions">
+          <%= form.submit "Complete Order", class: "btn btn-primary" %>
+          <%= button_tag "Cancel", type: "button", class: "btn btn-secondary", 
+                         data: { action: "click->checkout#close" } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -50,6 +50,7 @@ class CartsController < ApplicationController
         format.turbo_stream { head :not_found }
       end
     end
+  
   end
 
 

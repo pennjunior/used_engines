@@ -1,33 +1,350 @@
-<p>Yes we succeeded to get the payment</p>
-  <div class="thank-you-section">
-    <h1>Thank You for Your Inquiry!</h1>
-    <p>We’ve received your order and will be in touch soon with more details.</p>
-  </div>
-
-  <div class="order-summary">
-    <h2>Order Summary</h2>
-    <p><strong>Order Number:</strong> #<%= @carts.id %></p>
-    <p><strong>Date:</strong> <%= @carts.created_at.strftime('%B %d, %Y') %></p>
-
-    <div class="order-items">
-        <div class="order-item">
-          <%= image_tag @carts.engine.engineable.photos.first, alt: @carts.engine.title, class: "bike-thumbnail" %>
-          <div>
-            <p><strong>Engine Ordered:</strong> <%= "#{@carts.engine.title}" %></p>
-            <p><strong>Price:</strong> <%= number_to_currency(@carts.engine.price) %></p>
+<!-- app/views/carts/purchases/success.html.erb -->
+<div class="success-container">
+  <div class="success-card">
+    <!-- Success Icon -->
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" fill="#10B981"/>
+        <path d="m9 12 2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    
+    <!-- Success Message -->
+    <h1 class="success-title">Order Submitted Successfully! 🎉</h1>
+    <p class="success-subtitle">
+      Thank you for your purchase! We've received your order details and will be in touch shortly.
+    </p>
+    
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <h3>What happens next?</h3>
+      <div class="next-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Email Confirmation</h4>
+            <p>You'll receive a confirmation email at <strong><%= @purchase&.email || 'your email address' %></strong></p>
           </div>
         </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Personal Discussion</h4>
+            <p>We'll reach out to discuss your order details and answer any questions</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Payment Instructions</h4>
+            <p>Once everything is confirmed, we'll send you secure payment details</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <p><strong>Total:</strong> <%= number_to_currency(@carts.engine.price) %></p>
-  </div>
-
-  <div class="next-steps">
-    <h2>What’s Next?</h2>
-    <p>We will contact you within 30 minutes to confirm the details of your order. If you have any questions, don’t hesitate to reach out!</p>
-  </div>
-
-  <div class="actions">
-    <%= link_to "Explore More Engines", engines_path, class: "primary-btn" %>
+    
+    <!-- Purchase Details -->
+    <% if @purchase %>
+    <div class="purchase-details">
+      <h3>Order Details</h3>
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="label">Order Date:</span>
+          <span class="value"><%= @purchase.created_at.strftime("%B %d, %Y at %I:%M %p") %></span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Email:</span>
+          <span class="value"><%= @purchase.email %></span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Phone:</span>
+          <span class="value"><%= @purchase.phone %></span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Payment Method:</span>
+          <span class="value"><%= @purchase.payment_method.humanize %></span>
+        </div>
+        <% if @purchase.total_amount %>
+        <div class="detail-item">
+          <span class="label">Total Amount:</span>
+          <span class="value total-amount"><%= number_to_currency(@purchase.total_amount) %></span>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+    
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <%= link_to "Continue Shopping", engines_path, class: "btn btn-primary" %>
+      <%= link_to "View All Engines", engines_path, class: "btn btn-secondary" %>
+    </div>
+    
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <p>Questions about your order?</p>
+      <p>Contact us at <a href="mailto:contact@autobidseller.com">contact@autobidseller.com</a> or call <a href="tel:+1(341)223-3974">(341)223-3974</a></p>
+    </div>
   </div>
 </div>
+
+<style>
+.success-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.success-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  animation: slideUp 0.6s ease;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 30px;
+  animation: bounceIn 0.8s ease;
+}
+
+.success-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.success-title {
+  color: #2d3748;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.success-subtitle {
+  color: #4a5568;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.order-summary {
+  text-align: left;
+  margin-bottom: 40px;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.order-summary h3 {
+  color: #2d3748;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.next-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  color: #2d3748;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.step-content p {
+  color: #4a5568;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.purchase-details {
+  text-align: left;
+  margin-bottom: 40px;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.purchase-details h3 {
+  color: #2d3748;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.details-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.value {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.total-amount {
+  color: #667eea;
+  font-size: 18px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+  background: #f7fafc;
+  color: #4a5568;
+  border: 2px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+  transform: translateY(-2px);
+}
+
+.contact-info {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 25px;
+  color: #4a5568;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact-info a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .success-card {
+    padding: 30px 20px;
+  }
+  
+  .success-title {
+    font-size: 24px;
+  }
+  
+  .success-subtitle {
+    font-size: 16px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+</style>

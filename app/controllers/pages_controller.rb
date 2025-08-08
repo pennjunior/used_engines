@@ -85,7 +85,6 @@ class PagesController < ApplicationController
   end
 
   def returns_policy
-    
   end
 
   private

@@ -1,0 +1,27 @@
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <%= form_with model: purchase, url: cart_checkout_path, data: { turbo_frame: "checkout_modal" } do |f| %>
+      <h2>Checkout</h2>
+
+      <h4>Customer Info</h4>
+      <%= f.email_field :email, placeholder: "Email", required: true %>
+      <%= f.telephone_field :phone, placeholder: "Phone", required: true %>
+
+      <h4>Shipping Address</h4>
+      <%= f.text_field :shipping_address, placeholder: "Full Shipping Address", required: true %>
+
+      <h4>Billing Address</h4>
+      <%= f.text_field :billing_address, placeholder: "Billing Address (or same)", required: true %>
+
+      <h4>Payment Method</h4>
+      <%= f.radio_button :payment_method, "card" %> <%= f.label :payment_method_card, "Card Payment" %><br>
+      <%= f.radio_button :payment_method, "bank_transfer" %> <%= f.label :payment_method_bank_transfer, "Bank Transfer" %>
+
+      <div class="checkout-buttons">
+        <%= f.submit "Place Order", class: "btn-primary" %>
+      </div>
+    <% end %>
+
+    <button class="modal-close" data-action="click->checkout#close">Close</button>
+  </div>
+</div>
