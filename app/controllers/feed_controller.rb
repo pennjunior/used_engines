@@ -3,23 +3,23 @@ include Rails.application.routes.url_helpers
 
 class FeedController < ApplicationController
   def google
-    @engines = Engine.includes(:engineable => { photos_attachments: :blob })
+    @engines = Engine.includes(engineable: { photos_attachments: :blob })
 
     builder = Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
       xml.rss(version: "2.0", 'xmlns:g' => "http://base.google.com/ns/1.0") do
         xml.channel do
           xml.title "Used Engines Feed"
-          xml.link root_path
-          xml.describtion "Feed of used engines"
+          xml.link root_url
+          xml.description "Feed of used engines"
 
           @engines.each do |engine|
             product = engine.engineable
-
             next unless product.present?
+
             xml.item do
               xml['g'].id engine.id
               xml.title engine.title
-              xml.describtion product.description
+              xml.description product.description
 
               xml['g'].price "#{product.price} USD"
               xml['g'].condition "used"
@@ -29,9 +29,17 @@ class FeedController < ApplicationController
               xml['g'].tax do 
                 xml['g'].rate 0
               end
-            #including the image here
+
+              # Add product landing page URL
+              xml['g'].link engine_url(engine)  # or polymorphic_url(product) if routes vary
+
+              # Images
               if product.photos.attached?
-                xml['g'].image_link url_for(product.photos.first)
+                photos = product.photos
+                xml['g'].image_link url_for(photos.first)
+                photos.drop(1).first(10).each do |photo| # Google allows max 10 additional images
+                  xml['g'].additional_image_link url_for(photo)
+                end
               end
             end
           end
