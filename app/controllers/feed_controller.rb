@@ -1,4 +1,6 @@
 require 'open-uri'
+include Rails.application.routes.url_helpers
+
 class FeedController < ApplicationController
   def google
     @engines = Engine.includes(:engineable => { photos_attachments: :blob })
@@ -29,7 +31,7 @@ class FeedController < ApplicationController
               end
             #including the image here
               if product.photos.attached?
-                xml['g'].image_link_url_for(product.photos.first)
+                xml['g'].image_link url_for(product.photos.first)
               end
             end
           end
