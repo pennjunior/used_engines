@@ -12,6 +12,8 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
+  # Host for all URL generation in production
+  Rails.application.routes.default_url_options[:host] = "autobidseller.com"
   # Essential settings for production
   config.action_mailer.default_url_options = { host: 'autobidseller.com', protocol: 'https' }
 
