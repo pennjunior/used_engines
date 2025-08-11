@@ -13,7 +13,7 @@ Rails.application.configure do
   }
 
   # Essential settings for production
-  config.action_mailer.default_url_options = { host: 'bikezsale.us', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'autobidseller.com', protocol: 'https' }
 
   # Settings specified here will take precedence over those in config/application.rb.
 
