@@ -12,32 +12,32 @@ require 'ruby-progressbar'
 require "open-uri"
 
 # Clear existing data
-# Car.destroy_all
-# CarEngine.destroy_all
-# TruckEngine.destroy_all
-# # BoatEngine.destroy_all
-# Engine.destroy_all
-# Review.destroy_all
-# User.destroy_all
+Car.destroy_all
+CarEngine.destroy_all
+TruckEngine.destroy_all
+# BoatEngine.destroy_all
+Engine.destroy_all
+Review.destroy_all
+User.destroy_all
 
-#Creating admin user
-# admin_user = User.create!(
-#   email: "admin@quan.com",
-#   password: "gR`£%53n$567",
-#   password_confirmation: "gR`£%53n$567",
-#   admin: true
-# )
-# puts "Admin user created with email: #{admin_user.email} and password: #{admin_user.password}"
-# puts "Engines destroyed"
-# puts "Creating cars2"
+Creating admin user
+admin_user = User.create!(
+  email: "admin@quan.com",
+  password: "gR`£%53n$567",
+  password_confirmation: "gR`£%53n$567",
+  admin: true
+)
+puts "Admin user created with email: #{admin_user.email} and password: #{admin_user.password}"
+puts "Engines destroyed"
+puts "Creating cars2"
 
-# puts "Reviews destroyed"
-# require_relative "seeds/reviews.rb"
-# require_relative "seeds/boatengine.rb"
-# require_relative "seeds/carengines.rb"
-# require_relative "seeds/truckengine.rb"
-# db/seeds/more_engine2.rb
-# require_relative "seeds/more_engine2.rb"
+puts "Reviews destroyed"
+require_relative "seeds/reviews.rb"
+require_relative "seeds/boatengine.rb"
+require_relative "seeds/carengines.rb"
+require_relative "seeds/truckengine.rb"
+db/seeds/more_engine2.rb
+require_relative "seeds/more_engine2.rb"
 require_relative "seeds/more_engine3.rb"
 # require_relative "seeds/cars.rb"
 # require_relative "seeds/cars_2.rb"
