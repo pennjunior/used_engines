@@ -20,7 +20,7 @@ Engine.destroy_all
 Review.destroy_all
 User.destroy_all
 
-Creating admin user
+# Creating admin user
 admin_user = User.create!(
   email: "admin@quan.com",
   password: "gR`£%53n$567",
