@@ -15,6 +15,11 @@ class EngineOrdersController < ApplicationController
 
     if @order.save
       OrderMailer.new_order(@order).deliver_later
+      # Track conversion
+      GoogleAdsConversionService.track_conversion(
+        conversion_id: ENV['GOOGLE_CONVERSION_ID_INQUIRY']
+      )
+
       redirect_to engine_order_confirmation_path(@order), notice: "Successfully Sent Engine Inquiry"
     else
       flash[:alert] = "Couldn't save"

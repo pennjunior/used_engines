@@ -13,6 +13,14 @@ module Carts
       
       if @purchase.save
         @cart.line_items.destroy_all
+
+        #track conversion with value
+         GoogleAdsConversionService.track_conversion(
+          conversion_id: ENV['GOOGLE_CONVERSION_ID_PURCHASE'],
+          value: @purchase.total_amount,
+          currency: 'USD'
+        )
+
         redirect_to success_cart_purchases_path(cart_id: params[:cart_id])
       else
         render :new, status: :unprocessable_entity
