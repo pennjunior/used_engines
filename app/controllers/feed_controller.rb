@@ -1,5 +1,4 @@
 require 'open-uri'
-include Rails.application.routes.url_helpers
 
 class FeedController < ApplicationController
   def google
