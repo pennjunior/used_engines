@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - AutoBidSeller</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: white;
+      padding: 30px 40px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 600;
+    }
+    .content {
+      padding: 40px;
+    }
+    .order-summary {
+      background: #f8f9fa;
+      border-left: 4px solid #3498db;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 4px;
+    }
+    .order-summary h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      font-size: 20px;
+    }
+    .order-details {
+      list-style: none;
+      padding: 0;
+    }
+    .order-details li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+    }
+    .order-details li:last-child {
+      border-bottom: none;
+      font-weight: bold;
+      font-size: 18px;
+      color: #27ae60;
+    }
+    .order-details .label {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 30px 40px;
+      text-align: center;
+    }
+    .contact-info {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .contact-info a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    .next-steps {
+      background: #e8f5e8;
+      border: 1px solid #27ae60;
+      border-radius: 6px;
+      padding: 20px;
+      margin: 25px 0;
+    }
+    .next-steps h3 {
+      color: #27ae60;
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Order Confirmation</h1>
+      <p style="margin: 10px 0 0 0; opacity: 0.9;">Thank you for choosing AutoBidSeller</p>
+    </div>
+    
+    <div class="content">
+      <p>Dear Valued Customer,</p>
+      
+      <p>Thank you for your purchase! We have successfully received and processed your order. Below you'll find the details of your transaction for your records.</p>
+      
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <ul class="order-details">
+          <li>
+            <span class="label">Email:</span>
+            <span><%= @purchase.email %></span>
+          </li>
+          <li>
+            <span class="label">Phone:</span>
+            <span><%= @purchase.phone %></span>
+          </li>
+          <li>
+            <span class="label">Shipping Address:</span>
+            <span><%= @purchase.shipping_address %></span>
+          </li>
+          <li>
+            <span class="label">Total Amount:</span>
+            <span>$<%= sprintf('%.2f', @purchase.total_amount) %></span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="next-steps">
+        <h3>What happens next?</h3>
+        <p>• You will receive a shipping confirmation email with tracking information within 1-2 business days</p>
+        <p>• Our team will process your order and prepare it for shipment</p>
+        <p>• If you have any questions, please don't hesitate to contact us</p>
+      </div>
+      
+      <p>We appreciate your business and look forward to serving you again.</p>
+      
+      <p>Best regards,<br>
+      <strong>The AutoBidSeller Team</strong></p>
+    </div>
+    
+    <div class="footer">
+      <p><strong>Need Help?</strong></p>
+      <div class="contact-info">
+        <p>Email: <a href="mailto:contact@autobidseller.com">contact@autobidseller.com</a></p>
+        <p>Phone: <a href="tel:+15305887458">+1 (530) 588-7458</a></p>
+      </div>
+      <p style="margin-top: 25px; font-size: 12px; opacity: 0.8;">
+        This is an automated message. Please do not reply to this email.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

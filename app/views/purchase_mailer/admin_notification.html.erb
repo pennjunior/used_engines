@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Order Notification - AutoBidSeller</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: white;
+      padding: 30px 40px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 600;
+    }
+    .content {
+      padding: 40px;
+    }
+    .order-alert {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 4px;
+    }
+    .order-details {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+    .order-details h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      font-size: 20px;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 10px;
+    }
+    .detail-grid {
+      display: grid;
+      gap: 15px;
+    }
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .detail-item:last-child {
+      border-bottom: none;
+      font-weight: bold;
+      font-size: 18px;
+      color: #27ae60;
+      background: #e8f5e8;
+      margin: 10px -15px -15px -15px;
+      padding: 15px;
+      border-radius: 0 0 6px 6px;
+    }
+    .label {
+      font-weight: 600;
+      color: #495057;
+      min-width: 140px;
+    }
+    .value {
+      text-align: right;
+      word-break: break-word;
+    }
+    .timestamp {
+      background: #e9ecef;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    .actions {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      padding: 20px;
+      margin: 25px 0;
+      text-align: center;
+    }
+    .actions h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .action-list {
+      text-align: left;
+      color: #495057;
+    }
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🔔 New Order Alert</h1>
+      <p style="margin: 10px 0 0 0; opacity: 0.9;">AutoBidSeller Admin Notification</p>
+    </div>
+    
+    <div class="content">
+      <div class="order-alert">
+        <p><strong>🎉 Great news!</strong> A new order has been placed on AutoBidSeller and requires your attention.</p>
+      </div>
+      
+      <div class="order-details">
+        <h2>Order Information</h2>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <span class="label">Customer Email:</span>
+            <span class="value"><%= @purchase.email %></span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Phone Number:</span>
+            <span class="value"><%= @purchase.phone %></span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Shipping Address:</span>
+            <span class="value"><%= @purchase.shipping_address %></span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Order Total:</span>
+            <span class="value">$<%= sprintf('%.2f', @purchase.total_amount) %></span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="actions">
+        <h3>Next Steps</h3>
+        <div class="action-list">
+          <p>□ Review order details and verify customer information</p>
+          <p>□ Process payment confirmation</p>
+          <p>□ Prepare items for shipment</p>
+          <p>□ Send shipping confirmation to customer</p>
+          <p>□ Update inventory if applicable</p>
+        </div>
+      </div>
+      
+      <div class="timestamp">
+        Order received on <%= Time.current.strftime('%B %d, %Y at %I:%M %p %Z') %>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p><strong>AutoBidSeller Admin System</strong></p>
+      <p style="opacity: 0.8; font-size: 12px;">This is an automated notification for new orders.</p>
+    </div>
+  </div>
+</body>
+</html>
