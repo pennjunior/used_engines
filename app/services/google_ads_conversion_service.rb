@@ -26,3 +26,4 @@ class GoogleAdsConversionService
     end
   end
 end
+ 

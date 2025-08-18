@@ -104,29 +104,46 @@
     <div class="content">
       <p>Dear Valued Customer,</p>
       
-      <p>Thank you for your purchase! We have successfully received and processed your order. Below you'll find the details of your transaction for your records.</p>
+      <p>Thank you for your purchase! We have successfully received and processed your order.</p>
       
-      <div class="order-summary">
+    <div class="order-summary">
         <h2>Order Summary</h2>
         <ul class="order-details">
-          <li>
-            <span class="label">Email:</span>
+            <li>
+            <span class="label">Items:</span>
+              <ul>
+                <% JSON.parse(@purchase.cart_data).each do |item| %>
+                  <li>
+                    <%= item["engine_name"] %> (x<%= item["quantity"] %>) -
+                    $<%= sprintf('%.2f', item["price"].to_f * item["quantity"].to_i) %>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+            <li>
+            <span class="label">Name: </span>
+            <span><%= @purchase.billing_address %></span>
+            </li>
+            <li>
+            <span class="label">Email: </span>
             <span><%= @purchase.email %></span>
-          </li>
-          <li>
-            <span class="label">Phone:</span>
+            </li>
+            <li>
+            <span class="label">Phone: </span>
             <span><%= @purchase.phone %></span>
-          </li>
-          <li>
-            <span class="label">Shipping Address:</span>
+            </li>
+            <li>
+            <span class="label">Shipping Address: </span>
             <span><%= @purchase.shipping_address %></span>
-          </li>
-          <li>
-            <span class="label">Total Amount:</span>
+            </li>
+            <li>
+            <span class="label">Total Amount: </span>
             <span>$<%= sprintf('%.2f', @purchase.total_amount) %></span>
-          </li>
+            </li>
         </ul>
-      </div>
+    </div>
+
+
       
       <div class="next-steps">
         <h3>What happens next?</h3>
@@ -144,7 +161,7 @@
     <div class="footer">
       <p><strong>Need Help?</strong></p>
       <div class="contact-info">
-        <p>Email: <a href="mailto:contact@autobidseller.com">contact@autobidseller.com</a></p>
+        <p>Email: <a href="mailto:contact@autobidseller.com">sales@autobidseller.com</a></p>
         <p>Phone: <a href="tel:+15305887458">+1 (530) 588-7458</a></p>
       </div>
       <p style="margin-top: 25px; font-size: 12px; opacity: 0.8;">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_07_120835) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_18_142045) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -115,15 +115,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_07_120835) do
     t.index ["slug"], name: "index_cars_on_slug", unique: true
   end
 
-  create_table "cart_items", force: :cascade do |t|
-    t.bigint "cart_id", null: false
-    t.bigint "engine_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
-    t.index ["engine_id"], name: "index_cart_items_on_engine_id"
-  end
-
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -160,20 +151,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_07_120835) do
 
   create_table "line_items", force: :cascade do |t|
     t.bigint "engine_id", null: false
+    t.integer "quantity", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cart_id", null: false
-    t.integer "quantity", default: 1
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["engine_id"], name: "index_line_items_on_engine_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.decimal "total"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "stripe_session_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -186,6 +169,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_07_120835) do
     t.datetime "updated_at", null: false
     t.text "cart_data"
     t.decimal "total_amount"
+    t.bigint "cart_id"
+    t.index ["cart_id"], name: "index_purchases_on_cart_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -246,12 +231,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_07_120835) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "car_orders", "cars"
-  add_foreign_key "cart_items", "carts"
-  add_foreign_key "cart_items", "engines"
   add_foreign_key "carts", "users"
   add_foreign_key "engine_orders", "engines"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "engines"
+  add_foreign_key "purchases", "carts"
   add_foreign_key "saved_cars", "cars"
   add_foreign_key "saved_cars", "users"
   add_foreign_key "saved_engines", "engines"

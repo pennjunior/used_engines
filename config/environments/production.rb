@@ -5,7 +5,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'mail.privateemail.com',
     port: 587,
-    domain: 'bikezsale.us',
+    domain: 'autobidseller.com',
     user_name: ENV['EMAIL_USERNAME'], # Set this in Heroku config vars
     password: ENV['EMAIL_PASSWORD'], # Set this in Heroku config vars
     authentication: 'plain',

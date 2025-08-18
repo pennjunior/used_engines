@@ -132,9 +132,13 @@
         <p><strong>🎉 Great news!</strong> A new order has been placed on AutoBidSeller and requires your attention.</p>
       </div>
       
-      <div class="order-details">
+        <div class="order-details">
         <h2>Order Information</h2>
         <div class="detail-grid">
+          <div class="detail-item">
+            <span class="label">Full name:</span>
+            <span class="value"><%= @purchase.billing_address %></span>
+          </div>
           <div class="detail-item">
             <span class="label">Customer Email:</span>
             <span class="value"><%= @purchase.email %></span>
@@ -152,7 +156,19 @@
             <span class="value">$<%= sprintf('%.2f', @purchase.total_amount) %></span>
           </div>
         </div>
+
+       <h3>Items Ordered</h3>
+        <ul>
+          <% JSON.parse(@purchase.cart_data).each do |item| %>
+            <li>
+              <%= item["engine_name"] %> (x<%= item["quantity"] %>) -
+              $<%= sprintf('%.2f', item["price"].to_f * item["quantity"].to_i) %>
+            </li>
+          <% end %>
+        </ul>
+
       </div>
+ 
       
       <div class="actions">
         <h3>Next Steps</h3>

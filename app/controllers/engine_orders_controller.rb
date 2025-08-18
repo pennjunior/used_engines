@@ -14,6 +14,8 @@ class EngineOrdersController < ApplicationController
     @order = @engine.engine_orders.build(engine_order_params)
 
     if @order.save
+      OrderMailer.customer_mailing(@order).deliver_now
+
       OrderMailer.new_order(@order).deliver_later
       # Track conversion
       GoogleAdsConversionService.track_conversion(

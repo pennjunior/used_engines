@@ -81,7 +81,7 @@
         <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
       <% end %>
 
-  <div data-controller="form-hide">
+  <div data-controller="form-hide" >
     <button type="button" class="btn btn-dark" data-action="click->form-hide#toggle">Quick Enquiry</button>
     <div data-form-hide-target="form" class="hide-form">
       <%= simple_form_for [@engine, @order],

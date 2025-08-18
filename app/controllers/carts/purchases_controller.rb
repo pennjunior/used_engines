@@ -1,32 +1,27 @@
 module Carts 
   class PurchasesController < ApplicationController
+    before_action :set_cart
     before_action :set_cart_items
     
     def new
-      @purchase = Purchase.new
+      @purchase = @cart.purchases.build
     end
 
     def create
-      @purchase = Purchase.new(purchase_params)
+      @purchase = @cart.purchases.build(purchase_params)
       @purchase.cart_data = serialize_cart_data
       @purchase.total_amount = calculate_total
       
       if @purchase.save
         @cart.line_items.destroy_all
 
-        #track conversion with value
-        #  GoogleAdsConversionService.track_conversion(
-        #   conversion_id: ENV['GOOGLE_CONVERSION_ID_PURCHASE'],
-        #   value: @purchase.total_amount,
-        #   currency: 'USD'
-        # )
         # Send confirmation to customer
         PurchaseMailer.confirmation_email(@purchase).deliver_later
 
         # Send notification to admin
         PurchaseMailer.admin_notification(@purchase).deliver_later
 
-        redirect_to success_cart_purchases_path(cart_id: params[:cart_id])
+        redirect_to success_cart_purchases_path(cart_id: @cart.id)
       else
         render :new, status: :unprocessable_entity
       end
@@ -36,8 +31,11 @@ module Carts
       @purchase = Purchase.order(:created_at).last
     end
 
-  
     private
+    
+    def set_cart
+      @cart = Cart.find(params[:cart_id])
+    end
     
     def set_cart_items
       @cart_items = @cart.line_items.includes(:engine)
@@ -60,6 +58,5 @@ module Carts
         }
       end.to_json
     end
-    
   end
 end
