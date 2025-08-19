@@ -1,51 +1,372 @@
-<section class="returns-policy">
-  <div class="container">
-    <h1>Returns & Refund Policy</h1>
-    <p>At AutoBids, we want you to be confident in every purchase. While most of our products are final sale due to their used and specialty nature, we do allow returns under certain conditions outlined below.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns & Refund Policy - AutoBids Seller</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <h2>Eligible Return Items</h2>
-    <ul>
-      <li>Engines that were delivered damaged or non-functional (must be reported within 48 hours of delivery)</li>
-      <li>Items received that do not match the product listing (wrong part, model, or specs)</li>
-      <li>Engines that do not fit your vehicle <strong>only if</strong> the compatibility was guaranteed by our team</li>
-      <li>For other non-defective items, returns may be considered if the item is unused, uninstalled, and in its original packaging. Contact us to confirm eligibility.</li>
-    </ul>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
 
-    <h2>Non-Returnable Items</h2>
-    <ul>
-      <li>Items damaged due to improper installation or handling</li>
-      <li>Products marked "as-is" or "final sale" in the listing</li>
-      <li>Any item installed, disassembled, or modified</li>
-    </ul>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
 
-    <h2>Return Window</h2>
-    <ul>
-      <li>
-      Return requests must be submitted within 7 days of delivery.</li>
-      <li>Approved returns must be returned within 14 days after authorization.</li>
-    </ul>
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #007bff;
+        }
 
-    <h2>Return Process</h2>
-    <ol>
-      <li>Contact us at <a href="mailto:sales@autobidseller.com">support@autobidseller.com</a> with your order number, photos, and a description of the issue.</li>
-      <li>Wait for our team to confirm eligibility and provide a Return Merchandise Authorization (RMA) number.</li>
-      <li>Pack the item securely. The RMA number must be clearly labeled on the packaging.</li>
-      <li>Ship the item back to the address we provide (buyer pays return freight unless due to our error).</li>
-    </ol>
+        .header h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
 
-    <h2>Refund Policy</h2>
-    <ul>
-      <li>Refunds are issued after returned items are received and inspected.</li>
-      <li>A restocking fee of up to 25% may apply.</li>
-      <li>Refunds will be credited to your original payment method within 7–10 business days of approval.</li>
-    </ul>
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
 
-    <h2>Cancellations</h2>
-    <p>You may cancel an order <strong>before it ships</strong> without penalty. Once shipped or prepared for freight, cancellation may not be possible.</p>
+        .effective-date {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
 
-    <h2>Need Help?</h2>
-    <p>If you have questions about a return or refund, contact our support team at <a href="/contact">our contact page</a>.</p>
+        .policy-section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #007bff;
+        }
 
-    <p><strong>Effective Date:</strong> July 25, 2025</p>
-  </div>
-</section>
+        .policy-section h2 {
+            color: #007bff;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .policy-section h2:before {
+            content: "▶";
+            margin-right: 10px;
+            color: #28a745;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border: 2px solid #2196f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #0d47a1;
+        }
+
+        .highlight-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-item:before {
+            content: "✓";
+            background: #28a745;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .warning-box h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        li:before {
+            content: "•";
+            color: #007bff;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .process-steps {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+
+        .process-steps ol {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .process-steps ol li {
+            counter-increment: step-counter;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+
+        .process-steps ol li:before {
+            content: counter(step-counter);
+            background: #007bff;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .contact-box h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .timeframe {
+            background: #007bff;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .cost-info {
+            background: #dc3545;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+            }
+            
+            .policy-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Returns & Refund Policy</h1>
+            <p>AutoBids Seller - Used & Refurbished Engine Specialists</p>
+            <div class="effective-date">Effective Date: August 19, 2025</div>
+        </div>
+
+        <div class="policy-section">
+            <h2>Return Window</h2>
+            <div class="highlight-box">
+                <div class="highlight-item">
+                    <span class="timeframe">7 days</span> Return requests must be submitted within 7 days of delivery
+                </div>
+                <div class="highlight-item">
+                    <span class="timeframe">14 days</span> Approved returns must be shipped back within 14 days after authorization
+                </div>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2>Cost of Return</h2>
+            <div class="highlight-box">
+                <div class="highlight-item">
+                    <span class="cost-info">Customer pays return shipping</span> Return shipping costs are the responsibility of the customer unless the item was damaged, defective, or incorrectly shipped by AutoBids
+                </div>
+                <div class="highlight-item">
+                    <span class="cost-info">Restocking fee: 25%</span> A restocking fee of twenty-five percent (25%) applies to all approved returns
+                </div>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2>Eligible Return Items</h2>
+            <div class="warning-box">
+                <h3>⚠️ Returns Accepted for Defective Products Only</h3>
+                <p><strong>Due to the used/refurbished nature of our engines, we only accept returns for defective products.</strong></p>
+            </div>
+            <ul>
+                <li>Engines delivered damaged or non-functional (must be reported within 48 hours of delivery)</li>
+                <li>Items that do not match the product listing (wrong part, model, or specifications)</li>
+                <li>Engines that do not fit your vehicle only if compatibility was guaranteed by AutoBids</li>
+                <li>Manufacturing defects discovered within the return window</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>Non-Returnable Items</h2>
+            <div class="warning-box">
+                <h3>⚠️ Items That Cannot Be Returned</h3>
+                <ul>
+                    <li><strong>Non-defective items (buyer's remorse, change of mind)</strong></li>
+                    <li>Items damaged due to improper installation or handling</li>
+                    <li>Products marked "as-is" or "final sale"</li>
+                    <li>Installed, disassembled, or modified items</li>
+                    <li>Normal wear and tear on used/refurbished engines</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2>Return Process</h2>
+            <div class="process-steps">
+                <ol>
+                    <li><strong>Contact us</strong> at support@autobidseller.com with order number, photos, and issue description</li>
+                    <li><strong>Wait for approval</strong> - Our team will confirm eligibility and provide RMA number</li>
+                    <li><strong>Pack securely</strong> - RMA number must be clearly labeled on packaging</li>
+                    <li><strong>Ship to provided address</strong> - Customer pays return freight unless AutoBids error</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2>Refund Timeline</h2>
+            <div class="highlight-box">
+                <div class="highlight-item">
+                    <span class="timeframe">7-10 business days</span> Refunds processed within 7-10 business days after returned item inspection
+                </div>
+                <div class="highlight-item">
+                    <span class="timeframe">Original payment method</span> Refunds credited to original payment method used for purchase
+                </div>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2>Cancellations</h2>
+            <ul>
+                <li><strong>Before shipping</strong> - Cancel without penalty before item ships</li>
+                <li><strong>After shipping</strong> - Cancellation may not be possible once shipped or prepared for freight</li>
+            </ul>
+        </div>
+
+        <div class="contact-box">
+            <h3>📞 Contact Information</h3>
+            <p>Questions about returns or refunds? Contact our support team:</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    support@autobidseller.com
+                </div>
+                <div class="contact-item">
+                    <strong>Phone</strong>
+                    [Your Phone Number]
+                </div>
+                <div class="contact-item">
+                    <strong>Address</strong>
+                    [Your Business Address]
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
