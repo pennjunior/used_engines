@@ -24,7 +24,7 @@ class EngineOrdersController < ApplicationController
 
       redirect_to engine_order_confirmation_path(@order), notice: "Successfully Sent Engine Inquiry"
     else
-      flash[:alert] = "Couldn't save"
+      flash[:alert] = @order.errors.full_messages.join(", ")
       redirect_to engine_path(@engine)
     end
   end
