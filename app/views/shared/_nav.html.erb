@@ -98,12 +98,13 @@
         <% end %>
       </ul>
     </li>
+    <li class="mobile-nav-item"><%= link_to "Shipping Policy", shipping_policy_path %></li>
+    <li class="mobile-nav-item"><%= link_to "Refund & returns policy", returns_and_refund_path %></li>
     <li class="mobile-nav-item">
       <a href="#" class="dropdown-toggle" data-action="click->menu#toggleDropdown">Dealer</a>
       <ul class="mobile-dropdown-menu hidden">
         <li><%= link_to "Contact Us", contact_us_path %></li>
-        <li><%= link_to "Shipping Policy", shipping_policy_path %></li>
-        <li><%= link_to "Refund & returns policy", returns_and_refund_path %></li>
+        
       </ul>
     </li>
   </ul>
