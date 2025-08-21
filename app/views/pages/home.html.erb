@@ -20,7 +20,7 @@
         <div class="card-info">
           <%= link_to engine_path(engine), style: "text-decoration: none;" do %>
             <h4><%= engine.title %></h4>
-            <p class="price">Price: $<%= engine.price %></p>
+            <p class="price">Price: <%= number_to_currency(engine.price > 3000 ? engine.price - 2770 : engine.price) %></p>
           <% end %>
           
           <% if engine.engineable.is_a?(CarEngine) || engine.engineable.is_a?(TruckEngine) %>

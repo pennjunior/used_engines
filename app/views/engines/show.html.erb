@@ -70,9 +70,12 @@
   <!-- Order Form Section -->
   <div class="bike-form">
       <div class="row m-2">
-        <h2 style="font-family: 'Montserrat', sans-serif"><%= "#{@engine.title}" %></h2>
-        <h2 style="color: blue; font-size: 1.5rem; font-weight: 800;"><%= number_to_currency(@engine.price) %></h2>
-      </div>
+      <h2 style="font-family: 'Montserrat', sans-serif"><%= @engine.title %></h2>
+      <h2 style="color: blue; font-size: 1.5rem; font-weight: 800;">
+        <%= number_to_currency(@engine.price > 3000 ? @engine.price - 2770 : @engine.price) %>
+      </h2>
+    </div>
+
     <p style="font-weight: 700; text-align: center;"> PLACE A QUICK ORDER</p>
       
       <%= form_with url: cart_add_item_path, method: :post, data: { turbo: true }, class: "flex items-center gap-2" do %>
